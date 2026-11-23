@@ -1,5 +1,5 @@
 /* 由 scripts/build-static.ps1 生成，请勿手改。PWA 离线缓存。 */
-const CACHE='kaibang-v2-105407840e01';
+const CACHE='kaibang-v2-f1108bfe0346';
 const PRECACHE=[
   "/",
   "/index.html",
@@ -37,7 +37,7 @@ const PRECACHE=[
   "/assets/downloads.js?v=0aa8ba740a",
   "/data/alternatives.js?v=212ae9a45d",
   "/data/pinyin.js?v=b6f96d334d",
-  "/data/stars.js?v=12cdf490b2",
+  "/data/stars.js?v=6e386c5366",
   "/data/tools-data.js?v=5ad05e0617",
   "/assets/repos.js?v=56717ed754",
   "/assets/site.css?v=f41bfca71c",

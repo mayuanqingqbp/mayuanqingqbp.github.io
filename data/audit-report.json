@@ -1,5 +1,5 @@
 {
-    "generated":  "2026-11-20T05:03:56Z",
+    "generated":  "2026-11-23T12:29:17Z",
     "mode":  "full",
     "license":  {
                     "nonStandardCount":  17,
@@ -77,10 +77,10 @@
                 },
     "stars":  {
                   "uniqueRepos":  427,
-                  "snapshotEntries":  359,
-                  "missingCount":  68,
+                  "snapshotEntries":  368,
+                  "missingCount":  59,
                   "ageDays":  0,
-                  "covered":  359,
+                  "covered":  368,
                   "missing":  [
                                   "make",
                                   "replicate",
@@ -110,7 +110,6 @@
                                   "procreate/procreate",
                                   "adobe/after-effects",
                                   "adobe/acrobat",
-                                  "atlassian/jira",
                                   "notionhq/notion",
                                   "clickup/clickup",
                                   "asana/asana",
@@ -121,20 +120,14 @@
                                   "slack/slack",
                                   "microsoft/teams",
                                   "zoom/zoom",
-                                  "loom/loom",
                                   "googleworkspace/workspace",
                                   "microsoft/365",
                                   "todoist/todoist",
                                   "tallyso/tally",
-                                  "WireGuard/WireGuard",
                                   "blackmagicdesign/DaVinci-Resolve-Studio",
                                   "plexinc/pms",
                                   "emby/emby",
-                                  "masscan/masscan",
-                                  "UKPLab/sentence-transformers",
-                                  "extrawurst/gitui",
                                   "gdb",
-                                  "OpenInterpreter/open-interpreter",
                                   "spline-dev/spline",
                                   "lucid/lucidchart",
                                   "creately/creately",
@@ -145,11 +138,9 @@
                                   "wrike/wrike",
                                   "motionapp/motion",
                                   "productboard/productboard",
-                                  "WayneD/rsync",
                                   "cockos/reaper",
                                   "apple/GarageBand",
-                                  "apple/Logic-Pro",
-                                  "containers/podman"
+                                  "apple/Logic-Pro"
                               ]
               },
     "versionFunction":  {
@@ -158,18 +149,12 @@
                         },
     "links":  {
                   "checked":  511,
-                  "brokenCount":  72,
+                  "brokenCount":  69,
                   "broken":  [
                                  {
-                                     "name":  "HandBrake",
-                                     "kind":  "repo",
-                                     "url":  "https://github.com/HandBrake/HandBrake",
-                                     "status":  0
-                                 },
-                                 {
-                                     "name":  "Excalidraw",
-                                     "kind":  "repo",
-                                     "url":  "https://github.com/excalidraw/excalidraw",
+                                     "name":  "Braintrust",
+                                     "kind":  "official",
+                                     "url":  "https://www.braintrust.dev/",
                                      "status":  0
                                  },
                                  {
@@ -284,7 +269,7 @@
                                      "name":  "Affinity Publisher",
                                      "kind":  "repo",
                                      "url":  "https://github.com/serif/affinity",
-                                     "status":  500
+                                     "status":  404
                                  },
                                  {
                                      "name":  "Affinity Publisher",
@@ -368,7 +353,7 @@
                                      "name":  "Adobe Acrobat",
                                      "kind":  "official",
                                      "url":  "https://www.adobe.com/acrobat.html",
-                                     "status":  403
+                                     "status":  0
                                  },
                                  {
                                      "name":  "Notion",
@@ -479,18 +464,6 @@
                                      "status":  404
                                  },
                                  {
-                                     "name":  "valgrind",
-                                     "kind":  "official",
-                                     "url":  "https://valgrind.org/",
-                                     "status":  503
-                                 },
-                                 {
-                                     "name":  "perf",
-                                     "kind":  "repo",
-                                     "url":  "https://github.com/torvalds/linux",
-                                     "status":  0
-                                 },
-                                 {
                                      "name":  "Spline",
                                      "kind":  "repo",
                                      "url":  "https://github.com/spline-dev/spline",
@@ -572,7 +545,7 @@
                                      "name":  "TuxGuitar",
                                      "kind":  "official",
                                      "url":  "https://tuxguitar.com/",
-                                     "status":  502
+                                     "status":  0
                                  },
                                  {
                                      "name":  "REAPER",

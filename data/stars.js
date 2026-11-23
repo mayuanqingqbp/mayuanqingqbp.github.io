@@ -360,5 +360,14 @@ const STARS = {
   "aircrack-ng/aircrack-ng": 7937,
   "hashcat/hashcat": 27390,
   "openwall/john": 13953,
+  "atlassian/jira": 649,
+  "loom/loom": 111,
+  "WireGuard/WireGuard": 2319,
+  "masscan/masscan": 0,
+  "UKPLab/sentence-transformers": 19304,
+  "extrawurst/gitui": 22682,
+  "OpenInterpreter/open-interpreter": 68950,
+  "WayneD/rsync": 5379,
+  "containers/podman": 33364,
 };
 if (typeof module!=="undefined") module.exports=STARS;
