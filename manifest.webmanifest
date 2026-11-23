@@ -1,0 +1,15 @@
+{
+  "name": "GitHub 开源软件精选热榜",
+  "short_name": "开源热榜",
+  "description": "447 个人工精选的开源软件目录与 GitHub 实时热榜，覆盖 8 大类开源工具。",
+  "lang": "zh-CN",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#EDEFE9",
+  "theme_color": "#EDEFE9",
+  "icons": [
+    { "src": "/favicon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" },
+    { "src": "/apple-touch-icon.png", "sizes": "180x180", "type": "image/png" }
+  ]
+}

@@ -1,0 +1,34 @@
+/* 变现模块样式：复用站点 CSS 变量，明暗主题自动适配；无内联样式 */
+
+/* 兜底：确保 [hidden] 不被 .btn 等作者样式覆盖（未配置爱发电时不泄露占位按钮） */
+[hidden]{display:none!important}
+
+.mz-section{margin:22px 0 30px;padding:18px 20px;background:var(--surface);border:1px solid var(--line);border-radius:5px;box-shadow:0 4px 24px rgba(0,0,0,.04)}
+.mz-kicker{font-family:var(--mono);font-size:11px;letter-spacing:.1em;color:var(--ink-4);margin-bottom:12px}
+.mz-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}
+.mz-card{display:flex;flex-direction:column;gap:5px;min-height:96px;padding:14px 16px;background:var(--surface-2);border:1px solid var(--line);border-radius:4px;text-decoration:none;color:var(--ink);transition:border-color .15s,transform .15s}
+.mz-card:hover{border-color:var(--accent);transform:translate(-1px,-1px)}
+.mz-tag{align-self:flex-start;font-family:var(--mono);font-size:10px;letter-spacing:.06em;color:var(--accent);border:1px solid color-mix(in srgb,var(--accent) 45%,transparent);border-radius:2px;padding:2px 6px;background:color-mix(in srgb,var(--accent) 6%,transparent)}
+.mz-card-name{font-weight:600;font-size:14px}
+.mz-card-desc{font-size:12px;color:var(--ink-3);line-height:1.5}
+.mz-note{font-size:11px;color:var(--ink-4);line-height:1.6;margin:12px 0 0}
+.mz-more{display:inline-block;margin-top:8px;font-size:12px;color:var(--accent);text-decoration:none;border-bottom:1px dashed var(--accent)}
+
+.aff-tag{display:inline-block;margin-left:6px;font-family:var(--mono);font-size:9px;line-height:1;padding:2px 4px;vertical-align:middle;color:var(--ink-3);border:1px solid var(--line);border-radius:2px;white-space:nowrap}
+a:hover .aff-tag{color:var(--accent);border-color:var(--accent)}
+
+.afdian-link{display:block;margin-top:12px;padding:8px 12px;text-align:center;text-decoration:none;font-size:13px;font-weight:600;color:#fff;background:var(--accent);border:1px solid var(--accent);border-radius:4px}
+.afdian-link:hover{filter:brightness(.92)}
+
+/* 合作页专用 */
+.coord .qr-grid{max-width:560px}
+.coord .qr-cell img{max-width:240px}
+.coord{background:var(--surface);border:1px solid var(--line);border-radius:5px;padding:26px 30px;margin:0 0 20px;box-shadow:0 4px 24px rgba(0,0,0,.04)}
+.coord h2{font-size:18px;margin:0 0 12px;padding:0 0 8px;border-bottom:1px solid var(--line)}
+.coord p,.coord li{font-size:14px;line-height:1.8;color:var(--ink-2)}
+.coord table{width:100%;border-collapse:collapse;margin:12px 0;font-size:13px}
+.coord th,.coord td{border:1px solid var(--line);padding:9px 11px;text-align:left;vertical-align:top}
+.coord th{background:var(--surface-2);color:var(--ink)}
+.coord code{font-family:var(--mono);font-size:.9em;background:color-mix(in srgb,var(--ink) 7%,transparent);border:1px solid var(--line);border-radius:2px;padding:1px 5px}
+
+@media(max-width:600px){.mz-section{padding:14px}.mz-grid{grid-template-columns:1fr}.coord{padding:18px}}

@@ -1,0 +1,7 @@
+# 本文件由 scripts/build-static.ps1 生成，请勿直接手改。
+# 旧域名 → 新域名 301 兜底：旧子域若仍路由到本部署，自动跳到 kaibang.net
+https://sparkling-sawine-213ab3.netlify.app/*  https://kaibang.net/:splat  301!
+https://kaibang.netlify.app/*  https://kaibang.net/:splat  301!
+
+# 指南目录 pretty URL → index.html（本地静态服务器不自动映射目录）
+/guides/  /guides/index.html  200

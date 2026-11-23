@@ -1,0 +1,597 @@
+{
+    "generated":  "2026-11-20T05:03:56Z",
+    "mode":  "full",
+    "license":  {
+                    "nonStandardCount":  17,
+                    "nonStandard":  [
+                                        {
+                                            "name":  "ripgrep",
+                                            "lic":  "MIT / Apache-2.0"
+                                        },
+                                        {
+                                            "name":  "Ruff",
+                                            "lic":  "MIT / Apache-2.0"
+                                        },
+                                        {
+                                            "name":  "Nmap",
+                                            "lic":  "Nmap License"
+                                        },
+                                        {
+                                            "name":  "Rust",
+                                            "lic":  "MIT OR Apache-2.0"
+                                        },
+                                        {
+                                            "name":  "SQLite",
+                                            "lic":  "Public Domain"
+                                        },
+                                        {
+                                            "name":  "n8n",
+                                            "lic":  "Sustainable Use License"
+                                        },
+                                        {
+                                            "name":  "Phoenix",
+                                            "lic":  "Elastic License"
+                                        },
+                                        {
+                                            "name":  "Mistral",
+                                            "lic":  "Mistral Research Model License"
+                                        },
+                                        {
+                                            "name":  "Llama",
+                                            "lic":  "Llama Community License"
+                                        },
+                                        {
+                                            "name":  "just",
+                                            "lic":  "MIT OR Apache-2.0"
+                                        },
+                                        {
+                                            "name":  "dust",
+                                            "lic":  "MIT OR Apache-2.0"
+                                        },
+                                        {
+                                            "name":  "bat",
+                                            "lic":  "MIT OR Apache-2.0"
+                                        },
+                                        {
+                                            "name":  "sd",
+                                            "lic":  "MIT OR Apache-2.0"
+                                        },
+                                        {
+                                            "name":  "procs",
+                                            "lic":  "MIT OR Apache-2.0"
+                                        },
+                                        {
+                                            "name":  "mise",
+                                            "lic":  "MIT OR Apache-2.0"
+                                        },
+                                        {
+                                            "name":  "xh",
+                                            "lic":  "MIT OR Apache-2.0"
+                                        },
+                                        {
+                                            "name":  "watchexec",
+                                            "lic":  "MIT OR Apache-2.0"
+                                        }
+                                    ],
+                    "total":  447
+                },
+    "stars":  {
+                  "uniqueRepos":  427,
+                  "snapshotEntries":  359,
+                  "missingCount":  68,
+                  "ageDays":  0,
+                  "covered":  359,
+                  "missing":  [
+                                  "make",
+                                  "replicate",
+                                  "openrouter",
+                                  "baseten",
+                                  "anyscale",
+                                  "braintrust",
+                                  "humanloop",
+                                  "promptlayer",
+                                  "galileo",
+                                  "patronus-ai",
+                                  "google-gemini/gemini-api",
+                                  "figma/figma",
+                                  "sketch-hq/sketch-api",
+                                  "adobe/xd",
+                                  "canva/canva",
+                                  "framer/framer",
+                                  "webflow/webflow",
+                                  "mirohq/miro",
+                                  "whimsical/whimsical",
+                                  "figma/figjam",
+                                  "serif/affinity",
+                                  "adobe/illustrator",
+                                  "adobe/photoshop",
+                                  "adobe/indesign",
+                                  "adobe/lightroom",
+                                  "procreate/procreate",
+                                  "adobe/after-effects",
+                                  "adobe/acrobat",
+                                  "atlassian/jira",
+                                  "notionhq/notion",
+                                  "clickup/clickup",
+                                  "asana/asana",
+                                  "mondaycom/monday",
+                                  "37signals/basecamp",
+                                  "airtable/airtable",
+                                  "atlassian/confluence",
+                                  "slack/slack",
+                                  "microsoft/teams",
+                                  "zoom/zoom",
+                                  "loom/loom",
+                                  "googleworkspace/workspace",
+                                  "microsoft/365",
+                                  "todoist/todoist",
+                                  "tallyso/tally",
+                                  "WireGuard/WireGuard",
+                                  "blackmagicdesign/DaVinci-Resolve-Studio",
+                                  "plexinc/pms",
+                                  "emby/emby",
+                                  "masscan/masscan",
+                                  "UKPLab/sentence-transformers",
+                                  "extrawurst/gitui",
+                                  "gdb",
+                                  "OpenInterpreter/open-interpreter",
+                                  "spline-dev/spline",
+                                  "lucid/lucidchart",
+                                  "creately/creately",
+                                  "smartdraw/smartdraw",
+                                  "prezi/prezi",
+                                  "shortcut/shortcut",
+                                  "height/height",
+                                  "wrike/wrike",
+                                  "motionapp/motion",
+                                  "productboard/productboard",
+                                  "WayneD/rsync",
+                                  "cockos/reaper",
+                                  "apple/GarageBand",
+                                  "apple/Logic-Pro",
+                                  "containers/podman"
+                              ]
+              },
+    "versionFunction":  {
+                            "reposInFunction":  57,
+                            "note":  "releases.mjs 实时抓取版本号；本地流水线只校验配置存在"
+                        },
+    "links":  {
+                  "checked":  511,
+                  "brokenCount":  72,
+                  "broken":  [
+                                 {
+                                     "name":  "HandBrake",
+                                     "kind":  "repo",
+                                     "url":  "https://github.com/HandBrake/HandBrake",
+                                     "status":  0
+                                 },
+                                 {
+                                     "name":  "Excalidraw",
+                                     "kind":  "repo",
+                                     "url":  "https://github.com/excalidraw/excalidraw",
+                                     "status":  0
+                                 },
+                                 {
+                                     "name":  "Humanloop",
+                                     "kind":  "official",
+                                     "url":  "https://humanloop.com/",
+                                     "status":  0
+                                 },
+                                 {
+                                     "name":  "Galileo",
+                                     "kind":  "official",
+                                     "url":  "https://galileo-ai.com/",
+                                     "status":  400
+                                 },
+                                 {
+                                     "name":  "Gemini",
+                                     "kind":  "repo",
+                                     "url":  "https://github.com/google-gemini/gemini-api",
+                                     "status":  404
+                                 },
+                                 {
+                                     "name":  "Figma",
+                                     "kind":  "repo",
+                                     "url":  "https://github.com/figma/figma",
+                                     "status":  404
+                                 },
+                                 {
+                                     "name":  "Sketch",
+                                     "kind":  "repo",
+                                     "url":  "https://github.com/sketch-hq/sketch-api",
+                                     "status":  404
+                                 },
+                                 {
+                                     "name":  "Adobe XD",
+                                     "kind":  "repo",
+                                     "url":  "https://github.com/adobe/xd",
+                                     "status":  404
+                                 },
+                                 {
+                                     "name":  "Adobe XD",
+                                     "kind":  "official",
+                                     "url":  "https://www.adobe.com/products/xd.html",
+                                     "status":  403
+                                 },
+                                 {
+                                     "name":  "Canva",
+                                     "kind":  "repo",
+                                     "url":  "https://github.com/canva/canva",
+                                     "status":  404
+                                 },
+                                 {
+                                     "name":  "Canva",
+                                     "kind":  "official",
+                                     "url":  "https://www.canva.com/",
+                                     "status":  403
+                                 },
+                                 {
+                                     "name":  "Framer",
+                                     "kind":  "repo",
+                                     "url":  "https://github.com/framer/framer",
+                                     "status":  404
+                                 },
+                                 {
+                                     "name":  "Webflow",
+                                     "kind":  "repo",
+                                     "url":  "https://github.com/webflow/webflow",
+                                     "status":  404
+                                 },
+                                 {
+                                     "name":  "Miro",
+                                     "kind":  "repo",
+                                     "url":  "https://github.com/mirohq/miro",
+                                     "status":  404
+                                 },
+                                 {
+                                     "name":  "Whimsical",
+                                     "kind":  "repo",
+                                     "url":  "https://github.com/whimsical/whimsical",
+                                     "status":  404
+                                 },
+                                 {
+                                     "name":  "FigJam",
+                                     "kind":  "repo",
+                                     "url":  "https://github.com/figma/figjam",
+                                     "status":  404
+                                 },
+                                 {
+                                     "name":  "Affinity Designer",
+                                     "kind":  "repo",
+                                     "url":  "https://github.com/serif/affinity",
+                                     "status":  404
+                                 },
+                                 {
+                                     "name":  "Affinity Designer",
+                                     "kind":  "official",
+                                     "url":  "https://affinity.serif.com/designer/",
+                                     "status":  403
+                                 },
+                                 {
+                                     "name":  "Affinity Photo",
+                                     "kind":  "repo",
+                                     "url":  "https://github.com/serif/affinity",
+                                     "status":  404
+                                 },
+                                 {
+                                     "name":  "Affinity Photo",
+                                     "kind":  "official",
+                                     "url":  "https://affinity.serif.com/photo/",
+                                     "status":  403
+                                 },
+                                 {
+                                     "name":  "Affinity Publisher",
+                                     "kind":  "repo",
+                                     "url":  "https://github.com/serif/affinity",
+                                     "status":  500
+                                 },
+                                 {
+                                     "name":  "Affinity Publisher",
+                                     "kind":  "official",
+                                     "url":  "https://affinity.serif.com/publisher/",
+                                     "status":  403
+                                 },
+                                 {
+                                     "name":  "Adobe Illustrator",
+                                     "kind":  "repo",
+                                     "url":  "https://github.com/adobe/illustrator",
+                                     "status":  404
+                                 },
+                                 {
+                                     "name":  "Adobe Illustrator",
+                                     "kind":  "official",
+                                     "url":  "https://www.adobe.com/products/illustrator.html",
+                                     "status":  403
+                                 },
+                                 {
+                                     "name":  "Adobe Photoshop",
+                                     "kind":  "repo",
+                                     "url":  "https://github.com/adobe/photoshop",
+                                     "status":  404
+                                 },
+                                 {
+                                     "name":  "Adobe Photoshop",
+                                     "kind":  "official",
+                                     "url":  "https://www.adobe.com/products/photoshop.html",
+                                     "status":  403
+                                 },
+                                 {
+                                     "name":  "Adobe InDesign",
+                                     "kind":  "repo",
+                                     "url":  "https://github.com/adobe/indesign",
+                                     "status":  404
+                                 },
+                                 {
+                                     "name":  "Adobe InDesign",
+                                     "kind":  "official",
+                                     "url":  "https://www.adobe.com/products/indesign.html",
+                                     "status":  403
+                                 },
+                                 {
+                                     "name":  "Adobe Lightroom",
+                                     "kind":  "repo",
+                                     "url":  "https://github.com/adobe/lightroom",
+                                     "status":  404
+                                 },
+                                 {
+                                     "name":  "Adobe Lightroom",
+                                     "kind":  "official",
+                                     "url":  "https://www.adobe.com/products/photoshop-lightroom.html",
+                                     "status":  403
+                                 },
+                                 {
+                                     "name":  "Procreate",
+                                     "kind":  "repo",
+                                     "url":  "https://github.com/procreate/procreate",
+                                     "status":  404
+                                 },
+                                 {
+                                     "name":  "Adobe After Effects",
+                                     "kind":  "repo",
+                                     "url":  "https://github.com/adobe/after-effects",
+                                     "status":  404
+                                 },
+                                 {
+                                     "name":  "Adobe After Effects",
+                                     "kind":  "official",
+                                     "url":  "https://www.adobe.com/products/aftereffects.html",
+                                     "status":  403
+                                 },
+                                 {
+                                     "name":  "Adobe Acrobat",
+                                     "kind":  "repo",
+                                     "url":  "https://github.com/adobe/acrobat",
+                                     "status":  404
+                                 },
+                                 {
+                                     "name":  "Adobe Acrobat",
+                                     "kind":  "official",
+                                     "url":  "https://www.adobe.com/acrobat.html",
+                                     "status":  403
+                                 },
+                                 {
+                                     "name":  "Notion",
+                                     "kind":  "repo",
+                                     "url":  "https://github.com/notionhq/notion",
+                                     "status":  404
+                                 },
+                                 {
+                                     "name":  "ClickUp",
+                                     "kind":  "repo",
+                                     "url":  "https://github.com/clickup/clickup",
+                                     "status":  404
+                                 },
+                                 {
+                                     "name":  "Asana",
+                                     "kind":  "repo",
+                                     "url":  "https://github.com/asana/asana",
+                                     "status":  404
+                                 },
+                                 {
+                                     "name":  "Monday.com",
+                                     "kind":  "repo",
+                                     "url":  "https://github.com/mondaycom/monday",
+                                     "status":  404
+                                 },
+                                 {
+                                     "name":  "Basecamp",
+                                     "kind":  "repo",
+                                     "url":  "https://github.com/37signals/basecamp",
+                                     "status":  404
+                                 },
+                                 {
+                                     "name":  "Airtable",
+                                     "kind":  "repo",
+                                     "url":  "https://github.com/airtable/airtable",
+                                     "status":  404
+                                 },
+                                 {
+                                     "name":  "Confluence",
+                                     "kind":  "repo",
+                                     "url":  "https://github.com/atlassian/confluence",
+                                     "status":  404
+                                 },
+                                 {
+                                     "name":  "Slack",
+                                     "kind":  "repo",
+                                     "url":  "https://github.com/slack/slack",
+                                     "status":  404
+                                 },
+                                 {
+                                     "name":  "Microsoft Teams",
+                                     "kind":  "repo",
+                                     "url":  "https://github.com/microsoft/teams",
+                                     "status":  404
+                                 },
+                                 {
+                                     "name":  "Zoom",
+                                     "kind":  "repo",
+                                     "url":  "https://github.com/zoom/zoom",
+                                     "status":  404
+                                 },
+                                 {
+                                     "name":  "Google Workspace",
+                                     "kind":  "repo",
+                                     "url":  "https://github.com/googleworkspace/workspace",
+                                     "status":  404
+                                 },
+                                 {
+                                     "name":  "Microsoft 365",
+                                     "kind":  "repo",
+                                     "url":  "https://github.com/microsoft/365",
+                                     "status":  404
+                                 },
+                                 {
+                                     "name":  "Todoist",
+                                     "kind":  "repo",
+                                     "url":  "https://github.com/todoist/todoist",
+                                     "status":  404
+                                 },
+                                 {
+                                     "name":  "Tally",
+                                     "kind":  "repo",
+                                     "url":  "https://github.com/tallyso/tally",
+                                     "status":  404
+                                 },
+                                 {
+                                     "name":  "DaVinci Resolve",
+                                     "kind":  "repo",
+                                     "url":  "https://github.com/blackmagicdesign/DaVinci-Resolve-Studio",
+                                     "status":  404
+                                 },
+                                 {
+                                     "name":  "Plex",
+                                     "kind":  "repo",
+                                     "url":  "https://github.com/plexinc/pms",
+                                     "status":  404
+                                 },
+                                 {
+                                     "name":  "Plex",
+                                     "kind":  "official",
+                                     "url":  "https://www.plex.tv/",
+                                     "status":  0
+                                 },
+                                 {
+                                     "name":  "Emby",
+                                     "kind":  "repo",
+                                     "url":  "https://github.com/emby/emby",
+                                     "status":  404
+                                 },
+                                 {
+                                     "name":  "valgrind",
+                                     "kind":  "official",
+                                     "url":  "https://valgrind.org/",
+                                     "status":  503
+                                 },
+                                 {
+                                     "name":  "perf",
+                                     "kind":  "repo",
+                                     "url":  "https://github.com/torvalds/linux",
+                                     "status":  0
+                                 },
+                                 {
+                                     "name":  "Spline",
+                                     "kind":  "repo",
+                                     "url":  "https://github.com/spline-dev/spline",
+                                     "status":  404
+                                 },
+                                 {
+                                     "name":  "Lucidchart",
+                                     "kind":  "repo",
+                                     "url":  "https://github.com/lucid/lucidchart",
+                                     "status":  404
+                                 },
+                                 {
+                                     "name":  "Lucidchart",
+                                     "kind":  "official",
+                                     "url":  "https://www.lucidchart.com/",
+                                     "status":  403
+                                 },
+                                 {
+                                     "name":  "Creately",
+                                     "kind":  "repo",
+                                     "url":  "https://github.com/creately/creately",
+                                     "status":  404
+                                 },
+                                 {
+                                     "name":  "SmartDraw",
+                                     "kind":  "repo",
+                                     "url":  "https://github.com/smartdraw/smartdraw",
+                                     "status":  404
+                                 },
+                                 {
+                                     "name":  "Prezi",
+                                     "kind":  "repo",
+                                     "url":  "https://github.com/prezi/prezi",
+                                     "status":  404
+                                 },
+                                 {
+                                     "name":  "Prezi",
+                                     "kind":  "official",
+                                     "url":  "https://prezi.com/",
+                                     "status":  406
+                                 },
+                                 {
+                                     "name":  "Shortcut",
+                                     "kind":  "repo",
+                                     "url":  "https://github.com/shortcut/shortcut",
+                                     "status":  404
+                                 },
+                                 {
+                                     "name":  "Height",
+                                     "kind":  "repo",
+                                     "url":  "https://github.com/height/height",
+                                     "status":  404
+                                 },
+                                 {
+                                     "name":  "Height",
+                                     "kind":  "official",
+                                     "url":  "https://height.app/",
+                                     "status":  0
+                                 },
+                                 {
+                                     "name":  "Wrike",
+                                     "kind":  "repo",
+                                     "url":  "https://github.com/wrike/wrike",
+                                     "status":  404
+                                 },
+                                 {
+                                     "name":  "Motion",
+                                     "kind":  "repo",
+                                     "url":  "https://github.com/motionapp/motion",
+                                     "status":  404
+                                 },
+                                 {
+                                     "name":  "Productboard",
+                                     "kind":  "repo",
+                                     "url":  "https://github.com/productboard/productboard",
+                                     "status":  404
+                                 },
+                                 {
+                                     "name":  "TuxGuitar",
+                                     "kind":  "official",
+                                     "url":  "https://tuxguitar.com/",
+                                     "status":  502
+                                 },
+                                 {
+                                     "name":  "REAPER",
+                                     "kind":  "repo",
+                                     "url":  "https://github.com/cockos/reaper",
+                                     "status":  404
+                                 },
+                                 {
+                                     "name":  "GarageBand",
+                                     "kind":  "repo",
+                                     "url":  "https://github.com/apple/GarageBand",
+                                     "status":  404
+                                 },
+                                 {
+                                     "name":  "Logic Pro",
+                                     "kind":  "repo",
+                                     "url":  "https://github.com/apple/Logic-Pro",
+                                     "status":  404
+                                 }
+                             ]
+              }
+}

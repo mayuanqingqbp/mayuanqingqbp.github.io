@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<script src="/assets/theme.js?v=6cd6f3c161"></script>
+<meta name="google-site-verification" content="dcm8zWfL1QAHwag7ORm2Z38v7vZZPXMzZVeJl9VwV8o" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>GitHub 开源软件精选热榜 · 447 个开源工具推荐</title>
+<meta name="description" content="447 个人工精选的开源软件目录，覆盖开发、AI、设计、系统、效率、网络、媒体、自托管 8 大类；每个工具附详细介绍与功能特点，并实时抓取 GitHub 近 30 天热榜。">
+<meta name="keywords" content="GitHub 开源软件,开源工具,开源软件推荐,开源软件大全,GitHub 热榜,GitHub 实时热榜,GitHub trending,开发者工具,开发工具推荐,AI 开源工具,设计工具,系统工具,免费开源软件,开源项目精选">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<link rel="canonical" href="https://kaibang.net/">
+<meta name="theme-color" content="#EDEFE9" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#101511" media="(prefers-color-scheme: dark)">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/manifest.webmanifest">
+<link rel="preload" href="/fonts/archivo-latin-var.woff2?v=347eef1c29" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/jetbrains-mono-latin-var.woff2?v=30b3242294" as="font" type="font/woff2" crossorigin>
+<!-- 首屏渲染依赖这两份数据，提前发起请求，避免解析到 </body> 附近才被发现 -->
+<link rel="preload" href="/assets/app.js?v=06a8a448ba" as="script">
+<link rel="preload" href="/assets/downloads.js?v=0aa8ba740a" as="script">
+<link rel="preload" href="/data/alternatives.js?v=212ae9a45d" as="script">
+<link rel="preload" href="/data/pinyin.js?v=b6f96d334d" as="script">
+<link rel="preload" href="/data/stars.js?v=12cdf490b2" as="script">
+<link rel="preload" href="/data/tools-data.js?v=5ad05e0617" as="script">
+<link rel="preload" href="/assets/repos.js?v=56717ed754" as="script">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:site_name" content="GitHub 开源软件精选热榜">
+<meta property="og:url" content="https://kaibang.net/">
+<meta property="og:title" content="GitHub 开源软件精选热榜 · 447 个开源工具推荐">
+<meta property="og:description" content="447 个人工精选的开源软件目录，覆盖 8 大类；每个工具附详细介绍与功能特点，并实时抓取 GitHub 热榜。">
+<meta property="og:image" content="https://kaibang.net/og-cover.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="GitHub 开源软件精选热榜 · 447 个开源工具">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="GitHub 开源软件精选热榜 · 447 个开源工具推荐">
+<meta name="twitter:description" content="447 个人工精选的开源软件目录，覆盖 8 大类；每个工具附详细介绍与功能特点，并实时抓取 GitHub 热榜。">
+<meta name="twitter:image" content="https://kaibang.net/og-cover.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "name": "GitHub 开源软件精选热榜",
+  "description": "447 个人工精选的工具目录（开源为主，含闭源对照）：8 大类，附详细介绍与功能特点，并实时抓取 GitHub 开源热榜。",
+  "url": "https://kaibang.net/",
+  "inLanguage": "zh-CN",
+  "isPartOf": { "@type": "WebSite", "name": "GitHub 开源软件精选热榜", "url": "https://kaibang.net/" },
+  "mainEntity": {
+    "@type": "ItemList",
+    "name": "开源工具分类",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "开发工具", "item": { "@type": "Collection", "name": "开发工具", "description": "编辑器、语言服务器、包管理器等开发者工具" } },
+      { "@type": "ListItem", "position": 2, "name": "AI 与数据", "item": { "@type": "Collection", "name": "AI 与数据", "description": "大模型推理、本地 LLM、图像生成等 AI 开源项目" } },
+      { "@type": "ListItem", "position": 3, "name": "设计与创意", "item": { "@type": "Collection", "name": "设计与创意", "description": "UI 设计、插画、视频剪辑等创意工具" } },
+      { "@type": "ListItem", "position": 4, "name": "系统工具", "item": { "@type": "Collection", "name": "系统工具", "description": "终端、网络、监控等系统级工具" } },
+      { "@type": "ListItem", "position": 5, "name": "效率与办公", "item": { "@type": "Collection", "name": "效率与办公", "description": "笔记、任务、自动化等效率与生产力工具" } },
+      { "@type": "ListItem", "position": 6, "name": "网络与安全", "item": { "@type": "Collection", "name": "网络与安全", "description": "网络、安全、扫描、隧道等网络与安防工具" } },
+      { "@type": "ListItem", "position": 7, "name": "媒体与娱乐", "item": { "@type": "Collection", "name": "媒体与娱乐", "description": "视频编辑、音频处理、图像生成等媒体工具" } },
+      { "@type": "ListItem", "position": 8, "name": "自托管/NAS", "item": { "@type": "Collection", "name": "自托管/NAS", "description": "部署、托管、容器化、DevOps 等运维工具" } }
+    ]
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    { "@type": "Question", "name": "「常用精选」和「小众优选」有什么区别？", "acceptedAnswer": { "@type": "Answer", "text": "常用精选是高频日常工具，基本天天在用；小众优选是名气不大但解决特定问题的工具。编号 001–221 为常用精选，222–447 为小众优选。" } },
+    { "@type": "Question", "name": "星标数、语言、许可证是怎么来的？", "acceptedAnswer": { "@type": "Answer", "text": "精选条目的主语言、许可证取自各项目 GitHub 仓库，仅供参考；热榜条目的星标数是抓取时刻的实时值。" } },
+    { "@type": "Question", "name": "热榜的入选规则是什么？", "acceptedAnswer": { "@type": "Answer", "text": "自动抓取 GitHub Search API：近 30 天创建、星标 1500 以上，按星标降序。线上由本站 Netlify Function 服务端抓取并缓存 10 分钟。" } },
+    { "@type": "Question", "name": "想收录一个软件，或发现介绍写错了，怎么办？", "acceptedAnswer": { "@type": "Answer", "text": "写邮件到 myq13263221790@qq.com，说明仓库地址、问题所在和建议的编号。收录标准是本人装过、用过。" } },
+    { "@type": "Question", "name": "这些软件的版权归谁？", "acceptedAnswer": { "@type": "Answer", "text": "所有软件版权归原仓库作者所有，本站只做数据整理与介绍；卡片上的许可证标注仅供参考，商用前请以仓库 LICENSE 原文为准。" } }
+  ]
+}
+</script>
+<link rel="stylesheet" href="/assets/site.css?v=f41bfca71c">
+<link rel="stylesheet" href="/assets/monetize.css?v=e5b4472e7b">
+
+<meta name="msvalidate.01" content="B8B350A589AEFA302AE4E5CC4FE7E058" />
+<meta name="baidu-site-verification" content="codeva-NlhjszvzWb" />
+</head>
+<body>
+
+<a class="skip" href="#main">跳到主要内容</a>
+
+<header>
+  <div class="wrap nav">
+    <div class="brand">
+      <svg class="mark" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2" fill="none" stroke="var(--ink)" stroke-width="2"/><rect x="4" y="5" width="3.5" height="14" fill="var(--accent)"/><path d="M11 10.5h6M11 15h4" stroke="var(--ink)" stroke-width="2" stroke-linecap="round"/></svg>
+      <span class="brand-name">GitHub 开源软件精选热榜</span>
+    </div>
+    <nav class="tabs" aria-label="内容视图">
+      <button class="tab" data-tab="overview">分类总览</button>
+      <button class="tab active" data-tab="curated">常用精选</button>
+      <button class="tab" data-tab="niche">小众优选</button>
+      <button class="tab" data-tab="trending"><span class="live-dot"></span>实时热榜</button>
+      <button class="tab" data-tab="guides">指南</button>
+    </nav>
+    <div class="spacer"></div>
+    <button class="sponsor-btn" id="qrBtnTop" type="button">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 21s-7.5-4.6-10-9.2C.4 8.3 2 4.5 5.5 4.5c2 0 3.3 1.1 4.5 2.7C11.2 5.6 12.5 4.5 14.5 4.5 18 4.5 19.6 8.3 22 11.8 19.5 16.4 12 21 12 21Z"/></svg>
+      赞助支持
+    </button>
+    <button class="theme-btn" id="themeBtn" aria-label="切换明暗主题：暗色">
+      <svg id="themeIcon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"></svg>
+      <span id="themeLabel">暗色</span>
+    </button>
+  </div>
+</header>
+
+<nav class="site-nav" aria-label="站点页面">
+  <div class="wrap">
+    <span class="site-nav-label">站点页面</span>
+    <a href="/all-tools.html">全部工具索引</a>
+    <a href="/categories/dev.html">分类浏览</a>
+    <a href="/guides/index.html">使用指南</a>
+    <span class="site-nav-sep" aria-hidden="true">·</span>
+    <a href="/tools/vs-code.html">工具页示例</a>
+  </div>
+</nav>
+
+<main class="wrap" id="main">
+  <section class="intro">
+    <div class="kicker">Field Guide · 开源软件图鉴</div>
+    <h1>值得收藏的开源软件</h1>
+    <p>「常用精选」与「小众优选」，收录的每一个工具，都是我亲手装过、用过，再逐条写下介绍与心得的。不是随手收藏的链接堆砌，而是真正跑过一遍、确认好用之后才留下的记录。点开任意一张卡片，完整介绍和功能特点就在里面，省去你逐个搜索、反复试错的功夫。</p>
+    <p>「实时热榜」自动抓取 GitHub，近 30 天新上榜的热门仓库实时排给你看，哪些项目正在升温、哪些值得关注，一眼便知。</p>
+    <p>搜索、筛选、排序，随你心意——想按热度看，想按类别找，想快速定位某个具体工具，都能顺手找到。</p>
+    <div class="stats">
+      <div class="stat"><div class="num">447<span class="unit">条</span></div><div class="lbl">编号标本，逐条挑选</div></div>
+      <div class="stat"><div class="num">8<span class="unit">类</span></div><div class="lbl">开发 · AI · 设计 · 系统 · 效率 · 网络 · 媒体 · 主机</div></div>
+      <div class="stat"><div class="num">30<span class="unit">天</span></div><div class="lbl">热榜新上榜窗口</div></div>
+      <div class="stat"><div class="num">1500<span class="unit">★</span></div><div class="lbl">热榜入选门槛</div></div>
+    </div>
+  </section>
+
+  <div class="controls">
+    <div class="search">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+      <input id="q" type="search" placeholder="搜索软件名、用途或标签，如 “终端” “图像生成”" aria-label="搜索开源软件">
+    </div>
+    <select class="lang" id="lang" aria-label="按主语言筛选">
+      <option value="all">全部语言</option>
+    </select>
+    <select class="stars" id="stars" aria-label="按星标数筛选" hidden>
+      <option value="0">任意星标</option>
+      <option value="1000">★ 1k 以上</option>
+      <option value="5000">★ 5k 以上</option>
+      <option value="10000">★ 10k 以上</option>
+      <option value="20000">★ 20k 以上</option>
+    </select>
+    <select class="sort" id="sort" aria-label="排序方式">
+      <option value="default">默认（精选顺序）</option>
+      <option value="name">名称 A–Z</option>
+    </select>
+  </div>
+
+  <div class="pills" id="pills" role="group" aria-label="分类筛选"></div>
+  <div class="tag-row" id="tagRow" role="group" aria-label="标签筛选"></div>
+  <div class="meta-row">
+    <span class="result-count" id="count" role="status" aria-live="polite"></span>
+    <span class="updated" id="updated" hidden></span>
+    <button class="refresh" id="refresh" hidden>↻ 刷新热榜</button>
+    <button class="fav-filter" id="favFilter" type="button" aria-pressed="false" title="只看收藏的工具">♡ 收藏</button>
+    <button class="compare-btn" id="compareBtn" type="button" hidden title="对比选中的工具">⚖ 对比 <span id="compareCount">0</span></button>
+  </div>
+  <div class="compare-bar" id="compareBar" hidden role="group" aria-label="对比栏">
+    <span class="compare-hint">点击卡片的 ⚖ 加入对比（最多 4 个）：</span>
+    <span id="compareItems"></span>
+    <button class="compare-clear" id="compareClear" type="button">清空</button>
+  </div>
+
+  <section class="grid-wrap" aria-labelledby="gridTitle">
+    <h2 class="sr-only" id="gridTitle">工具列表</h2>
+    <div class="grid" id="grid"></div>
+  </section>
+  <div class="load-more-wrap" id="loadMoreWrap" hidden>
+    <button class="load-more" id="loadMore" type="button">显示更多</button>
+    <span class="load-more-info" id="loadMoreInfo"></span>
+  </div>
+
+  <!-- ============================================================
+       指南板块 —— 静态长文，内链到编号标本卡（a.gl data-repo）
+       ============================================================ -->
+  <!-- 分类总览页 —— 8 个主类目平铺大卡片，点"探索此分类"跳转对应分类 -->
+  <section class="overview-view" id="overviewView" hidden>
+    <div class="wrap">
+      <div class="ov-head">
+        <div class="ov-kicker">CATEGORY OVERVIEW · 分类总览</div>
+        <h2 class="ov-title">探索分类</h2>
+        <p class="ov-sub">先说一句谢谢——致敬每一位把代码敞开、把工具无偿交给所有人的开源作者，今天这些好用的轮子，都是他们踩出来的路。</p>
+        <p class="ov-sub">我拥抱开源的方式很朴素：真用、真反馈，站在别人的肩膀上往前走。正是这份用出来的体感，我把工具分进了 8 个分类：写代码、跑 AI、做设计，到系统维护、效率办公、网络安全、影音娱乐，再到自己搭一套网盘和 NAS。</p>
+        <p class="ov-sub">每一个，都是我先装上、用过、确认好用才收进来的。挑一个分类点进去，慢慢看。</p>
+      </div>
+      <div class="cat-cards" id="catCards"></div>
+    </div>
+  </section>
+  <section class="guides" id="guides" hidden>
+    <div class="doc-head">
+      <div class="kicker">文档 · 使用与选型指南</div>
+      <h2>指南</h2>
+      <p class="doc-sub">十篇，从「怎么用这份目录」到「常见问题」，主题都是你会真正碰到的选择：编辑器怎么挑、数据库怎么选、AI 工具配什么壳、免费额度怎么算。点目录直接跳到对应章节；正文里的等宽芯片就是标本卡编号，点一下，那个软件的完整档案就弹出来，读完直接对照着挑。</p>
+    </div>
+    <nav class="guide-toc" aria-label="指南目录">
+        <div class="toc-label">目录</div>
+        <ol>
+          <li><a href="#g01">怎么用这份目录</a></li>
+          <li><a href="#g02">代码编辑器怎么选</a></li>
+          <li><a href="#g03">开源 AI 工具：本地跑起来的路线</a></li>
+          <li><a href="#g04">设计工具：从修图到协作画布</a></li>
+          <li><a href="#g05">终端工具箱：把命令行变成工作台</a></li>
+          <li><a href="#g06">常见问题</a></li>
+          <li><a href="#g07">效率与办公：串起笔记、任务和文档</a></li>
+          <li><a href="#g08">网络与安全：排查故障到加固边界</a></li>
+          <li><a href="#g09">媒体与娱乐：播放器、剪辑和音频</a></li>
+          <li><a href="#g10">自托管：从一台机器到一套服务</a></li>
+        </ol>
+    </nav>
+    <article class="guide" id="g01">
+      <div class="kicker">01 · 入门</div>
+      <h2>怎么用这份目录</h2>
+      <p>三个入口，各管一摊：</p>
+      <ul>
+        <li><strong>常用精选</strong>：使用频率高、基本天天在用的工具。</li>
+        <li><strong>小众优选</strong>：名气不大但真有用的。</li>
+        <li><strong>实时热榜</strong>：自动抓取 GitHub，只看近 30 天新上榜、1500 星以上的仓库，按星标实时排序。</li>
+      </ul>
+      <p>点开任意一张编号标本卡，完整介绍和功能特点就在弹窗里。</p>
+      <p>顶部工具栏能做五件事：</p>
+      <ul>
+        <li><strong>搜索</strong>：按名字、用途、标签模糊查，比如输「终端」「图像生成」。</li>
+        <li><strong>分类</strong>：开发 / AI / 设计 / 系统 / 效率 / 网络 / 媒体 / 主机，八类色脊筛选。</li>
+        <li><strong>标签</strong>：按平台、特性、授权三组标签多维交叉筛。同类可多选（或的关系），不同类之间是且的关系。</li>
+        <li><strong>语言</strong>：按主语言筛。</li>
+        <li><strong>排序</strong>：默认按精选顺序，也可按名称 A–Z。</li>
+      </ul>
+      <p>热榜页额外出「星标门槛」和「刷新」两个控件。</p>
+      <p>编号规则：001–221 是常用精选，222–447 是小众优选，LIVE 是热榜实时条目。星标数是抓取时刻的 GitHub 数据，不是本站维护的，看到的那一刻它已经是「昨天的新闻」了，这很正常。</p>
+      <p>每张标本卡都在讲一件事：</p>
+      <ul>
+        <li><strong>编号</strong>：它的身份。反馈错误、建议收录时直接报编号（比如「022 GIMP 的许可证写错了」），比贴截图清楚。</li>
+        <li><strong>左侧色脊</strong>：分类。</li>
+        <li><strong>卡底的星标 / 语言 / 许可证</strong>：取自项目 GitHub 仓库，仅供参考。</li>
+        <li><strong>查看介绍</strong>：按钮打开完整介绍、功能特点和仓库链接。</li>
+      </ul>
+      <p>搜索和筛选各管一头：</p>
+      <ul>
+        <li><strong>搜索</strong>：「我模糊知道我要什么」。不知道工具名、只知道用途，先扔进搜索框。</li>
+        <li><strong>筛选</strong>：「我明确知道自己要什么」。知道大概名字、想在同类里比较，先按分类筛，再逐个点开看。</li>
+      </ul>
+      <p>两条路走不通，多半是描述方式和站内的标签体系对不上，换个词再试。</p>
+    </article>
+
+    <article class="guide" id="g02">
+      <div class="kicker">02 · 开发</div>
+      <h2>代码编辑器怎么选</h2>
+      <p>编辑器是天天盯着的东西，选错一周就能磨掉耐心。大致三条路，差别在你愿意为它花多少学习成本：</p>
+      <ul>
+        <li><strong>开箱即用</strong>：<a class="gl" data-repo="microsoft/vscode">VS Code</a>。插件生态最全，Git、调试、终端内置，绝大多数人的默认答案。</li>
+        <li><strong>键盘流</strong>：<a class="gl" data-repo="neovim/neovim">Neovim</a>。Lua 配置、LSP 一等公民，毫秒级启动，代价是陡峭的学习曲线，配 <a class="gl" data-repo="junegunn/fzf">fzf</a> 和 <a class="gl" data-repo="jdx/mise">mise</a> 这类工具是常见搭配。</li>
+        <li><strong>速度和协作</strong>：<a class="gl" data-repo="zed-industries/zed">Zed</a>。Rust + GPU 渲染，多人实时协作是招牌，定位「下一代编辑器」，生态还在长。</li>
+      </ul>
+      <p>如果只想要「打开就能改文件」、不想碰任何配置，<a class="gl" data-repo="micro-editor/micro">micro</a> 是终端里最像记事本的那个，Ctrl+S 保存、鼠标可点、没有模态编辑的心智负担。</p>
+      <p>照着场景挑更快：</p>
+      <ul>
+        <li>刚学编程、想打开就有产出 → VS Code。扩展市场有几万个插件，需要什么装什么；但别第一天就装二十个，每多一个扩展就多一分启动时间和注意力干扰。</li>
+        <li>天天在终端里干活、手不想离开键盘 → Neovim。模态编辑大约要几周适应期，习惯之后就回不去了；内置的 <code>:help</code> 和官方快速入门值得从头读一遍，比看碎片教程省事。</li>
+        <li>要多人实时编辑，或者把性能放在第一位 → Zed。协作编辑的体验是另外两家很难复刻的，但生态比 VS Code 年轻，个别语言的支持还差一点。</li>
+        <li>偶尔改个配置文件、不想装任何大软件 → micro，装上就可以忘了它的存在。</li>
+      </ul>
+      <p>一句话的取舍：VS Code 是「工具链平台」，Neovim 是「效率系统」，Zed 是「性能赌注」。想清楚要哪个，再装。</p>
+    </article>
+
+    <article class="guide" id="g03">
+      <div class="kicker">03 · AI</div>
+      <h2>开源 AI 工具：本地跑起来的路线</h2>
+      <p>想用 AI 但不想全部交给闭源 API，本地栈一层层这么搭：</p>
+      <ul>
+        <li><strong>推理层</strong>：<a class="gl" data-repo="ollama/ollama">Ollama</a> 是最省心的本地大模型入口，一条命令拉模型。要压榨硬件极限再看 <a class="gl" data-repo="ggml-org/llama.cpp">llama.cpp</a>（量化推理）和 <a class="gl" data-repo="vllm-project/vllm">vLLM</a>（高吞吐服务）。</li>
+        <li><strong>应用层</strong>：<a class="gl" data-repo="langchain-ai/langchain">LangChain</a> 搭应用框架，<a class="gl" data-repo="gradio-app/gradio">Gradio</a> 十分钟给模型套个界面。</li>
+        <li><strong>图像层</strong>：<a class="gl" data-repo="comfyanonymous/ComfyUI">ComfyUI</a> 是节点式 Stable Diffusion 工作流，<a class="gl" data-repo="huggingface/diffusers">diffusers</a> 是库层面的管道。</li>
+        <li><strong>语音层</strong>：<a class="gl" data-repo="openai/whisper">Whisper</a> 做转写基本没有对手，多语言、高鲁棒，社区还有更快的 faster-whisper 实现。</li>
+      </ul>
+      <p>先说硬件现实：Ollama 的模型动辄几个 GB，能跑多大的模型取决于你的显存或统一内存。Mac 16GB 以上内存跑 7B–13B 量化模型从容，PC 8GB 显存跑 7B 量化可以、再往上就吃力（这是粗略值，具体看量化档位和模型结构）。别追最大的模型：跑得稳的小模型，比卡死的 70B 有用。</p>
+      <p>按需求选推理工具：</p>
+      <ul>
+        <li>只想本地聊天 → Ollama，<code>ollama run</code> 一条命令的事。</li>
+        <li>要一个 OpenAI 兼容 API 喂给别的应用 → <a class="gl" data-repo="mudler/LocalAI">LocalAI</a>，不注册账号、不用写密钥。</li>
+        <li>多人、高吞吐服务 → vLLM，PagedAttention 是它快的原因。</li>
+        <li>没有 GPU 只有 CPU → llama.cpp，GGUF 量化、Q4_K_M 是常见档位，轻量硬件也能跑起来。</li>
+      </ul>
+      <p>向量检索这块，三家够用：</p>
+      <ul>
+        <li><a class="gl" data-repo="qdrant/qdrant">Qdrant</a>：独立服务、可过滤，正经项目用它。</li>
+        <li><a class="gl" data-repo="lancedb/lancedb">LanceDB</a>：内嵌式、不用起服务，数据就是本地文件。</li>
+        <li><a class="gl" data-repo="chroma-core/chroma">Chroma</a>：轻量，原型阶段最省事。</li>
+      </ul>
+      <p>嵌入模型配 <a class="gl" data-repo="UKPLab/sentence-transformers">sentence-transformers</a>。</p>
+      <p>别一上来就搭全家桶。先装 Ollama 跑通一个对话，确认硬件扛得住，再按需求逐层加。全家桶能跑，但不好维护，真出问题你连坏在哪一层都不知道。</p>
+    </article>
+
+    <article class="guide" id="g04">
+      <div class="kicker">04 · 设计</div>
+      <h2>设计工具：从修图到协作画布</h2>
+      <p>先想清楚画什么，再挑工具：</p>
+      <ul>
+        <li><strong>位图修图</strong>：<a class="gl" data-repo="GIMP/gimp">GIMP</a> 是 Photoshop 的开源对照物，功能全但界面老派；<a class="gl" data-repo="KDE/krita">Krita</a> 偏数字绘画，笔刷体验好得多。</li>
+        <li><strong>矢量</strong>：<a class="gl" data-repo="inkscape/inkscape">Inkscape</a> 是 Illustrator 的对位产品；<a class="gl" data-repo="gouache-editor/gouache">Gouache</a> 是浏览器里的轻量矢量工具，UI / 品牌小改很顺手。</li>
+        <li><strong>快速草图</strong>：<a class="gl" data-repo="excalidraw/excalidraw">Excalidraw</a> 的手绘风白板，产品讨论和头脑风暴用它；<a class="gl" data-repo="tldraw/tldraw">tldraw</a> 是可嵌入自家产品的白板引擎。</li>
+        <li><strong>图表与原型</strong>：<a class="gl" data-repo="jgraph/drawio">draw.io</a> 画架构图；<a class="gl" data-repo="penpot/penpot">Penpot</a> 是开源 Figma 的正面竞争者，浏览器里多人协作，还能自托管。</li>
+        <li><strong>三维</strong>：<a class="gl" data-repo="blender/blender">Blender</a> 一家独大，建模、渲染、动画、剪辑一条龙。</li>
+        <li><strong>视频剪辑</strong>：<a class="gl" data-repo="KDE/kdenlive">Kdenlive</a> 是非线性剪辑器，多轨、滤镜、关键帧动画都有。</li>
+      </ul>
+      <p>照着产出物挑：</p>
+      <ul>
+        <li>照片处理、截图标注、界面稿 → GIMP</li>
+        <li>插画、概念图、分镜 → Krita，笔刷引擎和洋葱皮动画是它的强项</li>
+        <li>Logo、图标、任何要无限放大的品牌资产 → Inkscape，产出是 SVG</li>
+        <li>会议白板、流程草图、不要求好看 → Excalidraw，手绘风就是它的卖点</li>
+        <li>架构图、时序图、UML → draw.io，可以导出图片，也可以当 diagram-as-code 用</li>
+        <li>团队 UI 设计、实时协作、设计交付 → Penpot，开源、可自托管</li>
+        <li>建模、渲染、动画、视频 → Blender，一个工具管全流程</li>
+      </ul>
+      <p>常见误区是拿 GIMP 画插画、拿 Inkscape 修照片，工具没毛病，是场景选错了。先看产出物是位图、矢量还是白板，再选工具。</p>
+    </article>
+
+    <article class="guide" id="g05">
+      <div class="kicker">05 · 系统</div>
+      <h2>终端工具箱：把命令行变成工作台</h2>
+      <p>一套可以直接抄的终端配置，分四块：</p>
+      <ul>
+        <li><strong>查</strong>：<a class="gl" data-repo="BurntSushi/ripgrep">ripgrep</a> 搜内容（尊重 .gitignore、并行、大仓库毫秒级），<a class="gl" data-repo="sharkdp/fd">fd</a> 找文件，<a class="gl" data-repo="junegunn/fzf">fzf</a> 把任何列表变成模糊过滤（文件、历史、进程都行），<a class="gl" data-repo="ajeetdsouza/zoxide">zoxide</a> 替代 cd，按使用频率智能跳目录。</li>
+        <li><strong>看</strong>：<a class="gl" data-repo="sharkdp/bat">bat</a> 是带高亮的 cat（行号、感知 git 状态），<a class="gl" data-repo="aristocratos/btop">btop</a> 和 <a class="gl" data-repo="htop-dev/htop">htop</a> 看进程，<a class="gl" data-repo="muesli/duf">duf</a> 看磁盘占用，<a class="gl" data-repo="bootandy/dust">dust</a> 用树形视图找占空间的目录。</li>
+        <li><strong>管</strong>：<a class="gl" data-repo="tmux/tmux">tmux</a> 做会话管理（ssh 断了会话不死，detach 之后随时回来），<a class="gl" data-repo="jesseduffield/lazygit">lazygit</a> 和 <a class="gl" data-repo="jesseduffield/lazydocker">lazydocker</a> 是 TUI 版 Git / Docker（暂存、提交、rebase、容器、镜像全键盘操作）。</li>
+        <li><strong>运维</strong>：<a class="gl" data-repo="louislam/uptime-kuma">Uptime Kuma</a> 做监控告警（多渠道通知、公开状态页），<a class="gl" data-repo="rclone/rclone">rclone</a> 同步网盘（云存储的瑞士军刀，各家网盘都能搬），<a class="gl" data-repo="restic/restic">restic</a> 和 <a class="gl" data-repo="borgbackup/borg">Borg</a> 做备份（都支持加密、去重、增量，restic 的云端后端选择更多）。</li>
+      </ul>
+      <p>两个不常被提的 shell 升级：<a class="gl" data-repo="atuinsh/atuin">atuin</a> 是可搜索、可跨机器同步的 shell 历史，再也不用方向键翻半天；<a class="gl" data-repo="nushell/nushell">Nushell</a> 是结构化数据 shell，表格和对象直接过管道，思维方式跟 bash 完全不同，值得花一天试一下。</p>
+      <p>不必一次全装。先 ripgrep + fd + fzf + bat 四件套，能立刻感受到「命令行快了一个量级」，再按需加 tmux 和 lazygit。配置成本只有一份 dotfile：都放进 <code>~/.config</code>，用 git 管起来，换机器时整个工作台可以整体搬走。</p>
+    </article>
+
+    <article class="guide faq" id="g06">
+      <div class="kicker">06 · 问答</div>
+      <h2>常见问题</h2>
+      <details open><summary>「常用精选」和「小众优选」有什么区别？</summary><p>常用精选是高频日常工具，基本天天在用；小众优选是名气不大但解决特定问题的工具。没有高下之分，编号只是方便引用（001–221 / 222–447），反馈问题时报编号比贴截图清楚。</p></details>
+      <details><summary>星标数、语言、许可证是怎么来的？</summary><p>精选条目的主语言、许可证取自各项目 GitHub 仓库（LICENSE 文件或仓库页面），仅供参考，可能滞后于仓库最新状态；热榜条目的星标数是抓取时刻的实时值，不是本站维护的。分类由条目内容人工标注，个别可能不准。</p></details>
+      <details><summary>热榜的入选规则是什么？</summary><p>自动抓取 GitHub Search API：近 30 天创建、星标 1500 以上，按星标降序。数据有 10 分钟本地缓存，点「刷新热榜」可强制重新抓取。线上访问时热榜由本站服务端函数抓取并缓存，不占用浏览器直连 GitHub 的额度；仅当本地直接打开这份 HTML 预览、函数不可用时才回退到直连 GitHub——未登录每分钟限流 10 次，频繁刷新可能失败——失败不是页面坏了，等一下再刷。</p></details>
+      <details><summary>想收录一个软件，或发现介绍写错了，怎么办？</summary><p>写邮件到 <a href="mailto:myq13263221790@qq.com">myq13263221790@qq.com</a>，说明仓库地址、问题所在和建议的编号。收录标准是「本人装过、用过」，不接受纯投稿——介绍和功能特点必须是真实使用过才写得出。</p></details>
+      <details><summary>为什么没有广告和埋点？</summary><p>全站没有任何第三方脚本、分析或用户追踪；统计只用服务端方案。少量「赞助商 / 推广 · 返佣」链接是明确标注的付费合作，不影响目录排序与内容，也不会因未赞助而降级或变慢。赞助（微信 / 支付宝 / 爱发电）只用于维持更新动力。</p></details>
+      <details><summary>这些软件的版权归谁？</summary><p>所有软件版权归原仓库作者所有，本站只做数据整理与介绍，各软件遵循其自身开源许可证（MIT、GPL、Apache 等，以仓库为准）。卡片上的许可证标注仅供参考，商用前请以仓库 LICENSE 原文为准。</p></details>
+    </article>
+
+    <article class="guide" id="g07">
+      <div class="kicker">07 · 效率</div>
+      <h2>效率与办公：把笔记、任务和文档串成一条线</h2>
+      <p>效率工具最大的坑不是不好用，而是装了一堆却各管一摊：笔记在 A、任务在 B、文档在 C，最后哪儿都找不到。先想清楚自己的链路是「随手记 → 整理 → 产出」还是「协作 → 交付」，再按环节挑。</p>
+      <p>本地优先的笔记，三条路线各有脾气：</p>
+      <ul>
+        <li><strong>双链与知识网络</strong>：<a class="gl" data-repo="logseq/logseq">Logseq</a> 用块引用和大纲组织思路，适合边读边拆；<a class="gl" data-repo="siyuan-note/siyuan">思源笔记</a> 是国产的块级编辑器，块引用、数据库、本地存储都做得很细。</li>
+        <li><strong>传统文件夹 + Markdown</strong>：<a class="gl" data-repo="laurent22/joplin">Joplin</a> 最省心，同步支持 WebDAV、Nextcloud、S3，纯 Markdown 导出不会锁死数据；<a class="gl" data-repo="streetwriters/notesnook">Notesnook</a> 主打端到端加密，私密内容更适合。</li>
+        <li><strong>协作与数据库</strong>：<a class="gl" data-repo="AppFlowy-IO/AppFlowy">AppFlowy</a> 和 <a class="gl" data-repo="toeverything/AFFiNE">AFFiNE</a> 都试图做 Notion 的开源替代，前者更偏文档 + 数据库，后者更像无限画布上的块编辑器。</li>
+      </ul>
+      <p>任务管理别一上来就上团队级看板。一个人用，<a class="gl" data-repo="GothenburgBitFactory/taskwarrior">taskwarrior</a> 是命令行的瑞士军刀，配合 <a class="gl" data-repo="GothenburgBitFactory/timewarrior">timewarrior</a> 还能记时间账；想要图形界面和看板，<a class="gl" data-repo="go-vikunja/vikunja">Vikunja</a> 可以自托管，数据不落在别人手里。</p>
+      <p>文档产出这块，<a class="gl" data-repo="marp-team/marp">Marp</a> 用 Markdown 写幻灯片，改完即出 PDF；<a class="gl" data-repo="Stirling-Tools/Stirling-PDF">Stirling-PDF</a> 是本地 PDF 工具箱，合并、拆分、压缩、OCR 都能做，不用把文件传到在线站点。</p>
+      <p>一条现实的建议：笔记工具只选一个，用满三个月再换。频繁迁移的成本远高于工具本身的差异——真正让资料变得可检索的，是稳定的标签和命名习惯，不是某个软件的「杀手级功能」。</p>
+    </article>
+
+    <article class="guide" id="g08">
+      <div class="kicker">08 · 网络</div>
+      <h2>网络与安全：从排查故障到加固边界</h2>
+      <p>这一类的工具，最好在出问题之前就装好、用过一遍。真断网的时候再去搜命令，往往连哪个命令该用都想不起来。</p>
+      <p>先说排查链路，按「通不通 → 慢在哪 → 是什么流量」走：</p>
+      <ul>
+        <li><strong>通不通</strong>：<a class="gl" data-repo="iputils/iputils">ping</a> 看可达性，<a class="gl" data-repo="traceroute/traceroute">traceroute</a> 和 <a class="gl" data-repo="mtr/mtr">mtr</a> 看路径与每一跳的丢包，后者是持续版的 traceroute，定位运营商节点问题特别好使。</li>
+        <li><strong>慢在哪</strong>：<a class="gl" data-repo="esnet/iperf">iperf3</a> 打点对点带宽，<a class="gl" data-repo="orf/gping">gping</a> 给 ping 加上图形，<a class="gl" data-repo="raboof/nethogs">nethogs</a> 看哪个进程在吃流量。</li>
+        <li><strong>是什么流量</strong>：<a class="gl" data-repo="the-tcpdump-group/tcpdump">tcpdump</a> 命令行抓包，<a class="gl" data-repo="wireshark/wireshark">Wireshark</a> 图形化逐层拆解；<a class="gl" data-repo="curl/curl">curl</a> 则是手工验证 HTTP 接口的第一选择。</li>
+      </ul>
+      <p>主动扫描与渗透测试，务必只在自己拥有或已获书面授权的目标上做：</p>
+      <ul>
+        <li><a class="gl" data-repo="nmap/nmap">Nmap</a> 是端口与服务识别的事实标准，<a class="gl" data-repo="masscan/masscan">masscan</a> 追求极速全网段扫描。</li>
+        <li><a class="gl" data-repo="zaproxy/zaproxy">OWASP ZAP</a> 和 <a class="gl" data-repo="sullo/nikto">Nikto</a> 偏 Web 应用与服务器配置检查，<a class="gl" data-repo="greenbone/gvmd">OpenVAS</a> 是更完整的漏洞管理框架。</li>
+        <li>无线侧 <a class="gl" data-repo="aircrack-ng/aircrack-ng">Aircrack-ng</a>、<a class="gl" data-repo="kismetwireless/kismet">Kismet</a>；密码恢复 <a class="gl" data-repo="hashcat/hashcat">Hashcat</a> 和 <a class="gl" data-repo="openwall/john">John the Ripper</a>。</li>
+      </ul>
+      <p>日常加固反而朴素：DNS 层用 <a class="gl" data-repo="AdguardTeam/AdGuardHome">AdGuard Home</a> 或 <a class="gl" data-repo="pi-hole/pi-hole">Pi-hole</a> 挡广告与跟踪；远程访问用 <a class="gl" data-repo="tailscale/tailscale">Tailscale</a> 或 <a class="gl" data-repo="WireGuard/WireGuard">WireGuard</a> 组虚拟网络，别把管理端口直接暴露到公网；需要内网穿透时 <a class="gl" data-repo="fatedier/frp">frp</a> 和 <a class="gl" data-repo="SagerNet/sing-box">sing-box</a> 是常见选择。密码交给 <a class="gl" data-repo="keepassxreboot/keepassxc">KeePassXC</a> 或 <a class="gl" data-repo="bitwarden/server">Bitwarden</a>，自托管可以看看 <a class="gl" data-repo="dani-garcia/vaultwarden">Vaultwarden</a>。</p>
+      <p>最后提醒一句：能力越强越要有边界意识。扫描、爆破、抓包这些操作，只对自己拥有或明确授权的目标使用。</p>
+    </article>
+
+    <article class="guide" id="g09">
+      <div class="kicker">09 · 媒体</div>
+      <h2>媒体与娱乐：播放器、剪辑和音频工作台</h2>
+      <p>媒体工具的选择，看的不是功能表有多长，而是你的产出物是什么：看片、剪片、做字幕、还是做音乐。先把场景定下来，再挑工具。</p>
+      <p>单纯看片，按平台挑：</p>
+      <ul>
+        <li><strong>本地万能播放</strong>：<a class="gl" data-repo="mpv-player/mpv">mpv</a> 轻量、脚本能力强，键盘党首选；<a class="gl" data-repo="videolan/vlc">VLC</a> 格式支持最广，解码疑难杂症找它；macOS 上 <a class="gl" data-repo="iina/iina">IINA</a> 是 mpv 的原生外壳。</li>
+        <li><strong>家庭影音中心</strong>：<a class="gl" data-repo="xbmc/xbmc">Kodi</a> 管本地媒体库，<a class="gl" data-repo="jellyfin/jellyfin">Jellyfin</a> 做多端串流且完全开源，<a class="gl" data-repo="plexinc/pms">Plex</a> 体验成熟但有闭源组件。</li>
+      </ul>
+      <p>视频处理这条链，<a class="gl" data-repo="FFmpeg/FFmpeg">ffmpeg</a> 是底层引擎，几乎所有图形工具都在调它。要快速裁剪不重编码，<a class="gl" data-repo="mifi/lossless-cut">LosslessCut</a> 是秒级完成的好帮手；要完整剪辑，<a class="gl" data-repo="mltframework/shotcut">Shotcut</a> 跨平台、多轨、滤镜齐全；录屏和直播推流则是 <a class="gl" data-repo="obsproject/obs-studio">OBS Studio</a>，配合 <a class="gl" data-repo="HandBrake/HandBrake">HandBrake</a> 压制输出。</p>
+      <p>音频这边，<a class="gl" data-repo="audacity/audacity">Audacity</a> 适合录音、降噪、剪切这类轻量编辑；<a class="gl" data-repo="Ardour/ardour">Ardour</a> 是正经的多轨 DAW，做音乐用它；<a class="gl" data-repo="mixxxdj/mixxx">Mixxx</a> 是 DJ 打碟软件，支持双 decks 和效果器；整理音乐库用 <a class="gl" data-repo="metabrainz/picard">Picard</a> 自动抓专辑元数据；语音合成可以试 <a class="gl" data-repo="rhasspy/piper">Piper</a>，本地跑、无需联网。</p>
+      <p>字幕和图片常被忽略：<a class="gl" data-repo="SubtitleEdit/subtitleedit">Subtitle Edit</a> 做时间轴校对，<a class="gl" data-repo="Aegisub/Aegisub">Aegisub</a> 做特效字幕；<a class="gl" data-repo="ImageMagick/ImageMagick">ImageMagick</a> 是批量处理的命令行利器，<a class="gl" data-repo="nomacs/nomacs">Nomacs</a> 是轻快的看图工具。</p>
+      <p>一句话：播放器解决"怎么看"，ffmpeg 与剪辑器解决"怎么改"，DAW 解决"怎么做"。三件事别混在一个工具里找。</p>
+    </article>
+
+    <article class="guide" id="g10">
+      <div class="kicker">10 · 自托管</div>
+      <h2>自托管：从一台机器到一套服务</h2>
+      <p>自托管最容易被劝退的地方，是一上来就想搭"全家桶"。更稳的做法是：先有一台常开的机器，跑通一个真正用得上的服务，再加监控和备份，最后才谈编排和多节点。</p>
+      <p>底座先选好。轻量场景 <a class="gl" data-repo="moby/moby">Docker</a> 就够了；介意守护进程可以用 <a class="gl" data-repo="containers/podman">Podman</a>，无 root、更贴合 systemd；机器多了再上 <a class="gl" data-repo="kubernetes/kubernetes">Kubernetes</a>。可视化运维用 <a class="gl" data-repo="portainer/portainer">Portainer</a>，反向代理和自动 HTTPS 交给 <a class="gl" data-repo="traefik/traefik">Traefik</a>。虚拟化层面 <a class="gl" data-repo="proxmox/pve-manager">Proxmox VE</a> 是一套成熟的一体化方案。</p>
+      <p>第一批值得上的服务，按用途挑：</p>
+      <ul>
+        <li><strong>文件与同步</strong>：<a class="gl" data-repo="nextcloud/server">Nextcloud</a> 是网盘 + 协作套件，<a class="gl" data-repo="syncthing/syncthing">Syncthing</a> 做点对点同步，<a class="gl" data-repo="rclone/rclone">rclone</a> 对接各家云存储，<a class="gl" data-repo="Cloudreve/Cloudreve">Cloudreve</a> 适合做自己的文件中转站。</li>
+        <li><strong>备份</strong>：<a class="gl" data-repo="restic/restic">Restic</a> 和 <a class="gl" data-repo="borgbackup/borg">Borg</a> 都支持加密、去重、增量，务必异地存一份——没有异地副本的备份不算备份。</li>
+        <li><strong>媒体与订阅</strong>：<a class="gl" data-repo="jellyfin/jellyfin">Jellyfin</a> 管影音，<a class="gl" data-repo="FreshRSS/FreshRSS">FreshRSS</a> 做 RSS 阅读器。</li>
+        <li><strong>监控</strong>：<a class="gl" data-repo="louislam/uptime-kuma">Uptime Kuma</a> 看服务存活并多渠道告警，<a class="gl" data-repo="prometheus/prometheus">Prometheus</a> + <a class="gl" data-repo="grafana/grafana">Grafana</a> 做指标与面板。</li>
+        <li><strong>代码与密钥</strong>：<a class="gl" data-repo="go-gitea/gitea">Gitea</a> 或 <a class="gl" data-repo="forgejo/forgejo" data-name="Forgejo">Forgejo</a> 搭私有 Git，<a class="gl" data-repo="hashicorp/vault">Vault</a> 管密钥，<a class="gl" data-repo="goharbor/harbor">Harbor</a> 做容器镜像仓库。</li>
+      </ul>
+      <p>三条经验：一是别把管理后台裸露在公网，用 VPN 或反向代理加认证；二是升级前先备份配置和卷，滚动更新翻车是常态；三是先跑两周再决定要不要长期维护——自托管的成本不在部署那一小时，而在之后每一次升级和排障。</p>
+    </article>
+  </section>
+
+  <!-- ============================================================
+       下载目录 —— 合并自「开源下载」独立页（现 357 项下载入口）
+       与主目录共用视觉体系；数据源 REPOS_DL 见文末独立脚本
+       ============================================================ -->
+
+  <section class="support">
+    <div class="kicker">幕后 · 关于这份目录</div>
+    <h2>专心精选，无广告脚本，也无追踪</h2>
+    <p>这些软件我都是先装上、用过，再逐条写下介绍和功能特点。「常用精选」放的是使用频率高、基本天天在用的工具；「小众优选」放的是那些名气不大，但真有用、离不开的。目录不引入任何第三方脚本、广告联盟代码或用户追踪，不会把你的浏览记录交给任何人，也会永远免费。</p>
+    <p>为维持长期更新，页面上有少量明确标注的「赞助商 / 推广 · 返佣」链接，以及支持按月订阅的爱发电入口。它们不影响排序、收录标准或介绍文字——「本人装过、用过」的原则不变。合作方式见 <a href="/sponsor.html">赞助与合作</a>。</p>
+    <p class="contact">如果这份目录帮到了你，欢迎赞助支持，请我喝杯咖啡。金额随意，哪怕一块钱，都是鼓励我继续做下去的理由。只要大家喜欢，继续用就好——不会因为没赞助就变慢或消失。有想收录的软件，或发现介绍写错了，欢迎写邮件告诉我：<a href="mailto:myq13263221790@qq.com">myq13263221790@qq.com</a>。</p>
+    <div class="actions">
+      <button class="sponsor-btn" id="qrBtn" type="button">赞助支持 · 扫码请我喝杯咖啡</button>
+      <a class="sponsor-btn" href="/sponsor.html">赞助与合作 →</a>
+      <span class="any-amt">金额随意，不设最低，打赏完全自愿</span>
+    </div>
+    <p class="fineprint">不赞助也不附带任何权益，更不会因此影响你使用这份目录。所有软件版权归各自的仓库作者所有，本站仅做整理与介绍。</p>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap foot-in">
+    <div>GitHub 开源软件精选热榜 · 精选为人工整理，热榜为 GitHub 实时数据。<br>想收录某个软件？<a href="mailto:myq13263221790@qq.com">写邮件告诉我</a>，我帮你加进去。</div>
+    <div><a href="/all-tools.html">全部工具索引</a> &nbsp;·&nbsp; <a href="/guides/">使用指南</a> &nbsp;·&nbsp; <a href="/categories/dev.html">分类浏览</a> &nbsp;·&nbsp; <a href="/sponsor.html">赞助与合作</a> &nbsp;·&nbsp; <a href="https://github.com" target="_blank" rel="noopener noreferrer">GitHub ↗</a> &nbsp;·&nbsp; <a href="#" id="top">回到顶部</a></div>
+  </div>
+  <div class="wrap note">说明：「精选」条目的主语言 / 许可证取自各项目仓库，仅供参考；「实时热榜」星标数为抓取时刻的实时数据，分类由关键词自动推断，个别可能不准。本站仅做数据整理与介绍，所有软件版权归原仓库作者所有。© 2026 GitHub 开源软件精选热榜</div>
+</footer>
+
+<!-- 全屏：按钮手动进出 -->
+<button class="fs-btn" id="fsBtn" type="button" aria-pressed="false" title="切换全屏"><span class="glyph" aria-hidden="true">⛶</span><span class="fs-label">进入全屏</span></button>
+
+<!-- Detail modal (curated items only) -->
+<div class="modal-overlay" id="modalOverlay" aria-hidden="true">
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalName">
+    <div class="modal-head">
+      <div class="mh-top">
+        <span class="modal-num" id="modalNum"></span>
+        <span class="badge" id="modalBadge"></span>
+        <div class="mh-name" id="modalName"></div>
+      </div>
+      <button class="modal-close" id="modalClose" aria-label="关闭详情">×</button>
+    </div>
+    <div class="modal-body">
+      <div class="section-label">01 · 介绍</div>
+      <p class="intro-text" id="modalIntro"></p>
+      <div class="section-label">02 · 功能特点</div>
+      <ul class="feature-list" id="modalFeatures"></ul>
+      <div class="modal-tags" id="modalTags"></div>
+      <div class="alt-note" id="modalAlt" hidden></div>
+    </div>
+    <div class="modal-foot">
+      <a class="gh-link" id="modalGh" href="#" target="_blank" rel="noopener noreferrer">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.56 0-.27-.01-1.17-.02-2.12-3.2.7-3.88-1.36-3.88-1.36-.52-1.33-1.28-1.68-1.28-1.68-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.18 1.76 1.18 1.03 1.76 2.7 1.25 3.35.96.1-.75.4-1.25.72-1.54-2.55-.29-5.24-1.28-5.24-5.68 0-1.26.45-2.28 1.18-3.09-.12-.29-.51-1.46.11-3.05 0 0 .96-.31 3.15 1.18a10.9 10.9 0 0 1 5.74 0c2.19-1.49 3.15-1.18 3.15-1.18.62 1.59.23 2.76.11 3.05.74.81 1.18 1.83 1.18 3.09 0 4.41-2.69 5.38-5.25 5.67.41.35.77 1.05.77 2.12 0 1.53-.01 2.76-.01 3.14 0 .3.2.67.8.55A11.51 11.51 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5Z"/></svg>
+        <span id="modalGhLabel">在 GitHub 上查看</span>
+      </a>
+      <a class="modal-page-link" id="modalPage" href="#">查看独立页面 →</a>
+      <div class="modal-meta" id="modalMeta"></div>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+
+<!-- 对比面板 -->
+<div class="compare-overlay" id="compareOverlay" aria-hidden="true">
+  <div class="compare-panel" role="dialog" aria-modal="true" aria-labelledby="compareTitle">
+    <div class="cmp-head"><h2 id="compareTitle">工具对比</h2><button class="modal-close" id="compareClose" type="button" aria-label="关闭对比">×</button></div>
+    <div class="cmp-body" id="cmpBody"></div>
+  </div>
+</div>
+
+<!-- 赞助弹窗：微信 / 支付宝收款码（直收，无平台抽成） -->
+<div class="modal-overlay" id="qrOverlay" role="dialog" aria-modal="true" aria-labelledby="qrTitle">
+  <div class="modal" id="qrBox">
+    <button class="modal-close" id="qrClose" type="button" aria-label="关闭">✕</button>
+    <div class="modal-kicker">SPONSOR · 赞助支持</div>
+    <div class="modal-title" id="qrTitle">扫码请我喝杯咖啡</div>
+    <div class="modal-desc">金额随意，哪怕一块钱，都是鼓励我继续做下去的理由。只要大家喜欢，继续用就好——不会因为没赞助就变慢或消失。</div>
+    <div class="qr-grid">
+      <div class="qr-cell">
+        <picture><source type="image/avif" srcset="/assets/qr-wechat.avif?v=8257e3a363"><img src="/assets/qr-wechat.webp?v=774bfaf3f0" alt="微信支付收款码" loading="lazy"></picture>
+        <span class="qr-cap">微信支付</span>
+      </div>
+      <div class="qr-cell">
+        <picture><source type="image/avif" srcset="/assets/qr-alipay.avif?v=d345f242cb"><img src="/assets/qr-alipay.webp?v=726d1cba10" alt="支付宝收款码" loading="lazy"></picture>
+        <span class="qr-cap">支付宝</span>
+      </div>
+    </div>
+    <div class="qr-note">扫码直接支付，不经过任何平台，无抽成。</div>
+  </div>
+</div>
+
+<script src="/data/tools-data.js?v=5ad05e0617"></script>
+<script src="/data/stars.js?v=12cdf490b2"></script>
+<script src="/data/alternatives.js?v=212ae9a45d"></script>
+<script src="/data/pinyin.js?v=b6f96d334d"></script>
+<script src="/assets/app.js?v=06a8a448ba"></script>
+
+<script src="/assets/repos.js?v=56717ed754"></script>
+<script src="/assets/downloads.js?v=0aa8ba740a"></script>
+
+<script src="/data/sponsors.js?v=dee67b95bb"></script>
+<script src="/data/affiliates.js?v=7b836a72a4"></script>
+<script src="/assets/monetize.js?v=a272aef295"></script>
+
+</body>
+</html>

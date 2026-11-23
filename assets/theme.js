@@ -1,0 +1,1 @@
+/* 在样式前恢复主题，避免暗色用户看到白屏闪烁 */try{var _t=localStorage.getItem('osc-theme')||(window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',_t);}catch(e){}

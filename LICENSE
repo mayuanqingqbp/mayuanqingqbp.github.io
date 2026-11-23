@@ -1,0 +1,39 @@
+版权与许可说明
+==============
+
+本仓库包含两类内容，分别对待：
+
+1. 站点代码（HTML / CSS / JavaScript / PowerShell / Netlify Functions 等）
+   采用 MIT License，全文见下。
+
+2. 数据条目与文案
+   - data/tools-data.js 中的条目元数据（名称、仓库地址、许可证、星标等）版权归各原项目
+     作者所有，本站仅作整理与索引，不主张所有权。
+   - desc / intro / features 等介绍文字由本站作者撰写，未经许可请勿整体转载。
+   - 各软件的版权、商标归各自所有者；卡片上的许可证标注仅供参考，商用前请以仓库
+     LICENSE 原文为准。
+
+本站不收集用户信息、不投放广告、不做追踪。
+
+MIT License
+-----------
+
+Copyright (c) 2026 GitHub 开源软件精选热榜
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
