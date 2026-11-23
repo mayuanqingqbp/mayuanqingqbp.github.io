@@ -424,7 +424,7 @@ function render(){
   updatedEl.hidden=!isTrend||!state.trending;
   if(isTrend&&state.trending){
     const t=new Date(state.trending.ts);
-    const hm=`${t.getHours()}:${String(t.getMinutes()).padStart(2,'0')}`;
+    const hm=`${t.getHours()}:${String(t.getMinutes()).padStart(2,'0')}:${String(t.getSeconds()).padStart(2,'0')}`;
     updatedEl.textContent=state.trending.offline
       ? `离线缓存 · ${hm}`
       : (state.trending.stale ? `缓存 ${hm} · 刷新中…` : `热榜更新于 ${hm}`);
@@ -683,7 +683,20 @@ qEl.addEventListener('keydown',e=>{
 sortEl.addEventListener('change',e=>{state.sort=e.target.value;state.limit=pageSize();render();});
 langEl.addEventListener('change',e=>{state.lang=e.target.value;state.limit=pageSize();render();});
 starsEl.addEventListener('change',e=>{state.minStars=+e.target.value;state.limit=pageSize();render();});
-refreshEl.addEventListener('click',()=>loadTrending(true));
+refreshEl.addEventListener('click',async()=>{
+  // 立刻给反馈，避免请求较慢时看起来像「刷新失败」
+  if(refreshEl.disabled)return;
+  refreshEl.disabled=true;
+  refreshEl.setAttribute('aria-busy','true');
+  updatedEl.hidden=false;
+  updatedEl.textContent='正在刷新热榜…';
+  try{ await loadTrending(true); }
+  finally{
+    refreshEl.disabled=false;
+    refreshEl.removeAttribute('aria-busy');
+    render();
+  }
+});
 
 /* ---- 收藏 / 对比 事件与渲染 ---- */
 const favFilterBtn=document.getElementById('favFilter');
