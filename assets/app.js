@@ -109,9 +109,14 @@ const TREND_RETRY_GAP=60000;
 function refreshTrending(force){
   if(trendInflight) return trendInflight;
   trendInflight=(async()=>{
-    let res;
-    // 本地 file:// 预览时 fetch('/api/trending') 会抛 TypeError，必须 catch，否则下面的 GitHub 直连回退永远执行不到
-    try { res = await fetch('/api/trending'+(force?'?refresh=1':'')); } catch(e) { res = null; }
+    let res=null;
+    // 只有 Netlify 域名才存在 /api 函数。Pages / 本地预览没有函数，
+    // 直接跳过该请求，避免控制台出现无意义的 404。
+    var hasFn=/(?:^|\.)netlify\.app$/i.test(location.hostname);
+    if(window.USE_NETLIFY_API===true) hasFn=true;
+    if(hasFn){
+      try { res = await fetch('/api/trending'+(force?'?refresh=1':'')); } catch(e) { res = null; }
+    }
     // 服务端函数未部署时重定向会返回 200+HTML；content-type 不是 JSON 就按失败处理，走 GitHub 直连兜底
     if(res && res.ok && !/json/i.test(res.headers.get('content-type')||'')) res = null;
     if(!res || !res.ok){
