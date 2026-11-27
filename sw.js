@@ -1,5 +1,5 @@
 /* 由 scripts/build-static.ps1 生成，请勿手改。PWA 离线缓存。 */
-const CACHE='kaibang-v2-fd2b0c75bc79';
+const CACHE='kaibang-v2-aae086b11da0';
 const PRECACHE=[
   "/",
   "/index.html",
@@ -9,7 +9,7 @@ const PRECACHE=[
   "/manifest.webmanifest",
   "/favicon.svg",
   "/apple-touch-icon.png",
-  "/assets/tools.css?v=2c63882ccb",
+  "/assets/tools.css?v=df911525cc",
   "/assets/static.js?v=793eeb2671",
   "/categories/ai.html",
   "/categories/design.html",
@@ -34,14 +34,14 @@ const PRECACHE=[
   "/fonts/archivo-latin-var.woff2?v=347eef1c29",
   "/fonts/jetbrains-mono-latin-var.woff2?v=30b3242294",
   "/fonts/noto-sc-display-900.woff2?v=bbcd246c94",
-  "/assets/app.js?v=6cc6f2c9e7",
+  "/assets/app.js?v=4d482aca9f",
   "/assets/downloads.js?v=0aa8ba740a",
   "/data/alternatives.js?v=212ae9a45d",
   "/data/pinyin.js?v=71c87ee500",
   "/data/stars.js?v=6e386c5366",
   "/data/tools-data.js?v=e7f65f339d",
   "/assets/repos.js?v=56717ed754",
-  "/assets/site.css?v=3e97948365",
+  "/assets/site.css?v=7be1484211",
   "/assets/monetize.css?v=a6863e8a6e",
   "/assets/qr-wechat.avif?v=45fa7f0ba3",
   "/assets/qr-wechat.webp?v=46bc93f692",

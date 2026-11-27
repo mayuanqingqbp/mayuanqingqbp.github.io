@@ -20,7 +20,7 @@
 <!-- 中文展示字（42 KB 子集）：h1 是首屏最大元素，不预载会先看到系统字再跳一次 -->
 <link rel="preload" href="/fonts/noto-sc-display-900.woff2?v=bbcd246c94" as="font" type="font/woff2" crossorigin>
 <!-- 首屏渲染依赖这两份数据，提前发起请求，避免解析到 </body> 附近才被发现 -->
-<link rel="preload" href="/assets/app.js?v=6cc6f2c9e7" as="script">
+<link rel="preload" href="/assets/app.js?v=4d482aca9f" as="script">
 <link rel="preload" href="/assets/downloads.js?v=0aa8ba740a" as="script">
 <link rel="preload" href="/data/alternatives.js?v=212ae9a45d" as="script">
 <link rel="preload" href="/data/pinyin.js?v=71c87ee500" as="script">
@@ -79,7 +79,7 @@
   ]
 }
 </script>
-<link rel="stylesheet" href="/assets/site.css?v=3e97948365">
+<link rel="stylesheet" href="/assets/site.css?v=7be1484211">
 <link rel="stylesheet" href="/assets/monetize.css?v=a6863e8a6e">
 
 <meta name="msvalidate.01" content="B8B350A589AEFA302AE4E5CC4FE7E058" />
@@ -131,7 +131,29 @@
     <div class="intro-left">
     <div class="kicker">Field Guide · 开源软件图鉴</div>
     <h1>值得收藏的开源软件</h1>
-    <p class="lead">「常用精选」与「小众优选」，收录的每一个工具，都是我亲手装过、用过，再逐条写下介绍与心得的。点开任意一张卡片，完整介绍和功能特点就在里面，省去你逐个搜索、反复试错的功夫。</p>
+    <p class="lead">500 条亲手装过、用过的开源工具，逐条写下介绍与心得。</p>
+
+    <!-- Store 式焦点横幅：把一件标本推到首屏中央，保留纸墨硬边的图鉴语言 -->
+    <div class="focus" id="focus" data-cat="dev">
+      <div class="focus-copy">
+        <div class="focus-eyebrow">FOCUS · 精选标本 <span id="focusPos">01 / 05</span></div>
+        <div class="focus-name" id="focusName"></div>
+        <p class="focus-desc" id="focusDesc"></p>
+        <div class="focus-meta" id="focusMeta"></div>
+        <div class="focus-actions">
+          <a class="hero-btn" id="focusCta" href="/tools/vs-code.html">查看介绍 →</a>
+          <button class="hero-btn ghost" id="randomBtn" type="button" title="随机打开一条标本">🎲 随机看一个</button>
+        </div>
+        <div class="focus-dots" id="focusDots" role="group" aria-label="选择焦点标本"></div>
+      </div>
+      <div class="focus-art">
+        <div class="focus-tile" id="focusTile"></div>
+        <div class="focus-no" id="focusNo">001</div>
+      </div>
+      <button class="focus-nav prev" id="focusPrev" type="button" aria-label="上一张标本">‹</button>
+      <button class="focus-nav next" id="focusNext" type="button" aria-label="下一张标本">›</button>
+    </div>
+
     <div class="field search-field hero-search">
       <label for="q">搜索</label>
       <div class="search">
@@ -140,14 +162,8 @@
       </div>
     </div>
     <div class="hero-actions">
-      <button class="hero-btn" id="randomBtn" type="button" title="随机打开一条标本">🎲 随机看一个</button>
       <a class="hero-link" href="/all-tools.html">全部 500 条索引 →</a>
     </div>
-    <div class="intro-more">
-      <p>「实时热榜」自动抓取 GitHub，按 <strong>天 / 周 / 月</strong> 三档窗口看新上榜的热门仓库（点热榜页的窗口切换即可），哪些项目正在升温、哪些值得关注，一眼便知。</p>
-      <p>搜索、筛选、排序，随你心意——想按热度看，想按类别找，想快速定位某个具体工具，都能顺手找到。</p>
-    </div>
-    <div class="cat-legend" id="catLegend" role="group" aria-label="八类分类的色标，与列表里每条工具的类别点同色"></div>
     <div class="stats">
       <div class="stat"><div class="num">500<span class="unit">条</span></div><div class="lbl">编号标本，逐条挑选</div></div>
       <div class="stat"><div class="num">8<span class="unit">类</span></div><div class="lbl">开发 · AI · 设计 · 系统 · 效率 · 网络 · 媒体 · 主机</div></div>
@@ -555,7 +571,7 @@
 <script src="/data/sponsors.js?v=dee67b95bb"></script>
 <script src="/data/affiliates.js?v=7b836a72a4"></script>
 <script src="/assets/monetize.js?v=b0a6d0ab7a"></script>
-<script src="/assets/app.js?v=6cc6f2c9e7"></script>
+<script src="/assets/app.js?v=4d482aca9f"></script>
 
 <script src="/assets/repos.js?v=56717ed754"></script>
 <script src="/assets/downloads.js?v=0aa8ba740a"></script>

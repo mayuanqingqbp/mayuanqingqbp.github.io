@@ -668,16 +668,6 @@ document.querySelectorAll('.tab').forEach(t=>t.setAttribute('aria-current',t.cla
 
 // 分类总览页 —— 8 张主类目大卡片（数量随当前数据实时统计）
 const OV_ORDER=['dev','ai','design','prod','net','media','host','sys'];
-// 扉页分类色标 —— 八类颜色对照表（与卡片左侧类别点同色），只是图例，不是按钮
-function renderLegend(){
-  const box=document.getElementById('catLegend');if(!box)return;
-  const n={};DATA.concat(NICHE).forEach(d=>{n[d.cat]=(n[d.cat]||0)+1;});
-  box.innerHTML=OV_ORDER.map(k=>{
-    const c=CATS[k],cnt=n[k]||0;
-    return '<span class="lg-item" data-cat="'+k+'"><span class="lg-dot"></span>'+c.label+'<span class="lg-n">'+cnt+'</span></span>';
-  }).join('');
-}
-renderLegend();
 function renderOverview(){
   const box=document.getElementById('catCards');if(!box)return;
   const n={};DATA.concat(NICHE).forEach(d=>{n[d.cat]=(n[d.cat]||0)+1;});
@@ -711,6 +701,51 @@ if(randomBtn)randomBtn.addEventListener('click',function(){
   activateTab(useNiche?'niche':'curated',{silent:true});
   openDetail(Math.floor(Math.random()*pool.length),{opener:randomBtn});
 });
+
+// 首屏焦点横幅 —— Store 式轮播，手动切换（不自动播放，尊重 reduced-motion 与键盘焦点）
+(function initFocus(){
+  const root=document.getElementById('focus');if(!root)return;
+  const all=DATA.concat(NICHE);
+  const items=['VS Code','Ollama','Blender','Immich','n8n'].map(n=>all.find(d=>d.name===n)).filter(Boolean);
+  const elName=document.getElementById('focusName'),elDesc=document.getElementById('focusDesc'),
+        elMeta=document.getElementById('focusMeta'),elCta=document.getElementById('focusCta'),
+        elTile=document.getElementById('focusTile'),elNo=document.getElementById('focusNo'),
+        elPos=document.getElementById('focusPos'),elDots=document.getElementById('focusDots');
+  if(!items.length||!elName||!elDots){root.hidden=true;return;}
+  let cur=0;
+  items.forEach((_,i)=>{
+    const b=document.createElement('button');
+    b.type='button';b.setAttribute('aria-label','标本 '+(i+1));
+    b.setAttribute('aria-pressed',i===0?'true':'false');
+    elDots.appendChild(b);
+  });
+  const dots=[...elDots.children];
+  function render(){
+    const d=items[cur];
+    root.dataset.cat=d.cat||'dev';
+    elName.textContent=d.name;
+    elDesc.textContent=d.desc||'';
+    const c=CATS[d.cat]||{label:'其他'};
+    const bits=['<span class="badge '+esc(d.cat)+'"><span class="dot"></span>'+esc(c.label)+'</span>'];
+    if(d.stars!=null)bits.push('<span class="meta-chip">★ '+esc(fmtStars(d.stars))+'</span>');
+    if(d.lang)bits.push('<span class="meta-chip">'+esc(d.lang)+'</span>');
+    if(d.lic)bits.push('<span class="meta-chip">'+esc(licLabel(d.lic))+'</span>');
+    elMeta.innerHTML=bits.join('');
+    elCta.href='/tools/'+toolSlug(d)+'.html';
+    elNo.textContent=String(all.indexOf(d)+1).padStart(3,'0');
+    elPos.textContent=String(cur+1).padStart(2,'0')+' / '+String(items.length).padStart(2,'0');
+    const letter=esc((d.name||'?').trim().charAt(0).toUpperCase()),ic=iconOf(d);
+    elTile.innerHTML=ic
+      ? '<img class="specimen" src="'+esc(ic)+'" alt="" width="96" height="96" data-fallback="'+letter+'">'
+      : '<span class="specimen" aria-hidden="true">'+letter+'</span>';
+    dots.forEach((b,i)=>b.setAttribute('aria-pressed',i===cur?'true':'false'));
+  }
+  function go(i){cur=(i+items.length)%items.length;render();}
+  document.getElementById('focusPrev')?.addEventListener('click',()=>go(cur-1));
+  document.getElementById('focusNext')?.addEventListener('click',()=>go(cur+1));
+  elDots.addEventListener('click',e=>{const b=e.target.closest('button');if(b)go(dots.indexOf(b));});
+  render();
+})();
 
 // 指南内链 —— 点芯片直接打开对应编号标本卡的详情弹窗
 function openByRepo(repo,opener){

@@ -3,18 +3,18 @@
 @font-face{font-family:'Archivo';font-style:normal;font-weight:500 800;font-stretch:100%;font-display:swap;src:url('/fonts/archivo-latin-var.woff2?v=347eef1c29') format('woff2');unicode-range:U+0020-007E,U+00A9,U+00B7,U+00D7,U+2013-2014,U+201C-201D,U+2026,U+2193;}
 @font-face{font-family:'JetBrains Mono';font-style:normal;font-weight:400 700;font-display:swap;src:url('/fonts/jetbrains-mono-latin-var.woff2?v=30b3242294') format('woff2');unicode-range:U+0020-007E,U+00A9,U+00B7,U+00D7,U+2013-2014,U+201C-201D,U+2026,U+2193;}
 @font-face{font-family:'Kaibang Display SC';font-style:normal;font-weight:900;font-display:swap;src:url('/fonts/noto-sc-display-900.woff2?v=bbcd246c94') format('woff2');}
-:root{color-scheme:light;--paper:#EDEFE9;--surface:#fff;--surface-2:#F2F3EA;--ink:#1B211C;--ink-2:#41473F;--ink-3:#555C52;--ink-4:#656C62;--dot:rgba(27,33,28,.07);--line:rgba(27,33,28,.16);--line-2:rgba(27,33,28,.07);--ring:rgba(27,33,28,.22);--accent:#1E7A4C;--focus:#1E7A4C;--body:-apple-system,'Segoe UI','PingFang SC','Hiragino Sans GB','Microsoft YaHei','Noto Sans CJK SC',sans-serif;--display:'Archivo','Kaibang Display SC',var(--body);--mono:ui-monospace,'SFMono-Regular',Consolas,'Courier New',monospace}
+:root{color-scheme:light;--content-w:1386px;--paper:#EDEFE9;--surface:#fff;--surface-2:#F2F3EA;--ink:#1B211C;--ink-2:#41473F;--ink-3:#555C52;--ink-4:#656C62;--dot:rgba(27,33,28,.07);--line:rgba(27,33,28,.16);--line-2:rgba(27,33,28,.07);--ring:rgba(27,33,28,.22);--accent:#1E7A4C;--focus:#1E7A4C;--body:-apple-system,'Segoe UI','PingFang SC','Hiragino Sans GB','Microsoft YaHei','Noto Sans CJK SC',sans-serif;--display:'Archivo','Kaibang Display SC',var(--body);--mono:ui-monospace,'SFMono-Regular',Consolas,'Courier New',monospace}
 [data-theme="dark"]{color-scheme:dark;--paper:#101511;--surface:#1A211B;--surface-2:#1C1F18;--ink:#E7ECE4;--ink-2:#BCC4B6;--ink-3:#98A392;--ink-4:#939D8E;--dot:rgba(231,236,228,.05);--line:rgba(231,236,228,.18);--line-2:rgba(231,236,228,.07);--ring:rgba(231,236,228,.24);--accent:#43C082;--focus:#43C082}
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{margin:0;background-color:var(--paper);background-image:radial-gradient(var(--dot) 1px,transparent 1.5px);background-size:24px 24px;color:var(--ink);font-family:var(--body);line-height:1.7;font-size:16px;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
 a{color:var(--accent);text-underline-offset:3px}
 a:hover{color:var(--ink)}
-/* 与首页同一条左右边线：全宽铺满，不居中收窄 */
-.wrap{width:100%;margin-inline:0;padding-inline:clamp(16px,3vw,44px)}
+/* 与首页同一条左右边线：居中容器，1920 下 1386px 宽、左右各 267px */
+.wrap{width:min(100%,var(--content-w));margin-inline:auto;padding-inline:clamp(16px,3vw,44px)}
 /* Header —— 与首页同款：sticky 毛玻璃 + logo */
 .top{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--paper) 90%,transparent);backdrop-filter:saturate(140%) blur(8px);-webkit-backdrop-filter:saturate(140%) blur(8px);border-bottom:1px solid var(--ink)}
-.top .wrap{display:flex;align-items:center;gap:14px;justify-content:space-between;min-height:58px;flex-wrap:wrap;padding:8px clamp(16px,3vw,44px);max-width:none;width:100%;margin:0}
+.top .wrap{display:flex;align-items:center;gap:14px;justify-content:space-between;min-height:58px;flex-wrap:wrap;padding:8px clamp(16px,3vw,44px);max-width:none;width:min(100%,var(--content-w));margin-inline:auto}
 .brand{display:flex;align-items:center;gap:11px;font-family:var(--display);font-weight:700;font-size:15px;letter-spacing:-.01em;color:var(--ink);text-decoration:none;white-space:nowrap}
 .brand .mark{width:22px;height:22px;display:block;flex:0 0 auto}
 .top nav{display:flex;gap:4px;font-size:13px;align-items:center}
@@ -85,7 +85,7 @@ ul.features li{margin:0 0 8px}
 .related small{display:block;color:var(--ink-3);font-size:12px;margin-top:2px}
 /* 站点页面导航条 —— 与首页一致 */
 .site-nav{border-bottom:1px solid var(--line);background:var(--surface)}
-.site-nav .wrap{display:flex;flex-wrap:wrap;align-items:center;gap:6px 18px;padding:9px clamp(16px,3vw,44px);max-width:none;width:100%;margin:0;font-size:12px}
+.site-nav .wrap{display:flex;flex-wrap:wrap;align-items:center;gap:6px 18px;padding:9px clamp(16px,3vw,44px);max-width:none;width:min(100%,var(--content-w));margin-inline:auto;font-size:12px}
 /* 首个链接直接贴统一边线，不再被装饰标签推开 */
 .site-nav-label{display:none}
 .site-nav a{color:var(--ink-2);text-decoration:none;border-bottom:1px solid transparent;padding:2px 0;transition:color .12s,border-color .12s}
