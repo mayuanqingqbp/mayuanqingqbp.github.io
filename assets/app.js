@@ -52,10 +52,16 @@ function altOf(d){
 }
 
 /* ============================================================
-   实时热榜 —— 抓取 GitHub Search API（近 30 天新上榜、1500+ 星）
+   实时热榜 —— 抓取 GitHub Search API（按 天 / 周 / 月 时间窗口新上榜）
+   窗口与星数门槛必须与 netlify/functions/trending.mjs 的 RANGES 完全一致。
    ============================================================ */
-const TRENDING_QUERY = (()=>{ const d=new Date(); d.setDate(d.getDate()-30); return `created:>${d.toISOString().slice(0,10)} stars:>1500`; })();
-const CACHE_KEY='osc-trending-v1', CACHE_TTL=10*60*1000;
+const TREND_RANGES={day:{days:1,stars:200},week:{days:7,stars:500},month:{days:30,stars:1500}};
+const RANGE_KEY='osc-trend-range';
+function savedTrendRange(){try{const r=localStorage.getItem(RANGE_KEY);return TREND_RANGES[r]?r:'month';}catch(e){return 'month';}}
+function trendQuery(range){const r=TREND_RANGES[range]||TREND_RANGES.month;const d=new Date();d.setDate(d.getDate()-r.days);return `created:>${d.toISOString().slice(0,10)} stars:>${r.stars}`;}
+const CACHE_KEY='osc-trending-v2', CACHE_TTL=10*60*1000;
+// 缓存按时间窗口分开存，切「今日 / 本周 / 本月」互不覆盖
+function cacheKeyOf(range){return CACHE_KEY+':'+(TREND_RANGES[range]?range:'month');}
 
 // 热榜分类规则：与 netlify/functions/trending.mjs 保持完全一致（check-build.ps1 会校验）
 // 短词用词边界匹配，避免 "ai" 命中 "email"/"available" 这类误判。
@@ -96,47 +102,48 @@ function mapRepo(r){
    2. 缓存过期：先拿旧数据渲染，同时后台刷新（stale-while-revalidate），成功后静默替换。
    3. 刷新失败但有旧数据：继续展示，并标注「离线缓存」，而不是整页只剩一个报错。
    4. 手动点「刷新热榜」：强制走网络，忽略缓存。 */
-function readTrendCache(){
+function readTrendCache(range){
   let c=null;
-  try{ c=JSON.parse(localStorage.getItem(CACHE_KEY)); }catch(e){}
+  try{ c=JSON.parse(localStorage.getItem(cacheKeyOf(range))); }catch(e){}
   return (c && c.items && c.items.length) ? c : null;
 }
 
-let trendInflight=null, trendFailAt=0;
+const trendInflight={}; let trendFailAt=0;
 // 后台刷新失败后 60 秒内不再自动重试，避免切标签反复打到限流接口；手动「刷新热榜」不受限制
 const TREND_RETRY_GAP=60000;
-// 真正走网络：优先 Netlify Function，失败回退 GitHub API。并发调用共享同一个 Promise。
-function refreshTrending(force){
-  if(trendInflight) return trendInflight;
-  trendInflight=(async()=>{
+// 真正走网络：优先 Netlify Function，失败回退 GitHub API。同一窗口的并发调用共享同一个 Promise。
+function refreshTrending(force,range){
+  range=TREND_RANGES[range]?range:state.trendRange;
+  if(trendInflight[range]) return trendInflight[range];
+  trendInflight[range]=(async()=>{
     let res=null;
     // 只有 Netlify 域名才存在 /api 函数。Pages / 本地预览没有函数，
     // 直接跳过该请求，避免控制台出现无意义的 404。
     var hasFn=/(?:^|\.)netlify\.app$/i.test(location.hostname);
     if(window.USE_NETLIFY_API===true) hasFn=true;
     if(hasFn){
-      try { res = await fetch('/api/trending'+(force?'?refresh=1':'')); } catch(e) { res = null; }
+      try { res = await fetch('/api/trending?range='+range+(force?'&refresh=1':'')); } catch(e) { res = null; }
     }
     // 服务端函数未部署时重定向会返回 200+HTML；content-type 不是 JSON 就按失败处理，走 GitHub 直连兜底
     if(res && res.ok && !/json/i.test(res.headers.get('content-type')||'')) res = null;
     if(!res || !res.ok){
       // 回退：直连 GitHub API（本地文件预览或函数尚未部署时）
-      const url='https://api.github.com/search/repositories?q='+encodeURIComponent(TRENDING_QUERY)+'&sort=stars&order=desc&per_page=60';
+      const url='https://api.github.com/search/repositories?q='+encodeURIComponent(trendQuery(range))+'&sort=stars&order=desc&per_page=60';
       res=await fetch(url,{headers:{'Accept':'application/vnd.github+json','User-Agent':'os-catalog'}});
     }
     if(!res.ok) throw new Error('Trending fetch '+res.status);
     const data=await res.json();
-    const out={ts:Date.now(), items:(data.items||[]).map(mapRepo)};
-    try{localStorage.setItem(CACHE_KEY,JSON.stringify(out));}catch(e){}
+    const out={ts:Date.now(), range, items:(data.items||[]).map(mapRepo)};
+    try{localStorage.setItem(cacheKeyOf(range),JSON.stringify(out));}catch(e){}
     return out;
-  })().finally(()=>{trendInflight=null;});
-  return trendInflight;
+  })().finally(()=>{trendInflight[range]=null;});
+  return trendInflight[range];
 }
 
 function fetchTrending(force){
   const tag=d=>Object.assign({},d,{stale:false,offline:false});
   if(force) return refreshTrending(true).then(tag);
-  const cached=readTrendCache();
+  const cached=readTrendCache(state.trendRange);
   if(!cached) return refreshTrending(false).then(tag);
   if(Date.now()-(cached.ts||0) < CACHE_TTL) return Promise.resolve(tag(cached));
   // 过期：先给旧数据，后台刷新交给 loadTrending
@@ -156,8 +163,9 @@ const countEl=document.getElementById('count');
 const updatedEl=document.getElementById('updated');
 const refreshEl=document.getElementById('refresh');
 const tagRowEl=document.getElementById('tagRow');
+const trRangeEl=document.getElementById('trRange');
 
-const state={tab:'curated',cat:'all',q:'',lang:'all',minStars:0,sort:'default',trending:null,limit:0,favOnly:false,tags:{plat:[],feat:[],lic:[]}};
+const state={tab:'curated',cat:'all',q:'',lang:'all',minStars:0,sort:'default',trending:null,limit:0,favOnly:false,trendRange:savedTrendRange(),tags:{plat:[],feat:[],lic:[]}};
 
 /* ============================================================
    收藏 / 对比 —— 纯前端，localStorage 持久化（不上传、不追踪）
@@ -219,11 +227,14 @@ function buildTagRow(){
     tagRowEl.appendChild(grp);
   });
   if(hasSel){
+    // 清空按钮和提示放进同一组，跟着「一组一行」的栅格走，不会各自占一行
+    const act=document.createElement('span');act.className='tg-group tg-actions';
     const c=document.createElement('button');c.type='button';c.className='tg-clear';c.textContent='清空标签 ×';
     c.onclick=()=>{state.tags.plat.length=0;state.tags.feat.length=0;state.tags.lic.length=0;state.limit=pageSize();buildTagRow();render();};
-    tagRowEl.appendChild(c);
+    act.appendChild(c);
     const untag=(state.tags.plat.length||state.tags.feat.length)?activeSource().filter(d=>!tagList(d).length).length:0;
-    if(untag>0){const n=document.createElement('span');n.className='tg-note';n.textContent='⚠ '+untag+' 个新收录条目未标注平台/特性，筛选时不显示';tagRowEl.appendChild(n);}
+    if(untag>0){const n=document.createElement('span');n.className='tg-note';n.textContent='⚠ '+untag+' 个新收录条目未标注平台/特性，筛选时不显示';act.appendChild(n);}
+    tagRowEl.appendChild(act);
   }
 }
 
@@ -246,11 +257,36 @@ const GH_ARROW='<svg class="gh" width="14" height="14" viewBox="0 0 24 24" fill=
 /* 下载加速镜像：两条第三方线路互为备用，失效时可换另一条或 GitHub Releases */
 const MIRROR_HOSTS=[['https://gh-proxy.com/','线路1'],['https://ghfast.top/','线路2']];
 
+/* 标本图标：抓到的真实仓库头像（data/icons.js 由 scripts/fetch-icons.ps1 生成）优先，
+   没有图标的条目（含 repo 为空的）用首字母 tile。图片挂了也由下面的监听换成首字母。 */
+function iconOf(d){
+  if(typeof ICONS==='undefined'||!d)return '';
+  const repo=d.repo||d.full_name||'';
+  if(!repo)return '';
+  return ICONS[String(repo).split('/')[0].toLowerCase()]||'';
+}
+function specimenHTML(d){
+  const ic=iconOf(d);
+  const letter=esc((d.name||'?').trim().charAt(0).toUpperCase());
+  if(!ic)return `<span class="specimen" aria-hidden="true">${letter}</span>`;
+  return `<img class="specimen" src="${esc(ic)}" alt="" width="34" height="34" loading="lazy" decoding="async" data-fallback="${letter}">`;
+}
+// error 不冒泡，用捕获阶段监听：任何一张图标加载失败就换成首字母 tile，不留破图
+document.addEventListener('error',(e)=>{
+  const t=e.target;
+  if(!(t instanceof HTMLImageElement)||!t.classList.contains('specimen'))return;
+  const s=document.createElement('span');
+  s.className='specimen';
+  s.setAttribute('aria-hidden','true');
+  s.dataset.cat=t.closest('[data-cat]')?.dataset.cat||'';
+  s.textContent=t.dataset.fallback||'?';
+  t.replaceWith(s);
+},true);
+
 function cardHTML(d){
   const c=CATS[d.cat]||{label:'其他'};
   const closed=isClosed(d);
   const num=d.live?'LIVE':String((d._niche?DATA.length:0)+d._i+1).padStart(3,'0');
-  const sp=esc((d.name||'?').trim().charAt(0).toUpperCase());
   const tagList=(d.tags&&d.tags.length?d.tags:['open-source']).map(t=>`<span class="tag">${esc(t)}</span>`);
   if(closed)tagList.unshift('<span class="tag closed">闭源对照</span>');
   const alt=altOf(d);
@@ -262,7 +298,7 @@ function cardHTML(d){
   // 实时热榜：整卡是外链，直接跳 GitHub
   if(d.live){
     return `<a class="card" href="${esc(d.url)}" target="_blank" rel="noopener noreferrer" data-cat="${esc(d.cat)}">
-    <div class="card-top"><span class="specimen" aria-hidden="true">${sp}</span><span class="card-num">${num}</span><span class="badge ${esc(d.cat)}"><span class="dot"></span>${esc(c.label)}</span></div>
+    <div class="card-top">${specimenHTML(d)}<span class="card-num">${num}</span><span class="badge ${esc(d.cat)}"><span class="dot"></span>${esc(c.label)}</span></div>
     <div class="card-name">${esc(d.name)}${GH_ARROW}</div>
     <p class="card-desc">${esc(d.desc)}</p>
     <div class="tags">${tags}</div>
@@ -281,28 +317,29 @@ function cardHTML(d){
       const best=window.__bestAssetDL(a,os);
       const osLabel=(window.__OS_LABEL||{})[os]||'';
       const bn=(best&&best.n)||'';
-      const shown=bn.length>22?bn.slice(0,20)+'…':bn;
-      dlAct='<div class="dl-actions">'
-        +(best?MIRROR_HOSTS.map((h,i)=>`<a class="dl-btn${i===0?' primary':''}" href="${h[0]}${esc(best.u)}" target="_blank" rel="noopener noreferrer" title="第三方镜像 ${h[1]}，失效时可换另一条线路或点 GitHub Releases">⬇ ${esc(osLabel)} 加速镜像 ${h[1]} · ${esc(shown)}</a>`).join(''):'')
-        +`<a class="dl-btn" href="${esc(DL_GHM(d.repo))}" target="_blank" rel="noopener noreferrer">镜像下载页</a>`
-        +`<a class="dl-btn" href="${esc(DL_GH(d.repo))}" target="_blank" rel="noopener noreferrer">GitHub Releases</a></div>`;
+      // 按钮标签保持单行等高；具体资产文件名放 title，避免卡上被裁切
+      const tipFor=(h)=>'第三方镜像 '+h[1]+'，失效时可换另一条线路或点 GitHub Releases'+(bn?('。文件：'+bn):'');
+      dlAct='<div class="dl-actions"><span class="dl-hint">获取方式</span>'
+        // 卡片动作统一为一行：主线路 + 「更多线路」进工具页，不再 4 按钮排 3 行撑高卡片
+        +(()=>{const h=MIRROR_HOSTS[0];const url=best?(h[0]+esc(best.u)):esc(DL_GHM(d.repo));const label=best?(`⬇ ${esc(osLabel)} 下载`):'镜像下载页';return `<a class="dl-btn primary" href="${url}" target="_blank" rel="noopener noreferrer" title="${esc(tipFor(h))}">${label}</a>`;})()
+        +`<a class="dl-btn" href="/tools/${esc(d._slug)}.html">更多线路</a></div>`;
     }else if(dl.type==='B'){
       const cmd=dl.install||('git clone https://github.com/'+d.repo+'.git');
-      dlAct='<div class="dl-install"><span>'+esc(cmd)+'</span><button type="button" data-cmd="'+esc(cmd)+'">复制</button></div>';
+      dlAct='<div class="dl-install"><span title="'+esc(cmd)+'">'+esc(cmd)+'</span><button type="button" data-cmd="'+esc(cmd)+'">复制</button></div>';
     }else if(dl.type==='C'){
       const url=dl.official||d.official||('https://github.com/'+d.repo);
-      dlAct='<div class="dl-actions"><a class="dl-btn primary" href="'+esc(url)+'" target="_blank" rel="noopener noreferrer">官网下载</a>'
+      dlAct='<div class="dl-actions"><span class="dl-hint">获取方式</span><a class="dl-btn primary" href="'+esc(url)+'" target="_blank" rel="noopener noreferrer">官网下载</a>'
         +(closed?'':`<a class="dl-btn" href="https://github.com/${esc(d.repo)}" target="_blank" rel="noopener noreferrer">GitHub</a>`)+'</div>';
     }else{
       const url=dl.web||d.official||('https://github.com/'+d.repo);
-      dlAct='<div class="dl-actions"><a class="dl-btn primary" href="'+esc(url)+'" target="_blank" rel="noopener noreferrer">打开在线应用</a>'
+      dlAct='<div class="dl-actions"><span class="dl-hint">获取方式</span><a class="dl-btn primary" href="'+esc(url)+'" target="_blank" rel="noopener noreferrer">打开在线应用</a>'
         +(closed?'':`<a class="dl-btn" href="https://github.com/${esc(d.repo)}" target="_blank" rel="noopener noreferrer">GitHub</a>`)+'</div>';
     }
   }
   const favOn=FAVS.has(d._slug);
   const cmpOn=CMP.has(d._slug);
   return `<div class="card clickable" data-cat="${esc(d.cat)}" data-idx="${d._i}" data-repo="${esc(d.repo)}" data-slug="${esc(d._slug)}">
-    <div class="card-top"><span class="specimen" aria-hidden="true">${sp}</span><span class="card-num">${num}</span><span class="badge ${esc(d.cat)}"><span class="dot"></span>${esc(c.label)}</span>${dlBadge}<span class="card-actions"><button class="icon-btn fav-btn${favOn?' on':''}" type="button" data-fav="${esc(d._slug)}" aria-label="${favOn?'取消收藏':'收藏'}" title="${favOn?'取消收藏':'收藏'}">${favOn?'♥':'♡'}</button><button class="icon-btn cmp-btn${cmpOn?' on':''}" type="button" data-cmp="${esc(d._slug)}" aria-label="${cmpOn?'移出对比':'加入对比'}" title="${cmpOn?'移出对比':'加入对比'}">⚖</button></span></div>
+    <div class="card-top">${specimenHTML(d)}<span class="card-num">${num}</span><span class="badge ${esc(d.cat)}"><span class="dot"></span>${esc(c.label)}</span>${dlBadge}<span class="card-actions"><button class="icon-btn fav-btn${favOn?' on':''}" type="button" data-fav="${esc(d._slug)}" aria-label="${favOn?'取消收藏':'收藏'}" title="${favOn?'取消收藏':'收藏'}">${favOn?'♥':'♡'}</button><button class="icon-btn cmp-btn${cmpOn?' on':''}" type="button" data-cmp="${esc(d._slug)}" aria-label="${cmpOn?'移出对比':'加入对比'}" title="${cmpOn?'移出对比':'加入对比'}">⚖</button></span></div>
     <div class="card-name">${esc(d.name)}</div>
     <p class="card-desc">${esc(d.desc)}</p>
     <div class="tags">${tags}</div>
@@ -314,7 +351,7 @@ function cardHTML(d){
 function rowHTML(d,rank){
   const num=String(rank).padStart(2,'0');
   return `<a class="row" href="${esc(d.url)}" target="_blank" rel="noopener noreferrer" data-cat="${esc(d.cat)}" data-repo="${esc(d.full_name||d.url)}">
-    <span class="specimen" aria-hidden="true">${esc((d.name||'?').trim().charAt(0).toUpperCase())}</span>
+    ${specimenHTML(d)}
     <span class="row-rank">${num}</span>
     <span class="row-main">
       <span class="row-name">${esc(d.name)}${GH_ARROW}</span>
@@ -399,8 +436,14 @@ function render(){
     countEl.textContent='正在加载热榜…';
     loadMoreWrap.hidden=true;
   }else if(total===0){
-    grid.innerHTML=`<div class="empty"><div class="big">没有匹配的软件</div>换个关键词，或清除分类 / 语言 / 标签筛选试试。</div>`;
-    countEl.textContent='共 0 个软件';
+    if(isTrend){
+      const tr=TREND_RANGES[state.trendRange]||TREND_RANGES.month;
+      grid.innerHTML=`<div class="empty"><div class="big">近 ${tr.days} 天没有达到 ${tr.stars}★ 的新上榜项目</div>这个窗口暂时空着，切到「周」或「月」看看。</div>`;
+      countEl.textContent='共 0 条上榜';
+    }else{
+      grid.innerHTML=`<div class="empty"><div class="big">没有匹配的软件</div>换个关键词，或清除分类 / 语言 / 标签筛选试试。</div>`;
+      countEl.textContent='共 0 个软件';
+    }
     loadMoreWrap.hidden=true;
   }else{
     const shown=list.slice(0,state.limit);
@@ -409,6 +452,14 @@ function render(){
     }else{
       grid.dataset.mode='cards';
       grid.innerHTML=shown.map(cardHTML).join('');
+      // 赞助 / 推广卡片由 monetize.js 从这里插进卡片列表的固定位置（默认浏览视图的第 13 张），
+      // 不再单独占首屏一节。筛选结果里不放付费位：默认视图判定见 defaultView。
+      if(window.KB_GRID_HOOK)window.KB_GRID_HOOK(grid,{
+        slot:12,
+        defaultView:state.tab==='curated'&&state.cat==='all'&&!state.q.trim()&&state.lang==='all'
+          &&!state.minStars&&state.sort==='default'&&!state.favOnly
+          &&!(state.tags.plat.length||state.tags.feat.length||state.tags.lic.length)
+      });
     }
     countEl.textContent=`共 ${total} 个软件`;
     const more=list.length-shown.length;
@@ -422,6 +473,7 @@ function render(){
   tagRowEl.hidden=isTrend||state.tab==='guides'||state.tab==='overview';
   refreshEl.hidden=!isTrend||!state.trending;
   updatedEl.hidden=!isTrend||!state.trending;
+  if(trRangeEl)trRangeEl.hidden=!isTrend;
   if(isTrend&&state.trending){
     const t=new Date(state.trending.ts);
     const hm=`${t.getHours()}:${String(t.getMinutes()).padStart(2,'0')}:${String(t.getSeconds()).padStart(2,'0')}`;
@@ -574,7 +626,7 @@ async function loadTrending(force){
   }catch(e){
     trendFailAt=Date.now();
     // 网络失败但有旧缓存：降级展示，而不是让整页变成错误提示
-    const cached=readTrendCache();
+    const cached=readTrendCache(state.trendRange);
     if(cached){
       state.trending=Object.assign({},cached,{stale:true,offline:true});
       state.cat='all';state.limit=pageSize();
@@ -616,12 +668,22 @@ document.querySelectorAll('.tab').forEach(t=>t.setAttribute('aria-current',t.cla
 
 // 分类总览页 —— 8 张主类目大卡片（数量随当前数据实时统计）
 const OV_ORDER=['dev','ai','design','prod','net','media','host','sys'];
+// 扉页分类色标 —— 八类颜色对照表（与卡片左侧类别点同色），只是图例，不是按钮
+function renderLegend(){
+  const box=document.getElementById('catLegend');if(!box)return;
+  const n={};DATA.concat(NICHE).forEach(d=>{n[d.cat]=(n[d.cat]||0)+1;});
+  box.innerHTML=OV_ORDER.map(k=>{
+    const c=CATS[k],cnt=n[k]||0;
+    return '<span class="lg-item" data-cat="'+k+'"><span class="lg-dot"></span>'+c.label+'<span class="lg-n">'+cnt+'</span></span>';
+  }).join('');
+}
+renderLegend();
 function renderOverview(){
   const box=document.getElementById('catCards');if(!box)return;
   const n={};DATA.concat(NICHE).forEach(d=>{n[d.cat]=(n[d.cat]||0)+1;});
   box.innerHTML=OV_ORDER.map(k=>{
     const c=CATS[k],cnt=n[k]||0;
-    return '<a class="cat-card cat-card--'+k+'" href="#" data-cat="'+k+'">'
+    return '<a class="cat-card cat-card--'+k+'" href="/categories/'+k+'.html" data-cat="'+k+'">'
       +'<span class="cc-accent"></span>'
       +'<span class="cc-top"><span class="cc-ico">'+c.icon+'</span><span class="cc-name">'+c.label+'</span><span class="cc-count">'+cnt+'</span></span>'
       +'<p class="cc-desc">'+c.desc+'</p>'
@@ -639,6 +701,15 @@ renderOverview();
 document.getElementById('catCards').addEventListener('click',e=>{
   const card=e.target.closest('.cat-card');if(!card)return;
   e.preventDefault();goOverviewCat(card.dataset.cat);
+});
+
+// 扉页「随机看一个」——图鉴的随手翻，两个池子里各抽一条
+const randomBtn=document.getElementById('randomBtn');
+if(randomBtn)randomBtn.addEventListener('click',function(){
+  const useNiche=Math.random()<0.5;
+  const pool=useNiche?NICHE:DATA;
+  activateTab(useNiche?'niche':'curated',{silent:true});
+  openDetail(Math.floor(Math.random()*pool.length),{opener:randomBtn});
 });
 
 // 指南内链 —— 点芯片直接打开对应编号标本卡的详情弹窗
@@ -697,6 +768,33 @@ refreshEl.addEventListener('click',async()=>{
     render();
   }
 });
+
+/* 热榜时间窗口：天 / 周 / 月。切换后按新窗口重新取数（缓存按窗口分开存，切回不重复请求） */
+function syncTrendRangeUI(){
+  if(!trRangeEl)return;
+  trRangeEl.querySelectorAll('.tr-btn').forEach(b=>{
+    const on=b.dataset.range===state.trendRange;
+    b.classList.toggle('active',on);
+    b.setAttribute('aria-pressed',on?'true':'false');
+  });
+}
+if(trRangeEl){
+  trRangeEl.addEventListener('click',e=>{
+    const b=e.target.closest('.tr-btn');if(!b)return;
+    const r=b.dataset.range;
+    if(!TREND_RANGES[r]||r===state.trendRange)return;
+    state.trendRange=r;
+    try{localStorage.setItem(RANGE_KEY,r);}catch(err){}
+    state.trending=null;
+    state.cat='all';state.minStars=0;if(starsEl)starsEl.value='0';
+    state.tags.plat.length=0;state.tags.feat.length=0;state.tags.lic.length=0;
+    state.limit=pageSize();
+    buildPills();buildLangOptions();buildTagRow();
+    syncTrendRangeUI();
+    loadTrending(false);
+  });
+  syncTrendRangeUI();
+}
 
 /* ---- 收藏 / 对比 事件与渲染 ---- */
 const favFilterBtn=document.getElementById('favFilter');
@@ -807,7 +905,7 @@ function applyTheme(t){document.documentElement.setAttribute('data-theme',t);con
 let saved=null;try{saved=localStorage.getItem('osc-theme');}catch(e){}
 applyTheme(saved||((window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches)?'dark':'light'));
 themeBtn.onclick=()=>applyTheme(document.documentElement.getAttribute('data-theme')==='dark'?'light':'dark');
-document.getElementById('top').addEventListener('click',e=>{e.preventDefault();window.scrollTo({top:0});});
+document.querySelectorAll('a[href="#top"]').forEach(a=>a.addEventListener('click',e=>{e.preventDefault();window.scrollTo({top:0,behavior:'smooth'});}));
 
 // 首次渲染放到 DOMContentLoaded：确保后面的 REPOS_DL 下载数据已经就绪，只渲染一次
 document.addEventListener('DOMContentLoaded',()=>{

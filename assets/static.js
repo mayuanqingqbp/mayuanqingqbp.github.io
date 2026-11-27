@@ -18,6 +18,20 @@ document.addEventListener('DOMContentLoaded', function () {
       apply(document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
     });
   }
+  // 下载区的 git clone 一键复制；CSP 禁内联脚本，监听统一挂在这里
+  document.addEventListener('click', function (e) {
+    var b = e.target.closest && e.target.closest('.copy-btn');
+    if (!b) return;
+    var text = b.getAttribute('data-copy') || '';
+    if (!text) return;
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(function () {
+        b.textContent = '已复制';
+        setTimeout(function () { b.textContent = '复制'; }, 1600);
+      }).catch(function () {});
+    }
+  });
+
   // 赞助浮层：点击空白处关闭
   var sp = document.querySelector('.sponsor-wrap');
   if (sp) {

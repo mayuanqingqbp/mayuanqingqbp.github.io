@@ -2,7 +2,7 @@
 
 `kaibang.net` 的优化版站点。在原始发布包（单页 `index.html`）基础上做了功能修复、安全加固、性能优化、SEO 与无障碍改造，仍然是**纯静态站点**——不需要构建工具、不需要 npm，用任意静态服务器打开就能跑（字体和 CSP 需要 HTTP 环境，见第三节）。
 
-- 收录条目：**447**（常用精选 221 + 小众优选 226）
+- 收录条目：**500**（常用精选 221 + 小众优选 279；编号冻结，后续只做同编号替换）
 - 分类：8 大类（开发 / AI / 设计 / 系统 / 效率 / 网络 / 媒体 / 自托管）
 - 部署：Netlify（含 2 个 Serverless 函数 + 一个可选 GitHub Actions 构建工作流）
 
@@ -310,3 +310,29 @@ curl -s https://kaibang.net/sitemap.xml | grep -c '<loc>'         # 468
 - **TAGS 映射修复**：仓库路径变更后，TAGS 里的键同步重命名；清空 `repo` 的 15 条改用 `name:xxx` 键，`app.js` 的标签匹配与"未标注"计数同步支持兜底查找，未标注条目回到 0（筛选提示消失）。
 - **stars 快照**：239 → 359（`update-stars.ps1` 修复了把偶发 403 误判为配额耗尽的 bug；剩余未覆盖项均为闭源/已改名仓库）。
 - 最终自检：`build-static.ps1` / `check-build.ps1` 全绿；全量体检 512 条链接、73 条失效（其中 50 条为闭源占位仓库、20 条为官网反爬/超时）。
+
+---
+
+## 十四、设计升级轮（2026-11-26，工作副本 `kaibang-v2-p1-design`）
+
+> 本轮只在副本 `kaibang-v2-p1-design/` 里改动，原目录 `kaibang-v2-p0-monetize/` 未动。详细计划与逐项决策见 `设计升级计划.md`。
+
+**数据扩容与编号规则**：`data/tools-data.js` 的 NICHE 尾部追加 53 条，447 → **500**（DATA 221 / NICHE 279）。编号 001–500 一次性冻结：后续**不再追加新编号**，替换工具 = 同编号原地改条目；新条目一律追加在 NICHE 尾部才不会移动老编号。8 类分布：dev 101 / ai 75 / design 48 / sys 54 / host 51 / net 56 / prod 69 / media 46。53 条新条目的 `github.com/<slug>` 均逐个 HTML 核验存在；据此把 `lobehub/lobe-chat` 改规范为 `lobehub/lobehub`、`prisma/prisma` 改 `prisma/orm`，并替换两个失效仓库。
+
+**实时热榜时间窗口**：新增「天 / 周 / 月」切换，`?range=day|week|month`（1 天 / 200★、7 天 / 500★、30 天 / 1500★），默认 `month`，选择记在 localStorage `osc-trend-range`。前端 `assets/app.js` 的 `TREND_RANGES` 与 `netlify/functions/trending.mjs` 的 `RANGES` 逐字一致，缓存键按 range 分裂；Chrome 实测三档切换与计数正确。
+
+**已执行的 5 项决策**：
+
+1. **构建期抓真实图标**：`scripts/fetch-icons.ps1` 用 `github.com/<owner>.png?size=64` 抓仓库头像，落盘 `assets/icons/`（394 个文件 / 1113 KB）与 `data/icons.js`（394 条）。用 `Test-BlankImage` 丢弃纯色占位图（不看字节大小），并清理数据里已删条目的孤立图标。`app.js` 的 `iconOf()`/`specimenHTML()` 优先用真实头像，未命中保留首字母 tile；捕获阶段 `error` 监听把破图换成首字母。实测 48 个标本位：46 IMG / 2 首字母 / 0 破图。
+2. **中文标题字小范围子集**：Noto Sans SC（OFL 1.1，`fonts/OFL-NotoSansSC.txt`）按站点标题用字子集到 `wght=900`，派生族名 `Kaibang Display SC`，产物 `fonts/noto-sc-display-900.woff2`（295 字 / 42.5 KB）。`scripts/cjk-display.mjs` 从文案生成用字表、`scripts/subset-cjk.py` 做子集、build/check 双向校验覆盖率；**改中文文案后必须重跑这两个脚本**。
+3. **卡片动作收敛**：1 个主按钮 + 1 个次按钮，其他下载线路收进弹层。
+4. **变现落点重做**：付费卡片不再插在首屏之上，改为卡片列表固定第 13 张（`slot:12`），**只在默认浏览视图出现**；筛选 / 搜索 / 排序 / 收藏后完全消失。无网格的生成页把付费节追加到 main 末尾；全站常驻自推广位收成页脚一行细带 `.mz-band`。开关仍在 `data/sponsors.js`，本轮实测后恢复 `enabled:false`，不对外显示占位内容。实测：第 13 张、`rel="noopener noreferrer sponsored"`、筛选后 0 张、细带桌面一行高 / 手机链接 44px。
+5. **保留硬边图鉴风格**：直角、偏移阴影、分类色脊不变，只做规格收敛与对比度修正。
+
+**验证记录**：
+
+- `build-static.ps1` + `check-build.ps1` 全绿：`generated: 500 tool pages`、27 处指纹一致、394 个图标文件全部存在、CJK 295 字覆盖、热榜前后端一致。
+- `consistency.mjs --no-rhythm --widths 1440,1024,820,768,390`：约定的真实缺陷类（`off-viewport tap-size text-contrast cut-text overlap-text field-label links button-styles row-lines focus-visible nav off-grid hero-fill fold-action copy-actions`）**0 FAIL**；320 窄屏与 1280/1152/896 扫描也无发现。剩余 FAIL 全属已豁免或检查器误报：`no-visual` / `text-only` / `card-layout`（营销/图文页专属，本站是卡片列表目录站）、`section-tile`（7+ 屏长列表，屏幕节奏族）、`contrast`（检查器把 `body` 的点状纸纹当 effect，截图文字实际为深色实底上的高对比文字；`text-contrast` 本身 PASS）。
+- `perf.mjs`：0 FAIL；两视口合计 9 WARN（请求数、JS 解析量、字体族数、两张收款码尺寸 / 缺 width+height），与扩容前同量级，无新增 FAIL。
+
+**维护约定**：新增图标或改图标源 → 重跑 `fetch-icons.ps1` + build/check；改中文文案 → 重跑 `cjk-display.mjs` + `subset-cjk.py`；改 JS/CSS/图片/字体 → 重跑 build/check 更新指纹。所有生成物（`tools/`、`categories/`、`guides/`、`all-tools.html`、`404.html`、`sitemap.xml`、`tools.css`、`sw.js`、`_redirects`）由构建脚本生成，不要手改。

@@ -5703,6 +5703,697 @@ const NICHE = [
     ],
     tags:["网络","安全","自托管"], lang:"C", lic:"GPL-2.0", repo:"openwall/john" },
 
+  /* ---------- 448–500：扩容批次，编号只追加不重排 ---------- */
+
+  { name:"Mermaid",   cat:"dev",
+    desc:"用文本写流程图、时序图、甘特图，Markdown 里直接嵌图。",
+    intro:"Mermaid 解决的问题很具体：图不想用画图软件画，想跟着代码一起版本管理。语法接近伪代码，几行文字就是一张图，GitHub 的 README、各类笔记和 VS Code 插件都原生支持。我在文档里画调用链和状态机基本都用它，改动走 diff，比贴截图可靠太多。图类型覆盖流程、时序、类图、ER、甘特、状态、用户旅程、架构图，浏览器和命令行都能渲染出 SVG/PNG。",
+    features:[
+      "文本即图，改动可以走 Git diff 和代码评审",
+      "十余种图类型：流程、时序、类、ER、甘特、状态、脑图",
+      "GitHub / GitLab / VS Code / 各类笔记原生渲染",
+      "支持 classDef 与主题定制，能贴合站点配色",
+      "CLI 与浏览器两种渲染方式，可批量导出 SVG/PNG",
+      "中文标签直接写进节点，无需额外处理"
+    ],
+    tags:["图表","Markdown","文档"], lang:"TypeScript", lic:"MIT", repo:"mermaid-js/mermaid" },
+
+  { name:"PlantUML",   cat:"dev",
+    desc:"老牌文本绘图工具，UML 全家桶和架构图都能画。",
+    intro:"PlantUML 比 Mermaid 更早，语法更贴近 UML 规范，类图、用例图、组件图、部署图这类正式图表更完整。它是 Java 写的，命令行、IDEA/VS Code 插件、在线渲染服务器各种用法都有，输出 SVG/PNG/PDF/HTML。我的经验是：轻量随手画用 Mermaid，需要严格 UML 语义或者画大型系统结构时用 PlantUML，它对布局和关联线的处理更稳。",
+    features:[
+      "UML 支持最完整：类、序列、用例、组件、部署、状态",
+      "也支持架构图、思维导图、甘特、网络拓扑",
+      "命令行、IDE 插件、在线渲染服务多种用法",
+      "输出 PNG/SVG/PDF/TeX，可接 LaTeX 排版",
+      "皮肤参数可调，能统一整套图的观感",
+      "多许可并行发布，按版本选合适的即可"
+    ],
+    tags:["图表","UML","文档"], lang:"Java", lic:"MIT / GPL / LGPL", repo:"plantuml/plantuml" },
+
+  { name:"Graphviz",   cat:"dev",
+    desc:"图可视化的底层引擎，用 DOT 语言描述节点与边。",
+    intro:"Graphviz 是这一类工具的祖师爷：DOT 语言写节点和边，布局算法负责排布，后来几乎所有文本绘图工具都受它影响。它更适合结构化关系图——依赖关系、状态机、调用图、数据库 schema、编译中间表示。不少分析工具（Doxygen、各类 profiler）背后调的就是它。批量生成图时最实用：程序输出 DOT，命令行跑出图。",
+    features:[
+      "DOT 语言简洁，可以由程序直接生成",
+      "dot / neato / fdp / sfdp / circo / twopi 多种布局",
+      "输出 SVG/PNG/PDF/PS，也可只出坐标给前端用",
+      "被 Doxygen 与各类依赖分析工具广泛作为后端",
+      "大型图布局稳定，上万节点也跑得动",
+      "命令行管道友好，适合放进 CI"
+    ],
+    tags:["图表","CLI","依赖分析"], lang:"C", lic:"Graphviz", repo:"graphviz/graphviz" },
+
+  { name:"Apache ECharts",   cat:"dev",
+    desc:"中文生态最成熟的开源图表库，扛得住大数据量交互图表。",
+    intro:"ECharts 最初由百度开源、现在挂在 Apache 基金会下，中文文档和示例库是同类里最齐全的。它的强项是数据量大、交互多：百万级散点、时序缩放、联动 tooltip、地图与地理可视化都能扛。做后台报表、监控看板、数据大屏时我优先选它；图表种类不算最杂，但每一种的可配置深度很高。API 是声明式 option 对象，只改数据不碰 DOM。",
+    features:[
+      "折线、柱状、饼、雷达、热力、桑基、关系图、地图、3D 齐全",
+      "Canvas 与 SVG 两种渲染器，移动端可用",
+      "数据缩放、联动、刷选等交互开箱即用",
+      "百万级数据点也不卡",
+      "中文文档与示例最完整，排错省时间",
+      "可在服务端渲染成图片用于导出"
+    ],
+    tags:["图表","前端","数据可视化"], lang:"TypeScript", lic:"Apache-2.0", repo:"apache/echarts" },
+
+  { name:"Chart.js",   cat:"dev",
+    desc:"轻量 HTML5 Canvas 图表库，几行代码出常见图表。",
+    intro:"如果只需要折线、柱状、饼图、雷达这几类常规图，Chart.js 比 ECharts 轻得多：包体积小、API 直白、默认样式耐看。它只做 Canvas 渲染，超大图表性能不如专门的库，但几百到几千数据点完全够用。插件生态丰富（数据标签、标注、时间轴），配合各框架都有成熟封装。我的取舍是：报表看板用 ECharts，页面里起点缀作用的图用 Chart.js。",
+    features:[
+      "常规图表类型全覆盖，默认配色即可上线",
+      "一个 config 对象就能出图，上手快",
+      "响应式与动画内置，移动端体验好",
+      "插件机制清晰，社区扩展多",
+      "React / Vue / Svelte 都有成熟封装",
+      "体积远小于同类重型图表库"
+    ],
+    tags:["图表","前端","轻量"], lang:"JavaScript", lic:"MIT", repo:"chartjs/Chart.js" },
+
+  { name:"three.js",   cat:"dev",
+    desc:"网页 3D 的事实标准库，WebGL 之上的完整框架。",
+    intro:"three.js 让浏览器里做 3D 变成搭场景：建场景、放相机、加网格与材质、挂光照，剩下的 WebGL 细节它替你处理。示例数量惊人，绝大多数网页 3D 效果、粒子背景、产品展示、着色器实验都是在它上面做的。学习曲线不算平，但社区示例足够多，照着示例改比从零写快得多。要放进 React 项目，还有 react-three-fiber 这层封装。",
+    features:[
+      "几何体、材质、光照、阴影、后期处理一应俱全",
+      "GLTF / FBX / OBJ 等主流模型格式导入",
+      "ShaderMaterial 可完全自定义效果",
+      "示例库庞大，多数效果能直接改",
+      "WebGL2 与 WebGPU（TSL）两条路线并行",
+      "有 react-three-fiber 等框架封装可选"
+    ],
+    tags:["前端","3D","WebGL"], lang:"JavaScript", lic:"MIT", repo:"mrdoob/three.js" },
+
+  { name:"Slidev",   cat:"dev",
+    desc:"给开发者做的幻灯片：Markdown 写稿，代码高亮一流。",
+    intro:"Slidev 用 Markdown 写幻灯片，代码块自带高亮、行号、分步显示，还能在页里直接跑 Vue 组件和 Mermaid 图。导出 PDF、部署成单机 SPA、演讲者模式（备注 + 计时）都有。做技术分享很合适，代码演示比传统办公软件体面得多。它基于 Vite，改文件浏览器实时刷新，写起来像写文档；代价是要接受一点前端工程习惯。",
+    features:[
+      "Markdown 写稿，前置元数据配置主题与布局",
+      "代码块高亮、行高亮、分步显示",
+      "内置 Mermaid、LaTeX，可插入交互组件",
+      "导出 PDF / PNG，也可部署为静态站点",
+      "演讲者模式带备注与计时器",
+      "主题与自定义 CSS 灵活，能完全换外观"
+    ],
+    tags:["幻灯片","Markdown","前端"], lang:"TypeScript", lic:"MIT", repo:"slidevjs/slidev" },
+
+  { name:"FastAPI",   cat:"dev",
+    desc:"Python 现代 Web 框架，类型注解顺带生成交互文档。",
+    intro:"FastAPI 这几年基本成了 Python 写 API 的默认选择：用类型注解声明请求体和响应模型，校验、序列化、OpenAPI 文档全自动生成，原生支持异步。它底层是 Starlette + Pydantic，性能在 Python 框架里靠前，做模型服务、内部接口、爬虫后端都很顺手。文档质量是它最被称道的部分，示例复制即用。",
+    features:[
+      "类型注解即校验规则，Pydantic 模型编辑器可补全",
+      "自动生成可交互的 OpenAPI / Swagger 文档",
+      "原生 async，支持 WebSocket 与 SSE",
+      "依赖注入机制简洁，测试时易替换",
+      "性能在 Python Web 框架中靠前",
+      "与 ML 模型服务、队列任务组合成熟"
+    ],
+    tags:["后端","API","Python"], lang:"Python", lic:"MIT", repo:"fastapi/fastapi" },
+
+  { name:"Prisma ORM",   cat:"dev",
+    desc:"TypeScript 的 ORM：schema 定义模型，类型全程贯通。",
+    intro:"Prisma 的思路是把数据库当代码来管：写一份 schema 声明模型与关系，生成客户端后所有查询都带类型提示，字段改名在编译期就报错。迁移文件自动生成并可进版本库。它在任意 SQL 上的灵活度不是最高的，但常见 CRUD、事务、关联查询的体验是同类里最舒服的。支持 PostgreSQL、MySQL、SQLite、SQL Server、MongoDB 等。仓库已从 prisma/prisma 更名为 prisma/orm。",
+    features:[
+      "schema 声明模型，客户端查询带完整类型推断",
+      "迁移与种子脚本自动生成，可纳入 Git",
+      "关联查询与事务处理清晰",
+      "支持主流关系库与 MongoDB",
+      "Prisma Studio 可可视化浏览编辑数据",
+      "Serverless 场景有连接池方案"
+    ],
+    tags:["数据库","API","TypeScript"], lang:"TypeScript", lic:"Apache-2.0", repo:"prisma/orm" },
+
+  { name:"Lucide",   cat:"design",
+    desc:"开源图标库，Feather 的社区后继，风格统一易改。",
+    intro:"Lucide 是 Feather Icons 社区分叉后的延续项目，如今图标数量远超原版，线条粗细与尺寸一致，SVG 路径干净，适合直接改 stroke 做定制。官方有 React / Vue / Svelte / Angular 等封装和 Figma 插件，命名规范、搜索好用。我选图标库时通常先看它：风格不杂，日后换库也容易。同类可看 Tabler Icons。",
+    features:[
+      "一千五百多枚图标，风格与描边宽度统一",
+      "SVG 源码干净，改 stroke / size 即可定制",
+      "主流前端框架都有官方包",
+      "Figma 插件与图标检索站点齐全",
+      "ISC 许可，商用无负担",
+      "更新频繁，命名保持向后兼容"
+    ],
+    tags:["图标","设计资源","SVG"], lang:"TypeScript", lic:"ISC", repo:"lucide-icons/lucide" },
+
+  { name:"Tabler Icons",   cat:"design",
+    desc:"六千多枚 MIT 许可 SVG 图标，线性与实心两套。",
+    intro:"Tabler Icons 是现在体量最大的开源图标集之一，六千多枚，线性（outline）与实心（filled）两套齐备，统一 24px 网格、2px 描边，混用不打架。全部 MIT 许可，SVG 可直接内联。它同样提供各框架组件包、Webfont 和 Figma 源文件。做后台和文档站时我常用它，图标多意味着冷门的语义也能找到对应的一枚。",
+    features:[
+      "6500+ 图标，outline 与 filled 两套",
+      "24px 网格、描边宽度可调，缩放不糊",
+      "MIT 许可，无署名要求",
+      "React / Vue / Svelte / Solid / Webfont 包齐全",
+      "Figma 源文件公开，设计侧可同用",
+      "按语义能搜到冷门图标"
+    ],
+    tags:["图标","设计资源","SVG"], lang:"TypeScript", lic:"MIT", repo:"tabler/tabler-icons" },
+
+  { name:"SVGO",   cat:"design",
+    desc:"SVG 优化器：删冗余元数据、压缩路径指令。",
+    intro:"SVG 从设计软件导出时常常带着大量元数据、默认属性和可以合并的路径指令，体积大还难读。SVGO 是这类优化的事实标准：可以当 Node 库用，也有 CLI 和各类构建插件，插件式配置能控制优化到什么程度。图标库、图标字体的构建管线里几乎都有它。要注意的是别把需要动画或 JS 钩子的属性顺手删掉，这类文件要收窄配置。",
+    features:[
+      "移除编辑器元数据、注释与默认属性",
+      "合并路径指令、精简数值精度",
+      "插件式配置，可按项目调整激进程度",
+      "Node API / CLI / 构建插件三种用法",
+      "可批量优化上万枚图标",
+      "同主题图标还能复用重复路径"
+    ],
+    tags:["SVG","优化","构建"], lang:"JavaScript", lic:"MIT", repo:"svg/svgo" },
+
+  { name:"ImageOptim",   cat:"design",
+    desc:"macOS 上的图片批量压缩工具，以无损为主。",
+    intro:"ImageOptim 是 Mac 上很省心的批量图片压缩工具：文件拖进去，它调度 jpegtran、OptiPNG、GIFSicle 等成熟命令行工具做无损优化，还能顺手剥离 GPS 与相机 EXIF。想更激进可以勾选有损档和 WebP / AVIF 转换。它本质是 GUI 壳，引擎都是老牌命令行工具，结果可预期、可复现。",
+    features:[
+      "拖入即批处理，PNG / JPG / GIF / WebP 通吃",
+      "无损优化为主，可选有损与格式转换",
+      "自动剥离 EXIF / GPS 等隐私元数据",
+      "底层是 jpegtran、OptiPNG、GIFSicle 等成熟引擎",
+      "前后体积对比直观，收益一目了然",
+      "Mac 原生，界面极简"
+    ],
+    tags:["图片","优化","macOS"], lang:"Swift", lic:"GPL-2.0", repo:"ImageOptim/ImageOptim" },
+
+  { name:"Terraform",   cat:"host",
+    desc:"用配置文件描述云资源，基础设施也能版本管理。",
+    intro:"Terraform 把云上的机器、网络、域名、数据库写成一个 .tf 文件，`plan` 先看差异、`apply` 再执行，状态文件记录现实与配置的差距。它的价值不在省时间，而在可复现和可评审：环境搭建过程进了 Git，换人接手不至于靠口头传承。Provider 覆盖面是所有同类里最广的，云厂商、DNS、CDN、K8s 都有。2023 年许可改为 BUSL-1.1，自建有顾虑可以看 OpenTofu。",
+    features:[
+      "HCL 声明式配置，plan / apply 流程清晰",
+      "Provider 生态覆盖几乎所有云与 SaaS",
+      "state 状态管理，支持远端存储与锁",
+      "模块化复用，一套模块多环境复用",
+      "工作流可进 CI，变更走代码评审",
+      "许可为 BUSL-1.1，社区分支有 OpenTofu"
+    ],
+    tags:["部署","云","DevOps"], lang:"Go", lic:"BUSL-1.1", repo:"hashicorp/terraform" },
+
+  { name:"k9s",   cat:"host",
+    desc:"Kubernetes 的终端界面，一个窗口看遍集群。",
+    intro:"kubectl 的输出读起来累，k9s 把集群变成可导航的终端界面：上下键切资源，回车看详情，热键做 scale、日志、shell、port-forward。它比Lens轻，SSH 隧道一连就能管远程集群，日常排查 Pod、看事件、翻日志效率明显高于一行行敲 kubectl。资源视图可按 namespace 过滤，也能自定义快捷命令。",
+    features:[
+      "终端里的资源浏览器，键盘导航为主",
+      "日志、事件、exec、port-forward 热键直达",
+      "支持 scale / rollout / 删除等常用操作",
+      "多集群多上下文切换方便",
+      "可自定义插件与快捷键",
+      "跨平台单二进制，SSH 隧道即可用"
+    ],
+    tags:["Kubernetes","CLI","终端"], lang:"Go", lic:"Apache-2.0", repo:"derailed/k9s" },
+
+  { name:"Argo CD",   cat:"host",
+    desc:"Kubernetes 的 GitOps 持续部署工具。",
+    intro:"Argo CD 的思路是「Git 里写的就是集群应该有的样子」：它持续比对仓库里的清单与集群实际状态，有偏差就同步或提示。部署历史、回滚、健康状态在 Web UI 里一目了然，多集群多环境管理也成熟。相比自己写 CI 脚本推 kubectl，它的优势是可观测与可审计——谁改的、什么时候同步的、为什么失败都能查。同类的还有 Flux CD。",
+    features:[
+      "持续比对 Git 与集群状态，自动或手动同步",
+      "Web UI 展示应用健康度与同步历史",
+      "支持 Helm、Kustomize、原生清单混用",
+      "多集群、多项目、RBAC 权限划分完善",
+      "回滚到任意历史版本",
+      "可与 GitHub / GitLab 的 PR 流程联动"
+    ],
+    tags:["Kubernetes","DevOps","自托管"], lang:"Go", lic:"Apache-2.0", repo:"argoproj/argo-cd" },
+
+  { name:"Dokku",   cat:"host",
+    desc:"一台服务器上的自建 Heroku，git push 即部署。",
+    intro:"Dokku 是最轻的「自带 PaaS」方案：在一台 VPS 上装好，之后部署就是 `git push dokku main`，它负责构建、起容器、配反向代理、挂letsencrypt 证书。插件机制能加数据库、备份、蓝绿发布。适合个人项目和小型服务——不想为三个小应用付三笔托管费，也不想自己写 Nginx + systemd 那一整套。比 Coolify 更极简，配置方式偏命令行。",
+    features:[
+      "git push 触发构建与上线，体验接近 Heroku",
+      "自动反向代理与 Let's Encrypt 证书",
+      "支持 buildpacks 与 Dockerfile 两种构建",
+      "插件生态：数据库、备份、调度等",
+      "单机友好，1GB 内存的小机器也能跑",
+      "文档扎实，部署流程可完全自定义"
+    ],
+    tags:["部署","服务器","自托管"], lang:"Shell", lic:"MIT", repo:"dokku/dokku" },
+
+  { name:"Coolify",   cat:"host",
+    desc:"开源自建应用托管面板，替代 Heroku / Vercel。",
+    intro:"Coolify 把「自己买服务器部署应用」这件事做成了图形面板：连上 Git 仓库，选应用类型，它自动构建、起容器、配域名和证书，数据库、Redis、备份这些依赖也能一键挂上。它同时管多台服务器，界面现代，是这两年自托管圈最热门的项目之一。适合想把 Vercel / Railway 的花费换成一台 VPS 的人。",
+    features:[
+      "Git 仓库推到自动部署，支持 Docker / Nix / 静态站",
+      "域名、反向代理、SSL 证书自动配置",
+      "内置数据库、Redis、对象存储等服务模板",
+      "可管理多台远程服务器",
+      "备份、监控、告警一并带上",
+      "自托管，数据与控制权都在自己手里"
+    ],
+    tags:["部署","面板","自托管"], lang:"PHP", lic:"Apache-2.0", repo:"coollabsio/coolify" },
+
+  { name:"Nginx Proxy Manager",   cat:"host",
+    desc:"带 Web 界面的 Nginx 反代管理器，配域名证书点几下。",
+    intro:"自建服务最烦的是重复配 Nginx：加个域名、签发证书、配转发、跳转 HTTPS。Nginx Proxy Manager 用 Docker 起一个容器，之后这些都在网页上点：填域名和上游端口，Let's Encrypt 自动签发续期，重定向、访问控制、代理头都能配。NAS 和家用服务器上几乎成了标配。进阶需求（自定义 location、限流）可以挂额外配置文件。",
+    features:[
+      "图形界面配置反向代理与转发规则",
+      "Let's Encrypt 自动签发与续期，支持 DNS 验证",
+      "HTTP 跳转、SSL 参数、代理头可调",
+      "支持访问授权、自定义 404、重定向",
+      "Docker 一键部署，数据持久化简单",
+      "家用 NAS 上跑没有负担"
+    ],
+    tags:["服务器","HTTPS","自托管"], lang:"JavaScript", lic:"MIT", repo:"NginxProxyManager/nginx-proxy-manager" },
+
+  { name:"Halo",   cat:"host",
+    desc:"国产开源建站工具，博客与内容站都行。",
+    intro:"Halo 是国产的开源建站程序，定位在博客与内容站之间：写作体验顺手，主题和插件有市场，后台是中文的，SEO 与站点设置项齐全。Java 后端配 Docker 部署很省事，数据在本地数据库里，导出迁移不难。相比 Hexo / Hugo 这类静态生成器，它更像 WordPress——在线编辑、即时发布，代价是要维护一个运行中的服务。",
+    features:[
+      "在线编辑发布，支持 Markdown 与所见即所得",
+      "主题与插件生态，官方市场可安装",
+      "后台中文，站点设置与分类标签完善",
+      "Docker 部署简单，支持 MySQL / PostgreSQL / H2",
+      "自带评论系统与反垃圾选项",
+      "中文社区活跃，遇到问题好找答案"
+    ],
+    tags:["建站","博客","自托管"], lang:"Java", lic:"GPL-3.0", repo:"halo-dev/halo" },
+
+  { name:"PeerTube",   cat:"host",
+    desc:"P2P federated 视频平台，自己搭一个「不卡的 YouTube」",
+    intro:"PeerTube 由 Framasoft 发起，特点是去中心化：实例之间互相联邦（ActivityPub），观众观看时同时帮别人分发（WebTorrent），所以带宽成本不会随播放量线性爆炸。功能上像简化版 YouTube——频道、播放列表、弹幕式评论、直播都有。适合做机构或兴趣社群的视频站，不适合指望它做出 YouTube 级别的推荐。",
+    features:[
+      "实例间联邦，观众也能看到其他实例的内容",
+      "WebTorrent P2P 分发，服务器带宽压力小",
+      "频道、播放列表、缩略图、字幕齐全",
+      "支持直播与回放",
+      "AGPL 许可，可自由修改部署",
+      " moderation 与配额机制适合社群运营"
+    ],
+    tags:["视频","自托管","联邦"], lang:"TypeScript", lic:"AGPL-3.0", repo:"chocobozzz/PeerTube" },
+
+  { name:"Owncast",   cat:"host",
+    desc:"单人自托管直播服务器，OBS 推流即可开播。",
+    intro:"Owncast 是一体化的自托管直播方案：装好之后 OBS 推 RTMP，它给出嵌入页面、聊天、观看统计，还能接 Fediverse 做推广。它不做转码集群、不追求多路高并发，定位就是个人主播、内部直播、课程直播这种一路流的场景。轻量、单二进制、Docker 都行，树莓派级别的机器也能跑。",
+    features:[
+      "RTMP 推流即用，OBS 直接对接",
+      "内置聊天、表情、观看时长统计",
+      "播放器可嵌入自己网站",
+      "支持联邦（ActivityPub）与 Webhook 扩展",
+      "轻量单实例，小机器可跑",
+      "MIT 许可，自定义外观容易"
+    ],
+    tags:["直播","自托管","视频"], lang:"Go", lic:"MIT", repo:"owncast/owncast" },
+
+  { name:"Mealie",   cat:"host",
+    desc:"自托管食谱管理：抓取网页食谱、购物清单、 meal plan。",
+    intro:"Mealie 解决的痛点很生活化：网页食谱格式乱、广告多，它支持粘贴 URL 自动抓取成结构化食谱，也能手动录入，然后按食材生成购物清单、做一周餐食计划。界面清爽，移动端友好，多用户共享一个实例，数据在自己数据库里可导出。自托管家庭工具里它属于「装完真的会天天用」的那类。",
+    features:[
+      "粘贴链接自动抓取网页食谱",
+      "食材、步骤、营养、图片结构化管理",
+      "购物清单与餐食计划",
+      "多用户与家庭共享，支持移动端",
+      "支持标签、收藏、全文搜索",
+      "数据可导出，备份简单"
+    ],
+    tags:["自托管","生活","家庭"], lang:"Python", lic:"AGPL-3.0", repo:"mealie-recipes/mealie" },
+
+  { name:"Home Assistant",   cat:"host",
+    desc:"开源自建智能家居中枢，本地控制各种品牌设备。",
+    intro:"Home Assistant 是自建智能家居的事实标准：一个运行在家里机器上的中枢，把各种品牌、各种协议（Zigbee、Matter、Wi-Fi、蓝牙、红外）的设备统一接入，自动化规则本地执行，不依赖厂商云。集成数量以千计，仪表盘可自己拼，社区插件（HACS）生态庞大。隐私敏感、又不想被单一生态绑死的话，它是唯一合理选择。",
+    features:[
+      "集成数千种设备与服务，国产设备也有社区集成",
+      "自动化规则本地执行，断网也能用",
+      "仪表盘与卡片可自由组合",
+      "支持 Zigbee / Matter / MQTT 等协议接入",
+      "社区插件与官方加载项丰富",
+      "语音助手与本地 TTS/STT 可接"
+    ],
+    tags:["智能家居","自托管","NAS"], lang:"Python", lic:"Apache-2.0", repo:"home-assistant/core" },
+
+  { name:"Keycloak",   cat:"host",
+    desc:"企业级开源身份与访问管理，SSO 与单点登录。",
+    intro:"Keycloak 做登录体系里那些麻烦事：单点登录、OAuth2 / OIDC / SAML、社交账号登录、双因素、密码策略、用户目录与角色权限。把它接进自己的应用，登录页面、令牌签发、会话管理都不用写。Red Hat 背书、文档和后台都很完备，代价是它是个 Java 服务，管理界面概念较多，小项目会觉得重。轻量替代可看 Authentik 或 Ory。",
+    features:[
+      "支持 OIDC / OAuth2 / SAML 三种主流协议",
+      " realms 多租户，用户目录与角色组管理",
+      "社交登录与身份源联合（IdP brokering）",
+      "双因素、密码策略、会话与令牌可细配",
+      "主题可定制登录页外观",
+      "后台完备，审计与事件记录齐全"
+    ],
+    tags:["安全","自托管","身份"], lang:"Java", lic:"Apache-2.0", repo:"keycloak/keycloak" },
+
+  { name:"Authentik",   cat:"host",
+    desc:"面向自托管的认证中心，SSO、MFA、代理认证。",
+    intro:"Authentik 是自托管圈里做统一登录的另一个选择：OIDC / OAuth2 / SAML 都支持，MFA、LDAP、社交登录、群组与权限都有，特色是可编排的 flow（登录流程可视化拼装）和 proxy provider——套在应用前面就能加登录，不用改应用代码。策略引擎可以写 Python 片段做精细控制。界面比 Keycloak 现代，上手也更平缓。",
+    features:[
+      "OIDC / OAuth2 / SAML 全覆盖",
+      "可编排登录流程（stage / policy / flow）",
+      "Proxy provider 给任意应用加前置登录",
+      "MFA、WebAuthn、密码策略、LDAP 同步",
+      "策略可写 Python 片段，灵活度高",
+      "Docker Compose 部署，社区文档多"
+    ],
+    tags:["安全","自托管","身份"], lang:"Python", lic:"MIT", repo:"goauthentik/authentik" },
+
+  { name:"Synapse",   cat:"host",
+    desc:"Matrix 协议的官方主服务器实现，自建聊天服务器。",
+    intro:"想自建一套可控的即时通讯，Matrix 是常见答案，Synapse 就是它的服务端参考实现：房间、端到端加密、跨服务器联邦、桥接（Telegram / Slack / IRC / Discord）都有。用 Element 做客户端，体验和主流 IM 接近。要提醒的是 Synapse 用 Python 写得偏重，人多的房间吃内存，规模大可以换 Dendrite 或 Conduit 这类轻量实现。",
+    features:[
+      "Matrix 协议参考实现，功能最完整",
+      "端到端加密与跨服务器联邦",
+      "各类桥接：Telegram、Slack、IRC、Discord",
+      "配合 Element 客户端体验接近主流 IM",
+      "支持应用服务与机器人扩展",
+      "AGPL 许可，可自由修改自建"
+    ],
+    tags:["通讯","自托管","安全"], lang:"Python", lic:"AGPL-3.0", repo:"element-hq/synapse" },
+
+  { name:"PostHog",   cat:"host",
+    desc:"开源自建的产品分析：事件、漏斗、录屏、A/B 实验。",
+    intro:"PostHog 把 Google Analytics + Mixpanel + Hotjar 那套能力打包成一个可自托管的服务：事件采集、漏斗、留存、路径、会话录屏、Feature Flag、A/B 实验。SDK 覆盖主流框架，SQL 查询界面可以直接查自己的数据。数据放自己机器上，对合规和隐私敏感的项目友好；用官方云也能先试。它属于「装完会长期用」的分析工具。",
+    features:[
+      "事件、漏斗、留存、路径、热力图一体",
+      "会话录屏与回放",
+      "Feature Flag 与 A/B 实验内置",
+      "SQL 直接查询自有数据",
+      "自托管或官方云两种用法",
+      "Cookie 友好，可不用同意横幅的模式"
+    ],
+    tags:["分析","自托管","DevOps"], lang:"TypeScript", lic:"MIT", repo:"posthog/posthog" },
+
+  { name:"Memos",   cat:"host",
+    desc:"自托管的碎片笔记流，界面像轻版 Twitter。",
+    intro:"Memos 是「随手记一句」的自托管服务：单二进制或 Docker 起一个实例，打开就是一个时间线，写想法、贴代码、传图，用 #标签 和可见性控制组织。它有 Web、iOS、Android 客户端和 API，数据完全在自己手里，导出是纯文本友好格式。适合替代 flomo / Twitter 收藏夹这类碎片记录场景，不承担长文写作。",
+    features:[
+      "时间线式记录，输入框常驻，写一句就走",
+      "标签、可见性（公开/受限/私密）与置顶",
+      "支持图片、代码块、Markdown 渲染",
+      "Web / iOS / Android 客户端与 REST API",
+      "单二进制部署，SQLite 存储易备份",
+      "可发布成公开博客式页面"
+    ],
+    tags:["笔记","自托管","效率"], lang:"Go", lic:"MIT", repo:"usememos/memos" },
+
+  { name:"SumatraPDF",   cat:"prod",
+    desc:"Windows 上极轻量的 PDF / EPUB / 漫画阅读器。",
+    intro:"SumatraPDF 只做一件事：把 PDF、EPUB、MOBI、CBZ、CHM、XPS、DjVu 打开得又快又小。启动几乎是瞬时的，内存占用低，界面几乎没有任何多余控件，键盘快捷键齐全（方向键翻页、F11 全屏、Ctrl+F 搜索）。它没有批注和管理功能，但作为「只想快点看完这份文档」的默认阅读器，Windows 上很难找到更合适的。开源且便携版可放 U 盘。",
+    features:[
+      "秒开大文件，内存占用很小",
+      "支持 PDF / EPUB / MOBI / CBZ / CHM / DjVu / XPS",
+      "快捷键完整，翻页与搜索顺手",
+      "可设为系统默认阅读器，支持命令行参数",
+      "便携版免安装，可放移动盘",
+      "界面极简，无广告无后台"
+    ],
+    tags:["PDF","阅读","Windows"], lang:"C++", lic:"GPL-3.0", repo:"sumatrapdfreader/sumatrapdf" },
+
+  { name:"calibre",   cat:"prod",
+    desc:"电子书图书馆：管理、转换、传书到阅读器。",
+    intro:"calibre 是电子书管理这一件事上做得最全的软件：书库、元数据编辑、封面抓取、格式转换（EPUB / AZW3 / PDF / TXT 互转）、新闻订阅推送、直接传到 Kindle / Kobo。它的转换引擎质量高，复杂排版也能处理得差不多。界面信息密度大、按钮多，新手要花点时间适应，但一旦建好库，其它工具很难替代。跨平台，插件生态庞大。",
+    features:[
+      "书库管理：元数据、标签、系列、封面批量编辑",
+      "格式转换引擎强，EPUB / AZW3 / PDF / DOCX 互转",
+      "内置阅读器，支持排版调整与字典",
+      "新闻源抓取并排版成电子书",
+      "可直接管理 Kindle、Kobo 等设备",
+      "插件与自动化（calibredb）扩展空间大"
+    ],
+    tags:["电子书","阅读","图书管理"], lang:"Python", lic:"GPL-3.0", repo:"kovidgoyal/calibre" },
+
+  { name:"KOReader",   cat:"prod",
+    desc:"开源电子书阅读器固件，墨水屏上的瑞士军刀。",
+    intro:"KOReader 是给 Kobo、Kindle、PocketBook 等墨水屏设备做的第三方阅读软件（部分机型可刷成固件层运行）。它的排版控制细到标点悬挂、对比度、渲染缓存级别，PDF 支持裁边、重排、切边与加深，是墨水屏上读扫描版 PDF 的最佳方案。也支持 EPUB、DjVu、CBZ、TXT，带字典、维基查询、同步标注。界面偏工程化，配置项极多。",
+    features:[
+      "PDF 处理强：裁边、重排、加深、切白边",
+      "排版参数极其细致（字体、连字、标点悬挂）",
+      "支持 EPUB / DJVU / CBZ / TXT / 扫描版 PDF",
+      "字典、维基、翻译查询内置",
+      "可与 calibre 同步标注与进度",
+      "亮度、对比度、刷新方式按页可调"
+    ],
+    tags:["电子书","阅读","墨水屏"], lang:"C++", lic:"AGPL-3.0", repo:"koreader/koreader" },
+
+  { name:"OpenProject",   cat:"prod",
+    desc:"开源自建的项目管理：任务、甘特、敏捷看板。",
+    intro:"OpenProject 是自建项目管理里功能最完整的一个：工作项、看板、Scrum 与瀑布混合、甘特图与关键路径、工时、成本、Wiki、论坛、版本规划都能在一个实例里做完。社区版免费自托管，企业版收费加支持。相比 Jira 它更偏传统工程与研究机构的使用习惯，权限与项目结构严谨；上手成本比 Trello 那类高。",
+    features:[
+      "工作项、看板、Sprint 与甘特图一体",
+      "甘特支持基线、依赖与关键路径",
+      "工时与成本统计，报表可导出",
+      "Wiki、论坛、会议记录等项目协作文档",
+      "细粒度权限与项目模板",
+      "社区版可自托管，Docker 部署成熟"
+    ],
+    tags:["项目管理","自托管","协作"], lang:"Ruby", lic:"GPL-3.0", repo:"opf/openproject" },
+
+  { name:"Twenty",   cat:"prod",
+    desc:"开源自建 CRM，界面和用法接近现代 SaaS。",
+    intro:"Twenty 想做的是「开源版 Salesforce 里常用的那一小块」：客户、联系人、机会、活动的时间线，界面质感明显比传统开源 CRM 现代，数据模型可自定义字段与视图，支持导入导出和 API。用 TypeScript 写，前后端分离，自托管一套 Docker 就能跑。团队想脱离 Salesforce / HubSpot 的按人头收费，又不想忍受老旧界面时，它是现在最像样的选择。",
+    features:[
+      "客户 / 联系人 / 机会的完整销售流程",
+      "字段与视图可自定义，支持自定义对象",
+      "界面现代，操作接近主流 SaaS",
+      "批量导入导出与 REST / GraphQL API",
+      "自托管，数据不出自己环境",
+      "AGPL 许可，可二次开发"
+    ],
+    tags:["CRM","自托管","协作"], lang:"TypeScript", lic:"AGPL-3.0", repo:"twentyhq/twenty" },
+
+  { name:"Firefly III",   cat:"prod",
+    desc:"自托管的个人记账系统，规则化分类与报表。",
+    intro:"Firefly III 是个人财务管理工具，理念接近记账版数据库：交易进来，按规则自动分类到账户、预算、标签，报表按时间/类别/账户切。支持定期交易、账单、复式记账逻辑、从 CSV / 银行导入，也能通过 API 或浏览器扩展录入。数据完全在自己服务器上。它不帮你联网抓银行流水，但把「记账 + 复盘」这件事做得很扎实。",
+    features:[
+      "交易、预算、账户、标签多层分类",
+      "规则引擎自动归类导入的流水",
+      "报表按时间、类别、账户切分",
+      "CSV / OFX / QIF 导入与导出",
+      "定期交易与账单提醒",
+      "API 完善，可做自动录入脚本"
+    ],
+    tags:["记账","自托管","效率"], lang:"PHP", lic:"AGPL-3.0", repo:"firefly-iii/firefly-iii" },
+
+  { name:"Anki",   cat:"prod",
+    desc:"间隔重复记忆卡片，背单词与备考的老牌工具。",
+    intro:"Anki 的核心是间隔重复算法：记住的卡片间隔拉长，忘了的短期重现，复习效率远高于自己划线重读。卡片支持图片、音频、 latex、代码、语法高亮和 Cloze 填空，牌组与标签组织，共享牌组可以直接下载别人做好的。桌面、网页、手机（AnkiMobile / AnkiDroid）全平台同步，插件生态极其丰富。学语言、背法条医学术语，它是我用过最耐用的一个。",
+    features:[
+      "间隔重复算法（FSRS 可选），复习量小",
+      "卡片支持图片、音频、代码、填空",
+      "牌组 / 标签 / 筛选牌组灵活组织",
+      "全平台客户端，官方同步或自建同步服务器",
+      "插件生态庞大，可改界面与算法",
+      "共享牌组可直接下载"
+    ],
+    tags:["学习","记忆","笔记"], lang:"Rust", lic:"GPL-3.0", repo:"ankitects/anki" },
+
+  { name:"Trilium Notes",   cat:"prod",
+    desc:"层级式个人知识库，支持脚本与关系图谱。",
+    intro:"Trilium 把笔记做成一棵可无限展开的树，同一条笔记可以挂在多个位置（克隆而非复制），笔记之间还能定义关系（父子、引用、别名），形成一个可查询的个人知识库。它的特色是「笔记可编程」：脚本笔记能读写其它笔记、生成页面、做小工具，还能把笔记发布成网页。自托管服务端 + 桌面客户端，数据在自己手里。维护分支 TriliumNext 现在更活跃。",
+    features:[
+      "层级树 + 克隆，一条笔记多处出现",
+      "笔记间关系与属性可查询、可建图谱",
+      "脚本笔记可读写其它笔记，做自动化工具",
+      "支持富文本与 Markdown 两种编辑器",
+      "可发布笔记为公开网页或保护页面",
+      "自托管同步，桌面与网页端都有"
+    ],
+    tags:["笔记","知识库","自托管"], lang:"TypeScript", lic:"AGPL-3.0", repo:"TriliumNext/Trilium" },
+
+  { name:"yt-dlp",   cat:"media",
+    desc:"命令行音视频下载器，支持上千个站点。",
+    intro:"yt-dlp 是 youtube-dl 的社区延续分支，也是现在下载类工具里最活跃的一个：支持上千个站点，自动选最高可用清晰度、合并音视频轨、下字幕与缩略图、按播放列表批量下、限速与代理都能配。浏览器 Cookie 可直接复用登录态。它没有图形界面，全靠参数和配置文件，但把常用的几组参数存成 alias，日常用起来比各种下载软件可靠得多——站点改版后社区通常几小时就修复。",
+    features:[
+      "支持上千站点，更新频率高",
+      "自动选择清晰度并合并音视频轨",
+      "字幕、章节、缩略图、元数据可一并抓取",
+      "播放列表与批量下载，支持输出模板",
+      "可读浏览器 Cookie 处理登录内容",
+      "配置文件与别名让常用参数固定下来"
+    ],
+    tags:["下载","CLI","视频"], lang:"Python", lic:"Unlicense", repo:"yt-dlp/yt-dlp" },
+
+  { name:"Streamlink",   cat:"media",
+    desc:"把直播流转给播放器观看，也能存成文件。",
+    intro:"Streamlink 的思路是「抓到直播流，直接喂给 VLC / mpv 播放」，避免网页播放器的高延迟与广告。它支持 Twitch、YouTube Live、多家国内与海外平台，能选画质、多路输出、录制保存为文件，也能配插件与 hooks 做自动化。命令行工具，配合播放器缓存设置，看直播的延迟和画质都比浏览器好。录制任务写进脚本就能定时跑。",
+    features:[
+      "直播流直连播放器，延迟低于网页",
+      "支持多家国内外直播平台",
+      "可选画质，可保存为 mkv / ts",
+      "支持插件与 hooks 扩展",
+      "与 mpv / VLC 组合体验好",
+      "CLI 友好，可写脚本定时录制"
+    ],
+    tags:["直播","视频","CLI"], lang:"Python", lic:"BSD-2-Clause", repo:"streamlink/streamlink" },
+
+  { name:"Olive",   cat:"media",
+    desc:"开源非线性视频编辑器，目标是做达芬奇之外的选择。",
+    intro:"Olive 是社区在做的开源非线性视频编辑器，定位对标的不是 iMovie 而是达芬奇 / Vegas 这一档：节点式合成、多轨时间线、代理工作流、色彩管理。它还在开发阶段，功能不如成熟软件齐，稳定性也要挑版本，但方向和代码质量都受好评，长期关注开源剪辑的人基本都盯着它。要立刻干活，还是先考虑 Kdenlive 或 Shotcut。",
+    features:[
+      "节点式合成，接近专业软件的思路",
+      "多轨时间线与关键帧动画",
+      "代理剪辑与大素材工作流",
+      "跨平台，支持 Windows / Linux / macOS",
+      "色彩管理与格式支持在持续改进",
+      "GPL 许可，社区开发活跃"
+    ],
+    tags:["视频剪辑","开源替代","创作"], lang:"C++", lic:"GPL-3.0", repo:"olive-editor/olive" },
+
+  { name:"Strawberry",   cat:"media",
+    desc:"本地音乐库播放器，Clementine 的延续分支。",
+    intro:"Strawberry 是 Clementine 的社区分叉，延续了「本地音乐库为主」的思路：按艺术家 / 专辑组织，标签编辑、转码、批量抓取封面与歌词、支持 cue 分轨，还能连各种云端音乐服务。Qt 界面朴素但信息密度高，播放列表与队列管理好用，收藏本地 FLAC 的人用起来很顺。它也是少数仍在维护 cue sheet、多碟专辑这类细节的现代播放器。",
+    features:[
+      "本地音乐库管理，按专辑与艺术家组织",
+      "标签编辑、批量转码、封面与歌词抓取",
+      "支持 cue sheet、多碟专辑等细节",
+      "可接云端音乐服务与网络电台",
+      "播放队列与过滤搜索好用",
+      "跨平台，包管理器里都有"
+    ],
+    tags:["音乐","播放器","本地库"], lang:"C++", lic:"GPL-3.0", repo:"strawberrymusicplayer/strawberry" },
+
+  { name:"whisper.cpp",   cat:"ai",
+    desc:"用 C/C++ 跑 Whisper 语音转文字，本地 CPU 也能实时。",
+    intro:"whisper.cpp 把 OpenAI 的 Whisper 模型移植到纯 C/C++ 与 ggml 张量库上，不依赖 Python 与 GPU：笔记本 CPU 上 tiny/base 档接近实时，量化后内存占用很小。它提供命令行、库接口、示例服务，也能做语音翻译和说话人分段。做本地字幕、会议记录、隐私敏感的音频处理时，它是启动成本最低的方案。同类还有 faster-whisper（Python，GPU 更快）。",
+    features:[
+      "纯 C/C++ 实现，无需 Python 环境",
+      "CPU 上即可跑，模型量化后占用低",
+      "支持主流 Whisper 各尺寸模型与 gguf 格式",
+      "命令行、库、HTTP 服务多种用法",
+      "可输出 SRT / VTT / JSON 与时间戳",
+      "支持 OpenBLAS / Metal / CUDA 加速后端"
+    ],
+    tags:["语音","本地模型","CLI"], lang:"C++", lic:"MIT", repo:"ggml-org/whisper.cpp" },
+
+  { name:"LlamaIndex",   cat:"ai",
+    desc:"把自有文档接给大模型的框架：索引、检索、RAG。",
+    intro:"LlamaIndex 专管「让模型读你的资料」这一环：加载各种来源（PDF、Notion、数据库、网页），切块、建索引（向量、关键词、知识图谱），检索时做重排与组合，再交给模型回答。它比从零拼 embedding + 向量库省事，抽象层次多，可按需要只用其中一部分。和 LlamaIndex 相对的是 LangChain：后者偏流程编排，前者偏数据接入与检索质量。",
+    features:[
+      "数百种数据读取器与文件格式支持",
+      "向量 / 关键词 / 混合检索与重排",
+      "索引持久化，可换多种向量数据库",
+      "查询引擎、Agent、路由可组合",
+      "知识图谱索引与结构化抽取",
+      "与主流模型和框架互通"
+    ],
+    tags:["AI","RAG","Python"], lang:"Python", lic:"MIT", repo:"run-llama/llama_index" },
+
+  { name:"Open WebUI",   cat:"ai",
+    desc:"自建的大模型对话界面，接 Ollama 与各家 API。",
+    intro:"Open WebUI 是自托管的 ChatGPT 风格前端：本地 Ollama 模型、OpenAI 兼容 API、各类网关都能接，界面里有知识库（RAG）、工具与函数、多用户与权限、提示词商店、语音与图像。它是这两年自建 AI 环境里最常被装上的一个，功能密度高但部署只是一条 Docker 命令。企业场景注意它的许可带商用限制条款，自使用前要看一遍 LICENSE。",
+    features:[
+      "接 Ollama、OpenAI 兼容接口与多家网关",
+      "内置 RAG 知识库与文档检索",
+      "工具 / 函数 / 工作流可自定义扩展",
+      "多用户、权限组与审计",
+      "提示词与模型预设可分享",
+      "离线自托管，数据不出内网"
+    ],
+    tags:["AI","自托管","本地模型"], lang:"Python", lic:"Open WebUI License", repo:"open-webui/open-webui" },
+
+  { name:"LobeHub",   cat:"ai",
+    desc:"开源的 AI 对话与智能体工作台，原名 Lobe Chat。",
+    intro:"LobeHub（原 Lobe Chat）是界面做得最精致的开源 AI 聊天前端之一：多模型接入、助手市场、插件与工具调用、语音、文生图、知识库，支持自托管部署到 Vercel 或自己的服务器。它在 2025 年从「聊天客户端」往团队协作与智能体平台方向扩展，改名 LobeHub，仓库也随之从 lobehub/lobe-chat 变为 lobehub/lobehub。想要一个开箱即用、界面好看的 AI 工作台，它比多数同类省事。",
+    features:[
+      "多模型接入，含各家 API 与本地端点",
+      "助手市场与可分享的对话",
+      "插件 / 工具调用、文生图、TTS/STT",
+      "自托管部署简单（Docker / Vercel）",
+      "界面与交互是同类里最好的之一",
+      "支持移动端与 PWA"
+    ],
+    tags:["AI","客户端","自托管"], lang:"TypeScript", lic:"Apache-2.0", repo:"lobehub/lobehub" },
+
+  { name:"NetBird",   cat:"net",
+    desc:"开源零配置组网，把分散设备拼成一个加密内网。",
+    intro:"NetBird 用 WireGuard 把你在各处机器（家里 NAS、VPS、笔记本、手机）拼进同一个虚拟局域网，设备之间端到端加密，P2P 打不通时自动走中继。相比自己搭 Tailscale 自建控制面或手写 WireGuard 配置，它的体验接近开箱即用：装客户端、登录、看到其它设备。还能按组做访问控制、开 MFA 与 SSO。同类可看 Headscale + Tailscale。",
+    features:[
+      "WireGuard 内核，性能接近直连",
+      "自动发现与 P2P 打洞，失败走中继",
+      "跨平台客户端，含移动端与路由器",
+      "群组 ACL、SSO、MFA 等访问控制",
+      "可完全自建控制面",
+      "零配置上手，比手写 WireGuard 快"
+    ],
+    tags:["内网","VPN","自托管"], lang:"Go", lic:"BSD-3-Clause", repo:"netbirdio/netbird" },
+
+  { name:"Xray-core",   cat:"net",
+    desc:"代理内核，支持 VLESS / Reality / Trojan 等协议。",
+    intro:"Xray-core 是 v2fly 分支出来的代理平台，协议支持最全：VLESS、Trojan、Shadowsocks、WireGuard 代理、SOCKS、HTTP，以及抗封锁的 Reality 传输。它是内核而非客户端——服务端配 Xray，客户端通常用 v2rayN、v2rayNG、sing-box 等前端。配置文件是 JSON，参数多，理解每个字段再抄配置更稳妥。自建出入站、分流规则用它灵活度最高。",
+    features:[
+      "协议覆盖全：VLESS / Trojan / SS / WKCP / gRPC",
+      "Reality 传输抗探测",
+      "路由分流、DNS、传输层参数细粒度可调",
+      "多入口多出口同进程管理",
+      "配套客户端生态成熟",
+      "MPL-2.0 许可，可商用集成"
+    ],
+    tags:["网络","代理","安全"], lang:"Go", lic:"MPL-2.0", repo:"XTLS/Xray-core" },
+
+  { name:"qBittorrent",   cat:"net",
+    desc:"无广告的开源 BT 客户端，功能与界面平衡得好。",
+    intro:"qBittorrent 是目前最多人用的开源 BT 客户端：界面干净、无广告无捆绑，搜索插件、RSS 自动订阅、顺序下载、带宽调度、远程 Web UI 都有。它基于 libtorrent，资源占用比 µTorrent 低，配置项细但不至于看不懂。Enqueue / 分类规则配合 RSS，做自动化追番和镜像下载很顺手。同类可看 Transmission（更简）与 Deluge（插件多）。",
+    features:[
+      "界面清晰，无广告无捆绑",
+      "内置搜索引擎插件",
+      "RSS 订阅与自动下载规则",
+      "顺序下载、文件优先级、限速计划",
+      "远程 Web UI 与 Qt / 无头两种模式",
+      "基于 libtorrent，稳定且占用低"
+    ],
+    tags:["下载","BT","跨平台"], lang:"C++", lic:"GPL-2.0", repo:"qbittorrent/qBittorrent" },
+
+  { name:"RustDesk",   cat:"net",
+    desc:"开源自建远程桌面，替代 ToDesk / 向日葵 / TeamViewer。",
+    intro:"RustDesk 用 Rust 写的远程桌面，客户端覆盖 Windows / macOS / Linux / Android / iOS / Web，最实用的一点是可以自建中继与 ID 服务器：连接不走厂商服务器，速度和隐私都在自己手里。它支持 TCP 中继与 P2P 直连、端到端加密、文件传输、剪贴板、多屏、WOL 唤醒。免费版功能够用，自建时记得配白名单与强密码。",
+    features:[
+      "客户端覆盖全平台，含 Web 端",
+      "可自建 ID / 中继服务器，连接自主",
+      "端到端加密与访问密码、白名单",
+      "文件传输、剪贴板、多显示器",
+      "P2P 直连优先，失败走中继",
+      "AGPL 许可，可源码审计"
+    ],
+    tags:["远程桌面","自托管","安全"], lang:"Rust", lic:"AGPL-3.0", repo:"rustdesk/rustdesk" },
+
+  { name:"Zellij",   cat:"sys",
+    desc:"现代终端工作区：布局、面板、插件开箱即用。",
+    intro:"Zellij 是 Rust 写的终端复用器，定位对得上 tmux，但默认就把「有用的东西」配好了：打开就显示快捷键提示、可以按 YAML 定义多面板布局、编译的 WASM 插件做模式与事件响应。适合不想把 tmux 配置反复调教、又希望多面板与浮动终端随手可得的人。性能与稳定性已够日常使用，远端 SSH 场景也支持。同类可看 tmux 与 Byobu。",
+    features:[
+      "开箱即带快捷键提示，学习成本低",
+      "YAML 声明布局与启动会话",
+      "浮动面板、全屏切换、会话共享",
+      "WASM 插件机制，模式可扩展",
+      "Rust 实现，内存安全且稳定",
+      "服务器端持久会话，断线可重连"
+    ],
+    tags:["终端","CLI","Rust"], lang:"Rust", lic:"MIT", repo:"zellij-org/zellij" },
+
+  { name:"Netdata",   cat:"sys",
+    desc:"秒级精度的服务器监控代理，装完立刻出图表。",
+    intro:"Netdata 的卖点是装上就有用：一个代理进程采集 CPU、内存、磁盘、网络、容器、常见服务（Nginx、Redis、PostgreSQL…）的指标，默认秒级甚至亚秒级粒度，本地网页直接看几百张排好版的图。采集项是自动发现的，不用先写配置。要长期保存与多机汇总可以再配它的云或对接 Prometheus / Graphite。排障时看秒级曲线，比五分钟粒度的监控好用太多。",
+    features:[
+      "安装后零配置自动采集与出图",
+      "秒级 / 亚秒级粒度，适合排障",
+      "数百种采集插件覆盖常见服务",
+      "异常检测内置（自动学习基线）",
+      "多节点可查看与告警配置",
+      "可对接 Prometheus / OpenTelemetry"
+    ],
+    tags:["监控","服务器","自托管"], lang:"C", lic:"GPL-3.0", repo:"netdata/netdata" },
+
+  { name:"VictoriaMetrics",   cat:"sys",
+    desc:"高效的时序数据库，Prometheus 的常见替代后端。",
+    intro:"VictoriaMetrics 是为 Prometheus 生态做过优化的时序库：兼容 Prometheus 的抓取与 PromQL 查询，写入压缩率高、内存占用低，单机版就能扛百万级活跃时间序列，集群版可水平扩展。常见用法是把 Prometheus 的 remote write 指到它，长期保存与慢查询都更省力。它还自带 vmagent（采集代理）与 vmalert（告警）。同类可看 Thanos、Mimir、InfluxDB。",
+    features:[
+      "兼容 Prometheus 抓取、远程写入与 PromQL",
+      "压缩率与查询速度优于原生 Prometheus",
+      "单机版可扛百万级活跃序列",
+      "集群版水平扩展，多租户隔离",
+      "附带 vmagent / vmalert / vmbackup 组件",
+      "也支持 InfluxDB / OpenTSDB / Graphite 写入"
+    ],
+    tags:["监控","数据库","自托管"], lang:"Go", lic:"Apache-2.0", repo:"VictoriaMetrics/VictoriaMetrics" },
+
+  { name:"Duplicati",   cat:"sys",
+    desc:"增量加密备份到网盘与对象存储，客户端就能还原。",
+    intro:"Duplicati 做备份的思路是「目标是远程存储」：把文件夹增量备份到 OneDrive、Backblaze、S3、WebDAV、FTP 或本地磁盘，上传前加密、压缩、去重，之后网页界面就能浏览历史版本并还原单个文件，不必在目标端装任何东西。它有定时计划、带宽限制、验证与修复。缺点是首次备份大集合慢、还原大量小文件也偏慢；方案本身（AES 加密 + 增量卷）值得懂清楚再配。",
+    features:[
+      "支持各类云存储、WebDAV、S3、本地目标",
+      "上传前加密、压缩、去重与增量版本",
+      "网页界面可浏览历史与还原单文件",
+      "定时计划、带宽与卷大小可调",
+      "内置备份完整性校验与修复",
+      "命令行与无头模式可跑 NAS"
+    ],
+    tags:["备份","加密","存储"], lang:"C#", lic:"GPL-2.0", repo:"duplicati/duplicati" },
+
 ];
 /* ============================================================
    多维标签筛选 —— 平台 / 特性 / 授权
@@ -6205,4 +6896,58 @@ const TAGS={
   "name:Forgejo":["win","mac","linux","android","web","cross","local","cli","noads","zh"],
   "name:net-tools":["linux","local","minimal","cli"],
   "name:Gouache":["web","local","minimal","noads"],
+  /* ---------- 448–500 扩容批次的平台 / 形态标签 ---------- */
+  "mermaid-js/mermaid":["web","cross"],
+  "plantuml/plantuml":["win","mac","linux","cross","cli","web"],
+  "graphviz/graphviz":["win","mac","linux","cross","cli"],
+  "apache/echarts":["web","cross"],
+  "chartjs/Chart.js":["web","cross"],
+  "mrdoob/three.js":["web","cross"],
+  "slidevjs/slidev":["win","mac","linux","cross","cli","web"],
+  "fastapi/fastapi":["cross","web","cli"],
+  "prisma/orm":["win","mac","linux","cross","web"],
+  "lucide-icons/lucide":["web","cross"],
+  "tabler/tabler-icons":["web","cross"],
+  "svg/svgo":["win","mac","linux","cross","cli"],
+  "ImageOptim/ImageOptim":["mac","local"],
+  "hashicorp/terraform":["win","mac","linux","cross","cli"],
+  "derailed/k9s":["win","mac","linux","cross","cli"],
+  "argoproj/argo-cd":["linux","web","cli"],
+  "dokku/dokku":["linux","cli"],
+  "coollabsio/coolify":["linux","web"],
+  "NginxProxyManager/nginx-proxy-manager":["linux","web"],
+  "halo-dev/halo":["linux","web","zh"],
+  "chocobozzz/PeerTube":["linux","web"],
+  "owncast/owncast":["linux","web"],
+  "mealie-recipes/mealie":["linux","web","zh"],
+  "home-assistant/core":["linux","web","android","ios","zh"],
+  "keycloak/keycloak":["linux","web"],
+  "goauthentik/authentik":["linux","web"],
+  "element-hq/synapse":["linux","web"],
+  "posthog/posthog":["linux","web"],
+  "usememos/memos":["win","mac","linux","android","ios","web","cross","zh"],
+  "sumatrapdfreader/sumatrapdf":["win","local"],
+  "kovidgoyal/calibre":["win","mac","linux","cross","local","zh"],
+  "koreader/koreader":["linux","android","local"],
+  "opf/openproject":["linux","web","zh"],
+  "twentyhq/twenty":["linux","web"],
+  "firefly-iii/firefly-iii":["linux","web","zh"],
+  "ankitects/anki":["win","mac","linux","android","ios","cross","local","zh"],
+  "TriliumNext/Trilium":["win","mac","linux","web","cross","zh"],
+  "yt-dlp/yt-dlp":["win","mac","linux","cross","cli","zh"],
+  "streamlink/streamlink":["win","mac","linux","cross","cli"],
+  "olive-editor/olive":["win","mac","linux","cross","local"],
+  "strawberrymusicplayer/strawberry":["win","mac","linux","cross","local"],
+  "ggml-org/whisper.cpp":["win","mac","linux","cross","cli","local","minimal"],
+  "run-llama/llama_index":["cross","cli","web"],
+  "open-webui/open-webui":["linux","web","zh"],
+  "lobehub/lobehub":["web","cross","zh"],
+  "netbirdio/netbird":["win","mac","linux","android","ios","cross"],
+  "XTLS/Xray-core":["win","mac","linux","cross","cli"],
+  "qbittorrent/qBittorrent":["win","mac","linux","cross","local"],
+  "rustdesk/rustdesk":["win","mac","linux","android","ios","cross","zh"],
+  "zellij-org/zellij":["mac","linux","cli"],
+  "netdata/netdata":["linux","cli","web"],
+  "VictoriaMetrics/VictoriaMetrics":["linux","cli","web"],
+  "duplicati/duplicati":["win","mac","linux","cross","local","web"]
 };

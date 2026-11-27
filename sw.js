@@ -1,5 +1,5 @@
 /* 由 scripts/build-static.ps1 生成，请勿手改。PWA 离线缓存。 */
-const CACHE='kaibang-v2-f1108bfe0346';
+const CACHE='kaibang-v2-fd2b0c75bc79';
 const PRECACHE=[
   "/",
   "/index.html",
@@ -9,8 +9,8 @@ const PRECACHE=[
   "/manifest.webmanifest",
   "/favicon.svg",
   "/apple-touch-icon.png",
-  "/assets/tools.css?v=a62d7a31ff",
-  "/assets/static.js?v=21331c783d",
+  "/assets/tools.css?v=2c63882ccb",
+  "/assets/static.js?v=793eeb2671",
   "/categories/ai.html",
   "/categories/design.html",
   "/categories/dev.html",
@@ -33,22 +33,24 @@ const PRECACHE=[
   "/assets/theme.js?v=6cd6f3c161",
   "/fonts/archivo-latin-var.woff2?v=347eef1c29",
   "/fonts/jetbrains-mono-latin-var.woff2?v=30b3242294",
-  "/assets/app.js?v=d60fd3fda1",
+  "/fonts/noto-sc-display-900.woff2?v=bbcd246c94",
+  "/assets/app.js?v=6cc6f2c9e7",
   "/assets/downloads.js?v=0aa8ba740a",
   "/data/alternatives.js?v=212ae9a45d",
-  "/data/pinyin.js?v=b6f96d334d",
+  "/data/pinyin.js?v=71c87ee500",
   "/data/stars.js?v=6e386c5366",
-  "/data/tools-data.js?v=5ad05e0617",
+  "/data/tools-data.js?v=e7f65f339d",
   "/assets/repos.js?v=56717ed754",
-  "/assets/site.css?v=f41bfca71c",
-  "/assets/monetize.css?v=e5b4472e7b",
-  "/assets/qr-wechat.avif?v=8257e3a363",
-  "/assets/qr-wechat.webp?v=774bfaf3f0",
-  "/assets/qr-alipay.avif?v=d345f242cb",
-  "/assets/qr-alipay.webp?v=726d1cba10",
+  "/assets/site.css?v=3e97948365",
+  "/assets/monetize.css?v=a6863e8a6e",
+  "/assets/qr-wechat.avif?v=45fa7f0ba3",
+  "/assets/qr-wechat.webp?v=46bc93f692",
+  "/assets/qr-alipay.avif?v=7541b99efb",
+  "/assets/qr-alipay.webp?v=819e9af045",
+  "/data/icons.js?v=2c4dd0bc8b",
   "/data/sponsors.js?v=dee67b95bb",
   "/data/affiliates.js?v=7b836a72a4",
-  "/assets/monetize.js?v=a272aef295"
+  "/assets/monetize.js?v=b0a6d0ab7a"
 ];
 self.addEventListener('install',e=>{
   e.waitUntil(caches.open(CACHE).then(c=>c.addAll(PRECACHE)).then(()=>self.skipWaiting()).catch(()=>{}));
