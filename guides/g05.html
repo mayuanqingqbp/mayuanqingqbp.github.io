@@ -12,7 +12,7 @@
 <link rel="canonical" href="https://kaibang.net/guides/g05.html">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-<link rel="stylesheet" href="/assets/tools.css?v=df911525cc">
+<link rel="stylesheet" href="/assets/tools.css?v=79c095e845">
 <meta property="og:type" content="article">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:site_name" content="GitHub 开源软件精选热榜">
@@ -38,19 +38,19 @@
 </nav>
 <main class="wrap">
 <nav class="crumbs" aria-label="面包屑"><a href="/">首页</a> / <a href="/guides/">指南</a> / <span>终端工具箱：把命令行变成工作台</span></nav>
-<nav class="guide-nav" aria-label="全部指南"><a href="/guides/">全部指南</a><a href="/guides/g01.html">怎么用这份目录</a><a href="/guides/g02.html">代码编辑器怎么选</a><a href="/guides/g03.html">开源 AI 工具：本地跑起来的路线</a><a href="/guides/g04.html">设计工具：从修图到协作画布</a><a href="/guides/g05.html">终端工具箱：把命令行变成工作台</a><a href="/guides/g06.html">常见问题</a><a href="/guides/g07.html">效率与办公：把笔记、任务和文档串成一条线</a><a href="/guides/g08.html">网络与安全：从排查故障到加固边界</a><a href="/guides/g09.html">媒体与娱乐：播放器、剪辑和音频工作台</a><a href="/guides/g10.html">自托管：从一台机器到一套服务</a></nav>
+<nav class="guide-nav" aria-label="全部指南"><a href="/guides/">全部指南</a><a href="/guides/g01.html">怎么用这份目录</a><a href="/guides/g02.html">挑代码编辑器</a><a href="/guides/g03.html">开源 AI 工具：把它们在本地跑起来的路子</a><a href="/guides/g04.html">设计工具：先定产出物，再挑软件</a><a href="/guides/g05.html">终端工具箱：把命令行变成工作台</a><a href="/guides/g06.html">常见问题</a><a href="/guides/g07.html">效率与办公：把笔记、任务和文档串成一条线</a><a href="/guides/g08.html">网络与安全：从排查故障到加固边界</a><a href="/guides/g09.html">媒体与娱乐：播放器、剪辑和音频工作台</a><a href="/guides/g10.html">自托管：从一台机器到一套服务</a></nav>
 <article class="guide">
       <div class="kicker">05 · 系统</div>
       <h2>终端工具箱：把命令行变成工作台</h2>
-      <p>一套可以直接抄的终端配置，分四块：</p>
+      <p>这套终端配置可以直接抄，分四块：</p>
       <ul>
-        <li><strong>查</strong>：<a class="gl" href="/tools/ripgrep.html">ripgrep</a> 搜内容（尊重 .gitignore、并行、大仓库毫秒级），<a class="gl" href="/tools/fd.html">fd</a> 找文件，<a class="gl" href="/tools/fzf.html">fzf</a> 把任何列表变成模糊过滤（文件、历史、进程都行），<a class="gl" href="/tools/zoxide.html">zoxide</a> 替代 cd，按使用频率智能跳目录。</li>
-        <li><strong>看</strong>：<a class="gl" href="/tools/bat.html">bat</a> 是带高亮的 cat（行号、感知 git 状态），<a class="gl" href="/tools/btop.html">btop</a> 和 <a class="gl" href="/tools/htop.html">htop</a> 看进程，<a class="gl" href="/tools/duf.html">duf</a> 看磁盘占用，<a class="gl" href="/tools/dust.html">dust</a> 用树形视图找占空间的目录。</li>
-        <li><strong>管</strong>：<a class="gl" href="/tools/tmux.html">tmux</a> 做会话管理（ssh 断了会话不死，detach 之后随时回来），<a class="gl" href="/tools/lazygit.html">lazygit</a> 和 <a class="gl" href="/tools/lazydocker.html">lazydocker</a> 是 TUI 版 Git / Docker（暂存、提交、rebase、容器、镜像全键盘操作）。</li>
-        <li><strong>运维</strong>：<a class="gl" href="/tools/uptime-kuma.html">Uptime Kuma</a> 做监控告警（多渠道通知、公开状态页），<a class="gl" href="/tools/rclone.html">rclone</a> 同步网盘（云存储的瑞士军刀，各家网盘都能搬），<a class="gl" href="/tools/restic.html">restic</a> 和 <a class="gl" href="/tools/borg.html">Borg</a> 做备份（都支持加密、去重、增量，restic 的云端后端选择更多）。</li>
+        <li><strong>查</strong>：搜内容用 <a class="gl" href="/tools/ripgrep.html">ripgrep</a>（尊重 .gitignore、并行搜、大仓库也是毫秒级），找文件用 <a class="gl" href="/tools/fd.html">fd</a>；<a class="gl" href="/tools/fzf.html">fzf</a> 能把列表变成模糊过滤，文件、历史、进程都行；<a class="gl" href="/tools/zoxide.html">zoxide</a> 替掉 cd，按使用频率智能跳目录。</li>
+        <li><strong>看</strong>：看文件用带高亮的 <a class="gl" href="/tools/bat.html">bat</a>（行号、感知 git 状态），看进程用 <a class="gl" href="/tools/btop.html">btop</a> 或 <a class="gl" href="/tools/htop.html">htop</a>，磁盘占用看 <a class="gl" href="/tools/duf.html">duf</a>，哪个目录最占地方，<a class="gl" href="/tools/dust.html">dust</a> 的树形视图一眼看出。</li>
+        <li><strong>管</strong>：会话交给 <a class="gl" href="/tools/tmux.html">tmux</a>（ssh 断了会话不死，detach 之后随时回来）；Git 和 Docker 有 TUI 版的 <a class="gl" href="/tools/lazygit.html">lazygit</a> 和 <a class="gl" href="/tools/lazydocker.html">lazydocker</a>，暂存、提交、rebase、容器、镜像，全程键盘。</li>
+        <li><strong>运维</strong>：监控告警是 <a class="gl" href="/tools/uptime-kuma.html">Uptime Kuma</a>（多渠道通知、公开状态页）；网盘同步交给 <a class="gl" href="/tools/rclone.html">rclone</a>，各家云存储都能搬的瑞士军刀；备份用 <a class="gl" href="/tools/restic.html">restic</a> 或 <a class="gl" href="/tools/borg.html">Borg</a>，加密、去重、增量都有，restic 可选的云端后端更多。</li>
       </ul>
-      <p>两个不常被提的 shell 升级：<a class="gl" href="/tools/atuin.html">atuin</a> 是可搜索、可跨机器同步的 shell 历史，再也不用方向键翻半天；<a class="gl" href="/tools/nushell.html">Nushell</a> 是结构化数据 shell，表格和对象直接过管道，思维方式跟 bash 完全不同，值得花一天试一下。</p>
-      <p>不必一次全装。先 ripgrep + fd + fzf + bat 四件套，能立刻感受到「命令行快了一个量级」，再按需加 tmux 和 lazygit。配置成本只有一份 dotfile：都放进 <code>~/.config</code>，用 git 管起来，换机器时整个工作台可以整体搬走。</p>
+      <p>还有两个少有人提的 shell 升级：<a class="gl" href="/tools/atuin.html">atuin</a> 把 shell 历史变成可搜索、可跨机器同步的库，不用再拿方向键翻半天；<a class="gl" href="/tools/nushell.html">Nushell</a> 是结构化数据的 shell，表格和对象直接过管道，思路跟 bash 完全是两回事，值得抽一天试。</p>
+      <p>不用一口气全装。先上 ripgrep、fd、fzf、bat 四件套，命令行立刻快一个量级，之后缺什么再补 tmux 和 lazygit。配置成本就一份 dotfile：全放进 <code>~/.config</code>，用 git 管起来，换机器时整个工作台打包搬走。</p>
     </article>
 </main>
 <footer>

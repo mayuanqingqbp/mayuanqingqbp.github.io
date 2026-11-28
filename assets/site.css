@@ -8,7 +8,7 @@
      刻意不写 unicode-range：子集只含清单里的字，写了 range 浏览器会以为整段都覆盖，
      清单外的汉字会出豆腐块；不写则缺字自动回落系统字。字表与字体由
      scripts/cjk-display.mjs + scripts/subset-cjk.py 生成，check-build.ps1 会校验覆盖。 */
-  @font-face{font-family:'Kaibang Display SC';font-style:normal;font-weight:900;font-display:swap;src:url('/fonts/noto-sc-display-900.woff2?v=bbcd246c94') format('woff2');}
+  @font-face{font-family:'Kaibang Display SC';font-style:normal;font-weight:900;font-display:swap;src:url('/fonts/noto-sc-display-900.woff2?v=6062d855ba') format('woff2');}
   /* ============================================================
      开源软件图鉴 · Field Guide —— 纸墨视觉系统
      纸墨配色 · 编号标本卡 · 分类色脊 · 印刷硬阴影

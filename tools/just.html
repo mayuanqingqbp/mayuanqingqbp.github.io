@@ -7,23 +7,23 @@
 <link rel="stylesheet" href="/assets/monetize.css">
 <script src="/assets/static.js?v=793eeb2671"></script>
 <title>just &#183; 开发工具 &#183; GitHub 开源软件精选热榜</title>
-<meta name="description" content="现代命令运行器，用 justfile 替代 Makefile，定义并运行重复命令。">
+<meta name="description" content="现代命令运行器，用 justfile 顶替 Makefile。">
 <meta name="robots" content="index,follow,max-image-preview:large">
 <link rel="canonical" href="https://kaibang.net/tools/just.html">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-<link rel="stylesheet" href="/assets/tools.css?v=df911525cc">
+<link rel="stylesheet" href="/assets/tools.css?v=79c095e845">
 <meta property="og:type" content="article">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:site_name" content="GitHub 开源软件精选热榜">
 <meta property="og:url" content="https://kaibang.net/tools/just.html">
 <meta property="og:title" content="just &#183; 开发工具 &#183; GitHub 开源软件精选热榜">
-<meta property="og:description" content="现代命令运行器，用 justfile 替代 Makefile，定义并运行重复命令。">
+<meta property="og:description" content="现代命令运行器，用 justfile 顶替 Makefile。">
 <meta property="og:image" content="https://kaibang.net/og-cover.png">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#EDEFE9" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#101511" media="(prefers-color-scheme: dark)">
-<script type="application/ld+json">{"@type":"SoftwareApplication","programmingLanguage":"Rust","url":"https://kaibang.net/tools/just.html","operatingSystem":"Windows, macOS, Linux, Web","name":"just","description":"现代命令运行器，用 justfile 替代 Makefile，定义并运行重复命令。","sameAs":["https://github.com/casey/just"],"@context":"https://schema.org","applicationCategory":"开发工具","softwareVersion":"1.59.0","dateModified":"2026-11-25"}</script>
+<script type="application/ld+json">{"@type":"SoftwareApplication","programmingLanguage":"Rust","url":"https://kaibang.net/tools/just.html","operatingSystem":"Windows, macOS, Linux, Web","name":"just","description":"现代命令运行器，用 justfile 顶替 Makefile。","sameAs":["https://github.com/casey/just"],"@context":"https://schema.org","applicationCategory":"开发工具","softwareVersion":"1.59.0","dateModified":"2026-11-28"}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","itemListElement":[{"position":1,"name":"首页","item":"https://kaibang.net/","@type":"ListItem"},{"position":2,"name":"全部工具","item":"https://kaibang.net/all-tools.html","@type":"ListItem"},{"position":3,"name":"开发工具","item":"https://kaibang.net/categories/dev.html","@type":"ListItem"},{"position":4,"name":"just","item":"https://kaibang.net/tools/just.html","@type":"ListItem"}],"@type":"BreadcrumbList"}</script>
 </head>
 <body>
@@ -43,18 +43,18 @@
 <article>
   <div class="meta"><span>NO. 223</span><span class="badge">开发工具</span><span>Rust</span><span>MIT OR Apache-2.0</span></div>
   <h1>just</h1>
-  <div class="data-strip"><span class="stars">★ 36.7k</span><span>Rust</span><span>MIT OR Apache-2.0</span><span>版本 1.59.0</span><span>更新 2026-11-25</span></div>
-  <p class="lede">现代命令运行器，用 justfile 替代 Makefile，定义并运行重复命令。</p>
-  <section><h2>介绍</h2><p>just 是一款现代命令运行器，是 Make 的更简单替代品。你把项目里重复执行的命令（构建、测试、运行等）写进一个 justfile，然后用 `just 命令名` 一键触发。它零学习成本、支持变量、函数、条件判断、自动发现、自动补全，非常适合把一个项目的常用 shell 命令快速整理成一套可复用的快捷命令。</p></section>
-  <section><h2>功能特点</h2><ul class="features"><li>用 justfile 定义命令，`just 命令名` 一键运行，零 Make 学习成本</li><li>支持变量、默认值、函数、条件表达式</li><li>自动发现：自动向上查找 justfile</li><li>内置自动补全，`just` 直接列出可用命令</li><li>跨平台、Rust 编写、单二进制、启动极快</li><li>简单强大，适合快速整理项目常用命令</li></ul></section>
+  <div class="data-strip"><span class="stars">★ 36.7k</span><span>Rust</span><span>MIT OR Apache-2.0</span><span>版本 1.59.0</span><span>更新 2026-11-28</span></div>
+  <p class="lede">现代命令运行器，用 justfile 顶替 Makefile。</p>
+  <section><h2>介绍</h2><p>just 干的和 Make 差不多，但更简单。构建、测试、运行这些重复敲的命令写进一个 justfile，之后 just 命令名 一键触发。变量、函数、条件都支持，自动补全内置，学习成本几乎没有，项目里那些常用 shell 命令很快就能整理成一套可复用的入口。</p></section>
+  <section><h2>功能特点</h2><ul class="features"><li>用 justfile 定义命令，just 命令名 一键运行，零 Make 学习成本</li><li>支持变量、默认值、函数、条件表达式</li><li>自动向上层目录找 justfile</li><li>内置自动补全，just 直接列出可用命令</li><li>跨平台、Rust 编写、单二进制、启动极快</li><li>常用命令整理成一套入口</li></ul></section>
   <section class="dl-zone"><h2>下载与安装</h2><div class="dl-cmd"><code translate="no">git clone https://github.com/casey/just.git</code><button class="copy-btn" type="button" data-copy="git clone https://github.com/casey/just.git">复制</button></div><div class="dl-assets"><div class="dl-asset"><span>CHANGELOG.md</span><a class="btn" href="https://gh-proxy.com/https://github.com/casey/just/releases/download/1.59.0/CHANGELOG.md" target="_blank" rel="noopener noreferrer">镜像线路1</a><a class="btn" href="https://ghfast.top/https://github.com/casey/just/releases/download/1.59.0/CHANGELOG.md" target="_blank" rel="noopener noreferrer">镜像线路2</a></div><div class="dl-asset"><span>just-1.59.0-aarch64-apple-darwin.tar.gz</span><a class="btn" href="https://gh-proxy.com/https://github.com/casey/just/releases/download/1.59.0/just-1.59.0-aarch64-apple-darwin.tar.gz" target="_blank" rel="noopener noreferrer">镜像线路1</a><a class="btn" href="https://ghfast.top/https://github.com/casey/just/releases/download/1.59.0/just-1.59.0-aarch64-apple-darwin.tar.gz" target="_blank" rel="noopener noreferrer">镜像线路2</a></div><div class="dl-asset"><span>just-1.59.0-aarch64-pc-windows-msvc.zip</span><a class="btn" href="https://gh-proxy.com/https://github.com/casey/just/releases/download/1.59.0/just-1.59.0-aarch64-pc-windows-msvc.zip" target="_blank" rel="noopener noreferrer">镜像线路1</a><a class="btn" href="https://ghfast.top/https://github.com/casey/just/releases/download/1.59.0/just-1.59.0-aarch64-pc-windows-msvc.zip" target="_blank" rel="noopener noreferrer">镜像线路2</a></div></div><div class="dl-links"><a class="btn primary" href="https://github.com/casey/just/releases" target="_blank" rel="noopener noreferrer">GitHub Releases ↗</a></div></section>
   <section><h2>标签</h2><div class="tags"><span class="tag">构建工具</span><span class="tag">CLI</span><span class="tag">自动化</span></div></section>
   <div class="links"><a class="btn primary" href="https://github.com/casey/just" target="_blank" rel="noopener noreferrer">GitHub 仓库 ↗</a><a class="btn" href="/#tool=just">在首页查看详情</a></div>
-  <section class="faq"><h2>常见问题</h2><details><summary>just 是什么？</summary><p>现代命令运行器，用 justfile 替代 Makefile，定义并运行重复命令。</p></details><details><summary>谁适合用 just？</summary><p>just 是一款现代命令运行器，是 Make 的更简单替代品。你把项目里重复执行的命令（构建、测试、运行等）写进一个 justfile，然后用 `just 命令名` 一键触发。它零学习成本、支持变量、函数、条件判断、自动发现、自动补全，非常适合把一个项目的常用 shell 命令快速整理成一套可复用的快捷命令。</p></details><details><summary>just 是开源的吗？</summary><p>是，采用 MIT OR Apache-2.0 许可证，源码在 GitHub 仓库。</p></details><details><summary>怎么安装 just？</summary><p>从下方「下载与安装」区选择镜像线路，或前往 GitHub Releases 获取对应平台的安装包；命令行工具可复制 git clone 地址。</p></details></section>
+  <section class="faq"><h2>常见问题</h2><details><summary>just 是什么？</summary><p>现代命令运行器，用 justfile 顶替 Makefile。</p></details><details><summary>谁适合用 just？</summary><p>just 干的和 Make 差不多，但更简单。构建、测试、运行这些重复敲的命令写进一个 justfile，之后 just 命令名 一键触发。变量、函数、条件都支持，自动补全内置，学习成本几乎没有，项目里那些常用 shell 命令很快就能整理成一套可复用的入口。</p></details><details><summary>just 是开源的吗？</summary><p>是，采用 MIT OR Apache-2.0 许可证，源码在 GitHub 仓库。</p></details><details><summary>怎么安装 just？</summary><p>从下方「下载与安装」区选择镜像线路，或前往 GitHub Releases 获取对应平台的安装包；命令行工具可复制 git clone 地址。</p></details></section>
   
   
 </article>
-<section><h2>同类工具</h2><ul class="related"><li><a href="/tools/vs-code.html">VS Code<small>微软开源的代码编辑器，插件生态极其丰富，几乎覆盖所有语言。</small></a></li><li><a href="/tools/neovim.html">Neovim<small>高度可定制的 Vim 分支，配置即用 Lua，插件系统更现代。</small></a></li><li><a href="/tools/zed.html">Zed<small>用 Rust 编写的高性能编辑器，原生支持多人多光标协作。</small></a></li><li><a href="/tools/fzf.html">fzf<small>命令行模糊查找器，几乎能即时过滤任何列表、文件、历史记录。</small></a></li><li><a href="/tools/ripgrep.html">ripgrep<small>递归文件搜索工具，比 grep 快得多，自动尊重 .gitignore。</small></a></li><li><a href="/tools/nushell.html">Nushell<small>以结构化数据为核心的现代 shell，管道里直接处理表格与对象。</small></a></li></ul></section>
+<section><h2>同类工具</h2><ul class="related"><li><a href="/tools/vs-code.html">VS Code<small>微软开源的代码编辑器，插件市场庞大，主流语言都能覆盖。</small></a></li><li><a href="/tools/neovim.html">Neovim<small>Vim 的深度重构分支，配置改用 Lua，插件系统更现代。</small></a></li><li><a href="/tools/zed.html">Zed<small>Rust 编写的高性能编辑器，多人多光标协作是原生能力。</small></a></li><li><a href="/tools/fzf.html">fzf<small>命令行模糊查找器，列表、文件、历史记录都能秒筛。</small></a></li><li><a href="/tools/ripgrep.html">ripgrep<small>递归搜索文件，比 grep 快得多，默认尊重 .gitignore。</small></a></li><li><a href="/tools/nushell.html">Nushell<small>以结构化数据为核心的现代 shell，管道里直接操作表格对象。</small></a></li></ul></section>
 </main>
 <footer>
   <div class="wrap foot-in">

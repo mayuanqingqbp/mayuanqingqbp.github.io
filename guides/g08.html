@@ -12,7 +12,7 @@
 <link rel="canonical" href="https://kaibang.net/guides/g08.html">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-<link rel="stylesheet" href="/assets/tools.css?v=df911525cc">
+<link rel="stylesheet" href="/assets/tools.css?v=79c095e845">
 <meta property="og:type" content="article">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:site_name" content="GitHub 开源软件精选热榜">
@@ -38,25 +38,25 @@
 </nav>
 <main class="wrap">
 <nav class="crumbs" aria-label="面包屑"><a href="/">首页</a> / <a href="/guides/">指南</a> / <span>网络与安全：从排查故障到加固边界</span></nav>
-<nav class="guide-nav" aria-label="全部指南"><a href="/guides/">全部指南</a><a href="/guides/g01.html">怎么用这份目录</a><a href="/guides/g02.html">代码编辑器怎么选</a><a href="/guides/g03.html">开源 AI 工具：本地跑起来的路线</a><a href="/guides/g04.html">设计工具：从修图到协作画布</a><a href="/guides/g05.html">终端工具箱：把命令行变成工作台</a><a href="/guides/g06.html">常见问题</a><a href="/guides/g07.html">效率与办公：把笔记、任务和文档串成一条线</a><a href="/guides/g08.html">网络与安全：从排查故障到加固边界</a><a href="/guides/g09.html">媒体与娱乐：播放器、剪辑和音频工作台</a><a href="/guides/g10.html">自托管：从一台机器到一套服务</a></nav>
+<nav class="guide-nav" aria-label="全部指南"><a href="/guides/">全部指南</a><a href="/guides/g01.html">怎么用这份目录</a><a href="/guides/g02.html">挑代码编辑器</a><a href="/guides/g03.html">开源 AI 工具：把它们在本地跑起来的路子</a><a href="/guides/g04.html">设计工具：先定产出物，再挑软件</a><a href="/guides/g05.html">终端工具箱：把命令行变成工作台</a><a href="/guides/g06.html">常见问题</a><a href="/guides/g07.html">效率与办公：把笔记、任务和文档串成一条线</a><a href="/guides/g08.html">网络与安全：从排查故障到加固边界</a><a href="/guides/g09.html">媒体与娱乐：播放器、剪辑和音频工作台</a><a href="/guides/g10.html">自托管：从一台机器到一套服务</a></nav>
 <article class="guide">
       <div class="kicker">08 · 网络</div>
       <h2>网络与安全：从排查故障到加固边界</h2>
-      <p>这一类的工具，最好在出问题之前就装好、用过一遍。真断网的时候再去搜命令，往往连哪个命令该用都想不起来。</p>
-      <p>先说排查链路，按「通不通 → 慢在哪 → 是什么流量」走：</p>
+      <p>网络和安全类的工具，最好趁没出事就装好、挨个跑一遍。真到断网那天再去搜命令，往往连该用哪个都想不起来。</p>
+      <p>排查按「通不通 → 慢在哪 → 是什么流量」的顺序走：</p>
       <ul>
-        <li><strong>通不通</strong>：<a class="gl" href="/tools/ping.html">ping</a> 看可达性，<span class="gl">traceroute</a> 和 <span class="gl">mtr</a> 看路径与每一跳的丢包，后者是持续版的 traceroute，定位运营商节点问题特别好使。</li>
-        <li><strong>慢在哪</strong>：<a class="gl" href="/tools/iperf3.html">iperf3</a> 打点对点带宽，<a class="gl" href="/tools/gping.html">gping</a> 给 ping 加上图形，<a class="gl" href="/tools/nethogs.html">nethogs</a> 看哪个进程在吃流量。</li>
-        <li><strong>是什么流量</strong>：<a class="gl" href="/tools/tcpdump.html">tcpdump</a> 命令行抓包，<a class="gl" href="/tools/wireshark.html">Wireshark</a> 图形化逐层拆解；<a class="gl" href="/tools/curl.html">curl</a> 则是手工验证 HTTP 接口的第一选择。</li>
+        <li><strong>通不通</strong>：<a class="gl" href="/tools/ping.html">ping</a> 先探可达性，<span class="gl">traceroute</a> 和 <span class="gl">mtr</a> 看路径和每一跳的丢包，mtr 相当于连续跑的 traceroute，查运营商节点的问题特别好用。</li>
+        <li><strong>慢在哪</strong>：点对点带宽用 <a class="gl" href="/tools/iperf3.html">iperf3</a> 来测，<a class="gl" href="/tools/gping.html">gping</a> 给 ping 配上图形，谁在吃流量，<a class="gl" href="/tools/nethogs.html">nethogs</a> 一屏就能看清。</li>
+        <li><strong>是什么流量</strong>：命令行抓包用 <a class="gl" href="/tools/tcpdump.html">tcpdump</a>，要逐层拆开看就换 <a class="gl" href="/tools/wireshark.html">Wireshark</a>；手工验证 HTTP 接口，先找 <a class="gl" href="/tools/curl.html">curl</a>。</li>
       </ul>
-      <p>主动扫描与渗透测试，务必只在自己拥有或已获书面授权的目标上做：</p>
+      <p>主动扫描和渗透测试，前提是目标归你所有，或拿到了书面授权：</p>
       <ul>
-        <li><a class="gl" href="/tools/nmap.html">Nmap</a> 是端口与服务识别的事实标准，<a class="gl" href="/tools/masscan.html">masscan</a> 追求极速全网段扫描。</li>
-        <li><a class="gl" href="/tools/owasp-zap.html">OWASP ZAP</a> 和 <a class="gl" href="/tools/nikto.html">Nikto</a> 偏 Web 应用与服务器配置检查，<a class="gl" href="/tools/openvas.html">OpenVAS</a> 是更完整的漏洞管理框架。</li>
-        <li>无线侧 <a class="gl" href="/tools/aircrack-ng.html">Aircrack-ng</a>、<a class="gl" href="/tools/kismet.html">Kismet</a>；密码恢复 <a class="gl" href="/tools/hashcat.html">Hashcat</a> 和 <a class="gl" href="/tools/john-the-ripper.html">John the Ripper</a>。</li>
+        <li>端口与服务识别，<a class="gl" href="/tools/nmap.html">Nmap</a> 是事实标准；要极快速扫完整个网段，用 <a class="gl" href="/tools/masscan.html">masscan</a>。</li>
+        <li><a class="gl" href="/tools/owasp-zap.html">OWASP ZAP</a> 和 <a class="gl" href="/tools/nikto.html">Nikto</a> 主要检查 Web 应用和服务器配置；想要一套完整的漏洞管理框架，是 <a class="gl" href="/tools/openvas.html">OpenVAS</a>。</li>
+        <li>无线这边是 <a class="gl" href="/tools/aircrack-ng.html">Aircrack-ng</a>、<a class="gl" href="/tools/kismet.html">Kismet</a>；恢复密码用 <a class="gl" href="/tools/hashcat.html">Hashcat</a> 或 <a class="gl" href="/tools/john-the-ripper.html">John the Ripper</a>。</li>
       </ul>
-      <p>日常加固反而朴素：DNS 层用 <a class="gl" href="/tools/adguard-home.html">AdGuard Home</a> 或 <a class="gl" href="/tools/pi-hole.html">Pi-hole</a> 挡广告与跟踪；远程访问用 <a class="gl" href="/tools/tailscale.html">Tailscale</a> 或 <a class="gl" href="/tools/wireguard.html">WireGuard</a> 组虚拟网络，别把管理端口直接暴露到公网；需要内网穿透时 <a class="gl" href="/tools/frp.html">frp</a> 和 <a class="gl" href="/tools/sing-box.html">sing-box</a> 是常见选择。密码交给 <a class="gl" href="/tools/keepassxc.html">KeePassXC</a> 或 <a class="gl" href="/tools/bitwarden.html">Bitwarden</a>，自托管可以看看 <a class="gl" href="/tools/vaultwarden.html">Vaultwarden</a>。</p>
-      <p>最后提醒一句：能力越强越要有边界意识。扫描、爆破、抓包这些操作，只对自己拥有或明确授权的目标使用。</p>
+      <p>日常加固反而朴素：DNS 层拿 <a class="gl" href="/tools/adguard-home.html">AdGuard Home</a> 或 <a class="gl" href="/tools/pi-hole.html">Pi-hole</a> 拦掉广告和跟踪；远程访问用 <a class="gl" href="/tools/tailscale.html">Tailscale</a> 或 <a class="gl" href="/tools/wireguard.html">WireGuard</a> 组个虚拟网络，管理端口别裸暴露到公网；要做内网穿透，常见的是 <a class="gl" href="/tools/frp.html">frp</a> 和 <a class="gl" href="/tools/sing-box.html">sing-box</a>。密码统一放进 <a class="gl" href="/tools/keepassxc.html">KeePassXC</a> 或 <a class="gl" href="/tools/bitwarden.html">Bitwarden</a>，想自己托管可以看看 <a class="gl" href="/tools/vaultwarden.html">Vaultwarden</a>。</p>
+      <p>最后提醒：工具越强，越要有边界感。扫描、爆破、抓包，只对自家的或明确授权过的目标动手。</p>
     </article>
 </main>
 <footer>

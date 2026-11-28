@@ -12,7 +12,7 @@
 <link rel="canonical" href="https://kaibang.net/guides/g09.html">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-<link rel="stylesheet" href="/assets/tools.css?v=df911525cc">
+<link rel="stylesheet" href="/assets/tools.css?v=79c095e845">
 <meta property="og:type" content="article">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:site_name" content="GitHub 开源软件精选热榜">
@@ -38,20 +38,20 @@
 </nav>
 <main class="wrap">
 <nav class="crumbs" aria-label="面包屑"><a href="/">首页</a> / <a href="/guides/">指南</a> / <span>媒体与娱乐：播放器、剪辑和音频工作台</span></nav>
-<nav class="guide-nav" aria-label="全部指南"><a href="/guides/">全部指南</a><a href="/guides/g01.html">怎么用这份目录</a><a href="/guides/g02.html">代码编辑器怎么选</a><a href="/guides/g03.html">开源 AI 工具：本地跑起来的路线</a><a href="/guides/g04.html">设计工具：从修图到协作画布</a><a href="/guides/g05.html">终端工具箱：把命令行变成工作台</a><a href="/guides/g06.html">常见问题</a><a href="/guides/g07.html">效率与办公：把笔记、任务和文档串成一条线</a><a href="/guides/g08.html">网络与安全：从排查故障到加固边界</a><a href="/guides/g09.html">媒体与娱乐：播放器、剪辑和音频工作台</a><a href="/guides/g10.html">自托管：从一台机器到一套服务</a></nav>
+<nav class="guide-nav" aria-label="全部指南"><a href="/guides/">全部指南</a><a href="/guides/g01.html">怎么用这份目录</a><a href="/guides/g02.html">挑代码编辑器</a><a href="/guides/g03.html">开源 AI 工具：把它们在本地跑起来的路子</a><a href="/guides/g04.html">设计工具：先定产出物，再挑软件</a><a href="/guides/g05.html">终端工具箱：把命令行变成工作台</a><a href="/guides/g06.html">常见问题</a><a href="/guides/g07.html">效率与办公：把笔记、任务和文档串成一条线</a><a href="/guides/g08.html">网络与安全：从排查故障到加固边界</a><a href="/guides/g09.html">媒体与娱乐：播放器、剪辑和音频工作台</a><a href="/guides/g10.html">自托管：从一台机器到一套服务</a></nav>
 <article class="guide">
       <div class="kicker">09 · 媒体</div>
       <h2>媒体与娱乐：播放器、剪辑和音频工作台</h2>
-      <p>媒体工具的选择，看的不是功能表有多长，而是你的产出物是什么：看片、剪片、做字幕、还是做音乐。先把场景定下来，再挑工具。</p>
-      <p>单纯看片，按平台挑：</p>
+      <p>挑媒体工具，别看功能表有多长，先想清楚你的产出物：看片、剪片、做字幕，还是做音乐。场景定了，工具才好配。</p>
+      <p>只想看片的话，按平台挑：</p>
       <ul>
-        <li><strong>本地万能播放</strong>：<a class="gl" href="/tools/mpv.html">mpv</a> 轻量、脚本能力强，键盘党首选；<a class="gl" href="/tools/vlc.html">VLC</a> 格式支持最广，解码疑难杂症找它；macOS 上 <a class="gl" href="/tools/iina.html">IINA</a> 是 mpv 的原生外壳。</li>
-        <li><strong>家庭影音中心</strong>：<a class="gl" href="/tools/kodi.html">Kodi</a> 管本地媒体库，<a class="gl" href="/tools/jellyfin.html">Jellyfin</a> 做多端串流且完全开源，<a class="gl" href="/tools/plex.html">Plex</a> 体验成熟但有闭源组件。</li>
+        <li><strong>本地万能播放</strong>：<a class="gl" href="/tools/mpv.html">mpv</a> 轻量、脚本能力强，键盘用户多半偏爱它；格式再刁钻，找 <a class="gl" href="/tools/vlc.html">VLC</a>，它的格式支持最广；macOS 上的 <a class="gl" href="/tools/iina.html">IINA</a> 等于给 mpv 套了层原生壳。</li>
+        <li><strong>家庭影音中心</strong>：本地媒体库交给 <a class="gl" href="/tools/kodi.html">Kodi</a>；要多端串流，用 <a class="gl" href="/tools/jellyfin.html">Jellyfin</a>，完全开源；<a class="gl" href="/tools/plex.html">Plex</a> 体验成熟，代价是掺着闭源组件。</li>
       </ul>
-      <p>视频处理这条链，<a class="gl" href="/tools/ffmpeg.html">ffmpeg</a> 是底层引擎，几乎所有图形工具都在调它。要快速裁剪不重编码，<a class="gl" href="/tools/losslesscut.html">LosslessCut</a> 是秒级完成的好帮手；要完整剪辑，<a class="gl" href="/tools/shotcut-2.html">Shotcut</a> 跨平台、多轨、滤镜齐全；录屏和直播推流则是 <a class="gl" href="/tools/obs-studio.html">OBS Studio</a>，配合 <a class="gl" href="/tools/handbrake.html">HandBrake</a> 压制输出。</p>
-      <p>音频这边，<a class="gl" href="/tools/audacity.html">Audacity</a> 适合录音、降噪、剪切这类轻量编辑；<a class="gl" href="/tools/ardour.html">Ardour</a> 是正经的多轨 DAW，做音乐用它；<a class="gl" href="/tools/mixxx.html">Mixxx</a> 是 DJ 打碟软件，支持双 decks 和效果器；整理音乐库用 <a class="gl" href="/tools/picard.html">Picard</a> 自动抓专辑元数据；语音合成可以试 <a class="gl" href="/tools/piper.html">Piper</a>，本地跑、无需联网。</p>
-      <p>字幕和图片常被忽略：<a class="gl" href="/tools/subtitle-edit.html">Subtitle Edit</a> 做时间轴校对，<a class="gl" href="/tools/aegisub.html">Aegisub</a> 做特效字幕；<a class="gl" href="/tools/imagemagick.html">ImageMagick</a> 是批量处理的命令行利器，<a class="gl" href="/tools/nomacs.html">Nomacs</a> 是轻快的看图工具。</p>
-      <p>一句话：播放器解决"怎么看"，ffmpeg 与剪辑器解决"怎么改"，DAW 解决"怎么做"。三件事别混在一个工具里找。</p>
+      <p>视频这条链上，<a class="gl" href="/tools/ffmpeg.html">ffmpeg</a> 是底层引擎，几乎所有图形工具背后都在调它。裁剪不想重编码，<a class="gl" href="/tools/losslesscut.html">LosslessCut</a> 几秒就能搞定；要做完整剪辑，<a class="gl" href="/tools/shotcut-2.html">Shotcut</a> 跨平台，多轨和滤镜都齐；录屏、直播推流用 <a class="gl" href="/tools/obs-studio.html">OBS Studio</a>，压制输出再配一个 <a class="gl" href="/tools/handbrake.html">HandBrake</a>。</p>
+      <p>音频这边：录音、降噪、剪切这类轻量编辑，<a class="gl" href="/tools/audacity.html">Audacity</a> 就够用；做音乐得上正经的多轨 DAW，用 <a class="gl" href="/tools/ardour.html">Ardour</a>；打碟是 <a class="gl" href="/tools/mixxx.html">Mixxx</a>，双 decks、效果器都支持；音乐库让 <a class="gl" href="/tools/picard.html">Picard</a> 自动抓专辑元数据；语音合成试试 <a class="gl" href="/tools/piper.html">Piper</a>，本地就能跑，不用联网。</p>
+      <p>字幕和图片容易被漏掉：时间轴校对找 <a class="gl" href="/tools/subtitle-edit.html">Subtitle Edit</a>，特效字幕用 <a class="gl" href="/tools/aegisub.html">Aegisub</a>；图片批量处理是 <a class="gl" href="/tools/imagemagick.html">ImageMagick</a> 的活，日常看图换个轻快的 <a class="gl" href="/tools/nomacs.html">Nomacs</a>。</p>
+      <p>说到底：怎么看，是播放器的事；怎么改，归 ffmpeg 和剪辑器；怎么做出来，那是 DAW 的活。三件事，别指望一个工具全包。</p>
     </article>
 </main>
 <footer>
